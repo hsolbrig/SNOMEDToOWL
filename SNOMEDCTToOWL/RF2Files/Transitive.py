@@ -26,14 +26,17 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Dict, Set
+from SNOMEDCTToOWL.SNOMEDToOWLConstants import RelationshipFilePrefix
 
 
 class Transitive:
-    relationship_prefix = "sct2_Relationship_Snapshot_"
+    relationship_prefix = RelationshipFilePrefix
 
     def __init__(self):
-        self._children = {}             # parent -> set(children)
-        self.__cache = {}    # parent -> set(descendants)
+        self._children = {}   # parent -> set(children) Dict[int, Set[int]]
+        self._parents = {}    # child -> set(parents)   Dict[int, Set[int]]
+        self.__desc_cache = {}     # parent -> set(descendants)
+        self.__ancestor_cache = {} # child -> set(ancestors)
 
     @classmethod
     def filtr(cls, fname: str) -> bool:
@@ -49,7 +52,10 @@ class Transitive:
         Add an RF2 relationship row to the Transitive file
         :param row: row to add -- already tested for active
         """
-        self._children.setdefault(int(row["destinationId"]), set()).add(int(row["sourceId"]))
+        child = int(row["sourceId"])
+        parent = int(row["destinationId"])
+        self._children.setdefault(parent, set()).add(child)
+        self._parents.setdefault(child, set()).add(parent)
 
     def descendants_of(self, parent: int) -> Set[int]:
         """
@@ -67,6 +73,15 @@ class Transitive:
         :param parent: parent concept
         :return: True or False
         """
-        if parent not in self.__cache:
-            self.__cache[parent] = self.descendants_of(parent)
-        return desc in self.__cache[parent]
+        if parent not in self.__desc_cache:
+            self.__desc_cache[parent] = self.descendants_of(parent)
+        return desc in self.__desc_cache[parent]
+
+    def ancestors_of(self, child: int) -> Set[int]:
+        return self._parents.get(child, set())\
+            .union(*[self.ancestors_of(x) for x in self._parents.get(child, set())])
+
+    def is_ancestor_of(self, ancestor: int, child: int) -> bool:
+        if child not in self.__ancestor_cache:
+            self.__ancestor_cache[child] = self.ancestors_of(child)
+        return ancestor in self.__ancestor_cache[child]

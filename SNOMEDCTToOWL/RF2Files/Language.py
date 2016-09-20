@@ -62,7 +62,7 @@ class Language:
 
 
 class Languages(RF2File):
-    prefix = "der2_cRefset_LanguageSnapshot"
+    prefix = LanguageFilePrefix
 
     def __init__(self):
         """

@@ -27,7 +27,9 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 import csv
 import os
-from typing import Optional, Set
+import sys
+from argparse import ArgumentParser
+from typing import Set, Callable
 from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.collection import Collection
 from rdflib.namespace import NAME_START_CATEGORIES
@@ -49,17 +51,20 @@ class OWLGraph(Graph):
     An OWLGraph is a representation of a collection of SNOMED CT RF2 files in OWL format
     """
 
-    def __init__(self, transformation_context: TransformationContext, directory: Optional[str] = None, *args, **kwargs):
+    def __init__(self, transformation_context: TransformationContext, directory: str, printer: Callable[[str], None],
+                 *args, **kwargs):
         """
         Construct an OWL representation of SNOMED CT RF2 content
         :param transformation_context: Context parameters used for construction
         :param directory: Directory for files.  Multiple directories can be added using the add_directory function
+        :param printer: Output printer
         :param args: additional positional arguments for rdflib Graph constructor
         :param kwargs: additional keyword arguments for rdflib Graph constructor
         """
         Graph.__init__(self, *args, **kwargs)
 
         self._context = transformation_context
+        self._printer = printer
 
         self._concepts = Concepts()
         self._relationships = Relationships()
@@ -67,8 +72,19 @@ class OWLGraph(Graph):
         self._languages = Languages()
         self._transitive = Transitive()
 
-        if directory:
-            self.add_directory(directory)
+        self.add_directory(directory)
+
+        # Transformation namespaces
+        self.add_transformation_namespaces()
+
+        # Ontology header
+        self.add_ontology_header()
+
+        # Add module definitions
+        self.add_module_definitions()
+
+        # Add any additional object property declarations
+        self.add_object_property_declarations()
 
     def add_directory(self, directory: str) -> None:
         """
@@ -76,11 +92,12 @@ class OWLGraph(Graph):
         the files to the list of files to evaluate
         :param directory: path to directory
         """
-        print("Creating transitive file")
+        self._printer("Creating transitive relationships")
         for subdir, _, files in os.walk(directory):
             for file in files:
                 self._proc_transitive_file(file, subdir)
 
+        self._printer("Processing RF2 files")
         for subdir, _, files in os.walk(directory):
             for file in files:
                 self._proc_file(file, subdir, self._concepts) or \
@@ -109,7 +126,7 @@ class OWLGraph(Graph):
         :return: true if processed, false if not for this class
         """
         if cls.filtr(file, self._context):
-            print("Processing %s" % file)
+            self._printer("Processing %s" % file)
             with open(os.path.join(filedir, file)) as f:
                 reader = csv.DictReader(f, delimiter="\t", quoting=csv.QUOTE_NONE)
                 [cls.add(row, self._context, self._transitive) for row in reader if int(row['active']) == 1]
@@ -141,7 +158,7 @@ class OWLGraph(Graph):
         are represented as instances of owl:ObjectProperty. All object property concepts are included in the OWL
         file no matter which module they are defined in.
         """
-        print("Adding properties")
+        self._printer("Generating OWL properties")
         [self.add_concept(subj) for subj in self._concepts.properties]
 
     def add_module_definitions(self) -> None:
@@ -150,7 +167,7 @@ class OWLGraph(Graph):
         a) not descendants of 160237007 |Linkage concept| as OWL Classes or
         b) ARE descendants of 410662002 |Concept model attribute|
         """
-        print("Adding concepts")
+        self._printer("Generating OWL concepts")
         [self.add_concept(subj) for subj in self._concepts.members]
 
     def add_concept(self, concept: Concept) -> None:
@@ -234,7 +251,7 @@ class OWLGraph(Graph):
             # SNOMED assumes that every defined concept has at least one parent
             if len(self._relationships.parents(concept.id)) + len(self._relationships.groups(concept.id)) == 1:
                 self.add((concept_uri, OWL.equivalentClass, list(self._relationships.parents(concept.id))[0]))
-            else:
+            elif len(self._relationships.parents(concept.id)) + len(self._relationships.groups(concept.id)) > 1:
                 target, coll = intersection(self)
                 [coll.append(as_uri(parent)) for parent in self._relationships.parents(concept.id)]
                 [self._add_defining_attribute(coll, g, members)
@@ -293,25 +310,35 @@ class OWLGraph(Graph):
                 self.add((subj, pred, existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))))
 
 
+def printer(is_stdout: bool) -> Callable[[str], None]:
+    def _print(text: str) -> None:
+        print(text)
+
+    def _def_null(text: str) -> None:
+        pass
+
+    return _def_null if is_stdout else _print
+
+
+def genargs() -> ArgumentParser:
+    parser = ArgumentParser()
+    parser.add_argument("indir", help="Input directory - typically SNOMED CT Snapshot root")
+    parser.add_argument("config", help="Configuration file name")
+    parser.add_argument("-o", "--output", help="Output file (Default: stdout)")
+    # TODO: Get a full enumeration from rdflib
+    parser.add_argument("-f", "--format", help="Output format (Default: turtle", default="turtle")
+    return parser
+
+
 def main():
-    g = OWLGraph(TransformationContext(open("../test/data/en_all_intl.json")),
-                 directory="../test/data/Snapshot")
+    opts = genargs().parse_args()
+    print_out = printer(not opts.output)
+    g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out)
 
-    # Transformation namespaces
-    g.add_transformation_namespaces()
-
-    # Ontology header
-    g.add_ontology_header()
-
-    # Add module definitions
-    g.add_module_definitions()
-
-    # Add any additional object property declarations
-    g.add_object_property_declarations()
-
-    print("Generating output")
-    NAME_START_CATEGORIES.append('Nd')
-    g.serialize("../test/data/output.ttl", format="turtle", encoding="utf-8")
+    print_out("Writing %s" % opts.output)
+    NAME_START_CATEGORIES.append('Nd')          # Needed to generat SNOMED-CT as first class elements
+    output = g.serialize(format=opts.format).decode('utf-8')
+    (open(opts.output, 'w') if opts.output else sys.stdout).write(output)
 
 
 if __name__ == '__main__':

@@ -60,7 +60,17 @@ Acceptable_sctid = 900000000000549004
 
 Role_group_sctid = 609096000
 Defining_relationship_sctid = 900000000000006009
+Inferred_relationship_sctid = 900000000000011006
+Stated_relationship_sctid = 900000000000010007
 Some_sctid = 900000000000451002
 
 # SNOMED CT URIs
 Role_group = SCT[str(Role_group_sctid)]
+
+# File prefixes
+ConceptFilePrefix = "sct2_Concept_Snapshot_"
+DescriptionFilePrefix = "sct2_Description_Snapshot"
+TextDefinitionFilePrefix = "sct2_TextDefinition_Snapshot"
+LanguageFilePrefix = "der2_cRefset_LanguageSnapshot"
+StatedRelationshipFilePrefix = "sct2_StatedRelationship_Snapshot_"
+RelationshipFilePrefix = "sct2_Relationship_Snapshot_"

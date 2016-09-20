@@ -63,8 +63,8 @@ class Description:
 
 
 class Descriptions(RF2File):
-    description_prefix = "sct2_Description_Snapshot"
-    textdefinition_prefix = "sct2_TextDefinition_Snapshot"
+    description_prefix = DescriptionFilePrefix
+    textdefinition_prefix = TextDefinitionFilePrefix
 
     def __init__(self):
         """

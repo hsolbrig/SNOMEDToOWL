@@ -59,7 +59,7 @@ class Concept:
 
 
 class Concepts(RF2File):
-    prefix = "sct2_Concept_Snapshot_"
+    prefix = ConceptFilePrefix
 
     def __init__(self):
         """

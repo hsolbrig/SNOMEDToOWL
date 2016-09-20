@@ -58,8 +58,8 @@ class Relationship:
 
 
 class Relationships(RF2File):
-    statedrelationship_prefix = "sct2_StatedRelationship_Snapshot_"
-    relationship_prefix = "sct2_Relationship_Snapshot_"
+    statedrelationship_prefix = StatedRelationshipFilePrefix
+    relationship_prefix = RelationshipFilePrefix
 
     def __init__(self):
         self._parents = {}          # Dict[sourceId, Set[destinationId]
