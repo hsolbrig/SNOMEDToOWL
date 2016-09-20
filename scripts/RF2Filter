@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Copyright (c) 2016, Mayo Clinic
 # All rights reserved.
 #
@@ -30,6 +32,10 @@ import os
 import sys
 from typing import Callable, Dict
 from argparse import ArgumentParser, Namespace
+
+script_path = os.path.join(os.getcwd(), os.path.dirname(__file__))
+if __name__ == "__main__":
+    sys.path.append(os.path.join(script_path, '..'))
 
 from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
@@ -142,7 +148,7 @@ class RF2Filter:
         sourceid = int(row['sourceId'])
         destinationid = int(row['destinationId'])
         typeid = int(row['typeId'])
-        if sourceid in self._opts.concepts or sourceid in AlwaysLoad:
+        if sourceid in self._opts.conceptid or sourceid in AlwaysLoad:
             self._visited_concepts.add(sourceid)
             self._visited_concepts.add(destinationid),
             self._visited_concepts.add(typeid)
@@ -155,7 +161,7 @@ class RF2Filter:
 
     def _proc_concept_row(self, row: Dict) -> bool:
         conceptid = int(row['id'])
-        if conceptid in self._opts.concepts or conceptid in AlwaysLoad:
+        if conceptid in self._opts.conceptid or conceptid in AlwaysLoad:
             self._matched_concepts.add(conceptid)
             return True
         return conceptid in self._visited_concepts
@@ -166,7 +172,7 @@ class RF2Filter:
 
     def _proc_description_row(self, row: Dict) -> bool:
         conceptid = int(row['conceptId'])
-        if conceptid in self._opts.concepts or conceptid in AlwaysLoad or \
+        if conceptid in self._opts.conceptid or conceptid in AlwaysLoad or \
                 (conceptid in self._visited_concepts and int(row['typeId']) == Fully_specified_name_sctid):
             self._visited_descriptions.add(int(row['id']))
             return True
@@ -178,7 +184,7 @@ class RF2Filter:
 
     def _proc_definition_row(self, row: Dict) -> bool:
         conceptid = int(row['conceptId'])
-        if conceptid in self._opts.concepts:
+        if conceptid in self._opts.conceptid:
             self._visited_descriptions.add(int(row['id']))
             return True
         return False
@@ -190,10 +196,10 @@ class RF2Filter:
 
 def genargs() -> ArgumentParser:
     parser = ArgumentParser()
-    parser.add_argument("indir", help="Input directory")
-    parser.add_argument("outdir", help="Output directory")
+    parser.add_argument("indir", help="Location of existing RF2 Snapshot directory")
+    parser.add_argument("outdir", help="Target directory for filtered RF2 content")
     parser.add_argument("-i", "--init", help="Initialize the target output files", action="store_true")
-    parser.add_argument("-c", "--concepts", help="List of concepts to add", nargs="+", type=int, required=True)
+    parser.add_argument("-c", "--conceptid", help="List of concept identifiers to add", nargs="+", type=int, required=True)
     return parser
 
 
@@ -207,7 +213,7 @@ def main():
         sys.exit(1)
 
     generated = RF2Filter(opts).matches
-    for c in set(opts.concepts) - generated:
+    for c in set(opts.conceptid) - generated:
         print("*** CONCEPT: %s not found ***", str(c))
 
 
