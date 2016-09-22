@@ -12,6 +12,7 @@ Set up a python3 virtual environment:
 > virtualenv scttoowl -p python3
 > . scttoowl/bin/activate
 (scttoowl) > pip install SNOMEDToOWL
+```
 
 ## RF2Filter
 The purpose of RF2Filter is to create a subset of an RF2 Snapshot for testing purposes.
@@ -21,7 +22,7 @@ RF2Filter takes a list of SNOMED CT concept identifiers and a directory containi
 
 **usage**: RF2Filter indir outdir  [-h] [-i] -c CONCEPTID [CONCEPTID ...] 
 
-```
+```text
 positional arguments:
   indir                Input directory
   outdir               Output directory
@@ -36,7 +37,7 @@ optional arguments:
 **Example**:
 Create a new Snapshot with one concept (74400008):
 
-```
+```bash
 (scttoowl) > RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -i -c 74400008
 Build transitive closure
 Processing /Users/data/data/terminology/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot/Terminology/sct2_Relationship_Snapshot_INT_20160731.txt
@@ -50,7 +51,8 @@ Processing /Users/data/data/terminology/SNOMEDCT/SnomedCT_RF2Release_INT_2016073
 ```
 
 Add concepts 135007 and 122868007 to the output list:
-```
+
+```bash
 (scttoowl) >
 RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -c 135007 122868007
    ...
@@ -61,7 +63,7 @@ SNOMEDToOWL takes a set of RF2 Snapshot files and generates the OWL equivalent a
 
 **Usage:** SNOMEDToOWL [-h] [-o OUTPUT] [-f FORMAT] indir config
 
-```
+```text
 
 positional arguments:
   indir                 Input directory - typically SNOMED CT Snapshot root
@@ -77,9 +79,12 @@ optional arguments:
 
 **Example**
 
-```
-(scttoowl) > git 
+```bash
+
+(scttoowl) > curl https://raw.githubusercontent.com/hsolbrig/SNOMEDToOWL/master/test/conf/en_all_intl.json > en_all_intl.json
+
 (scttoowl) > SNOMEDToOWL /home/data/test/Snapshot en_all_intl.json -o output.ttl
+
 Creating transitive relationships
 Processing RF2 files
 Processing der2_cRefset_LanguageSnapshot-en_INT_20160731.txt
