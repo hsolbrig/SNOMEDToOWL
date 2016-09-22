@@ -2,7 +2,16 @@
 
 A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a testing kit for conversions.
 
+## Requirements
+[python 3](https://www.python.org/) -- this has been tested with python 3.5.0
+
 ## Installation
+Set up a python3 virtual environment:
+
+```bash
+> virtualenv scttoowl -p python3
+> . scttoowl/bin/activate
+(scttoowl) > pip install SNOMEDToOWL
 
 ## RF2Filter
 The purpose of RF2Filter is to create a subset of an RF2 Snapshot for testing purposes.
@@ -28,7 +37,7 @@ optional arguments:
 Create a new Snapshot with one concept (74400008):
 
 ```
-(SNOMEDtoOWL) > RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -i -c 74400008
+(scttoowl) > RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -i -c 74400008
 Build transitive closure
 Processing /Users/data/data/terminology/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot/Terminology/sct2_Relationship_Snapshot_INT_20160731.txt
 Filtering files
@@ -42,7 +51,7 @@ Processing /Users/data/data/terminology/SNOMEDCT/SnomedCT_RF2Release_INT_2016073
 
 Add concepts 135007 and 122868007 to the output list:
 ```
-(SNOMEDtoOWL) >
+(scttoowl) >
 RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -c 135007 122868007
    ...
 ```
@@ -66,4 +75,20 @@ optional arguments:
                         Output format (Default: turtle
 ```
 
+**Example**
+
+```
+(scttoowl) > git 
+(scttoowl) > SNOMEDToOWL /home/data/test/Snapshot en_all_intl.json -o output.ttl
+Creating transitive relationships
+Processing RF2 files
+Processing der2_cRefset_LanguageSnapshot-en_INT_20160731.txt
+Processing sct2_Concept_Snapshot_INT_20160731.txt
+Processing sct2_Description_Snapshot-en_INT_20160731.txt
+Processing sct2_StatedRelationship_Snapshot_INT_20160731.txt
+Processing sct2_TextDefinition_Snapshot-en_INT_20160731.txt
+Generating OWL concepts
+Generating OWL properties
+Writing output.ttl
+```
 
