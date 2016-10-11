@@ -34,10 +34,10 @@ from typing import Callable, Dict
 from argparse import ArgumentParser, Namespace
 
 if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..', 'SNOMEDCTToOWL'))
 
-from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
-from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
+from RF2Files.Transitive import Transitive
+from SNOMEDToOWLConstants import *
 
 AlwaysLoad = {Is_a_sctid, Concept_model_attribute_sctid, Linkage_concept_sctid, Defined_sctid,
               Primitive_sctid, Fully_specified_name_sctid, Definition_sctid, Synonym_sctid,
@@ -198,7 +198,8 @@ def genargs() -> ArgumentParser:
     parser.add_argument("indir", help="Location of existing RF2 Snapshot directory")
     parser.add_argument("outdir", help="Target directory for filtered RF2 content")
     parser.add_argument("-i", "--init", help="Initialize the target output files", action="store_true")
-    parser.add_argument("-c", "--conceptid", help="List of concept identifiers to add", nargs="+", type=int, required=True)
+    parser.add_argument("-c", "--conceptid", help="List of concept identifiers to add",
+                        nargs="+", type=int, required=True)
     return parser
 
 

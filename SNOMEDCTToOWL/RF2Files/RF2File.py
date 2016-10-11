@@ -27,8 +27,8 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Dict
 
-from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
-from SNOMEDCTToOWL.TransformationContext import TransformationContext
+from RF2Files.Transitive import Transitive
+from TransformationContext import TransformationContext
 
 
 class RF2File:

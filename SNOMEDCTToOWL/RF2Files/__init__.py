@@ -25,3 +25,11 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+from .Concept import Concept, Concepts
+from .Description import Description, Descriptions
+from .Language import Language, Languages
+from .Relationship import Relationship, Relationships
+from .RF2File import RF2File
+from .Transitive import Transitive

@@ -27,10 +27,10 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Dict, Set
 
-from SNOMEDCTToOWL.RF2Files.RF2File import RF2File
-from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
-from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
-from SNOMEDCTToOWL.TransformationContext import TransformationContext
+from RF2Files.RF2File import RF2File
+from RF2Files.Transitive import Transitive
+from SNOMEDToOWLConstants import *
+from TransformationContext import TransformationContext
 
 
 class Description:
@@ -39,8 +39,8 @@ class Description:
     Properties:
         * id -- description identifier, used to link with Language file
         * conceptId -- id of concept being described
-        * typeId -- description type. One of 900000000000003001 |Fully Specified Name|, 900000000000550004 |Definition| or
-                900000000000013009 |Synonym|
+        * typeId -- description type. One of 900000000000003001 |Fully Specified Name|,
+                    900000000000550004 |Definition| or 900000000000013009 |Synonym|
         * term -- description text (may contain embedded carriage returns, quotes, Latin1 encodings)
         * languageCode -- two character language code (i.e. "en", "es", ...)
 
@@ -51,15 +51,18 @@ class Description:
         * descriptions whose conceptId's are  descendants of 410662002 |Concept model attribute| are used.
     """
 
-    def __init__(self, row: Dict):
+    def __init__(self, row: Dict, isNative: bool):
         """
-        Construct an RF2 description fioe entry
+        Construct an RF2 description file entry
         :param row: RF2 row
+        :param isNative: True means description is in target module.  False means it is added as a property.  Used to
+        determine whether to emit synonyms and definitions, as native transform does not.
         """
         self.id = int(row["id"])
         self.typeId = int(row["typeId"])
         self.term = row["term"]
         self.languageCode = row["languageCode"]
+        self.isNative = isNative
 
 
 class Descriptions(RF2File):
@@ -91,9 +94,8 @@ class Descriptions(RF2File):
         """
         conceptid = int(row['conceptId'])
         if int(row['moduleId']) == context.MODULE or \
-                (transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid) and
-                 int(row['typeId']) == Fully_specified_name_sctid):
-            self._members.setdefault(conceptid, set()).add(Description(row))
+                transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid):
+            self._members.setdefault(conceptid, set()).add(Description(row, int(row['moduleId']) == context.MODULE))
 
     def fsn(self, conceptid: SCTID) -> str:
         """

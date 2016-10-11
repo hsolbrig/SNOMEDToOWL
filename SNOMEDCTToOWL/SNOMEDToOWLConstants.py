@@ -26,7 +26,6 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from rdflib import RDF, RDFS, Namespace as RDFNamespace
-from typing import TypeVar
 
 #  Namespace identifiers
 OWL = RDFNamespace("http://www.w3.org/2002/07/owl#")

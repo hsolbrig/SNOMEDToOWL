@@ -29,10 +29,10 @@
 
 # A collection of utilities for managing OWL Graphs
 from typing import Tuple
-from rdflib import Graph, BNode, RDF, RDFS, OWL, URIRef
+from rdflib import Graph, BNode, RDF, OWL, URIRef
 from rdflib.collection import Collection
 from rdflib.term import Node
-from SNOMEDCTToOWL.SNOMEDToOWLConstants import Role_group, SCT
+from SNOMEDToOWLConstants import Role_group, SCT
 
 
 def as_uri(sctid: int) -> URIRef:

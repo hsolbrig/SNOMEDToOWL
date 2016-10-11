@@ -26,17 +26,17 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Dict, Set
-from SNOMEDCTToOWL.SNOMEDToOWLConstants import RelationshipFilePrefix
+from SNOMEDToOWLConstants import RelationshipFilePrefix
 
 
 class Transitive:
     relationship_prefix = RelationshipFilePrefix
 
     def __init__(self):
-        self._children = {}   # parent -> set(children) Dict[int, Set[int]]
-        self._parents = {}    # child -> set(parents)   Dict[int, Set[int]]
-        self.__desc_cache = {}     # parent -> set(descendants)
-        self.__ancestor_cache = {} # child -> set(ancestors)
+        self._children = {}         # parent -> set(children) Dict[int, Set[int]]
+        self._parents = {}          # child -> set(parents)   Dict[int, Set[int]]
+        self.__desc_cache = {}      # parent -> set(descendants)
+        self.__ancestor_cache = {}  # child -> set(ancestors)
 
     @classmethod
     def filtr(cls, fname: str) -> bool:

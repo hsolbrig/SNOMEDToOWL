@@ -33,23 +33,18 @@ import sys
 from argparse import ArgumentParser
 from typing import Set, Callable
 from rdflib import Graph, Literal, URIRef, BNode
+from rdflib.plugin import plugins as rdflib_plugins, Serializer as rdflib_Serializer
 from rdflib.collection import Collection
 from rdflib.namespace import NAME_START_CATEGORIES
 
 script_path = os.path.join(os.getcwd(), os.path.dirname(__file__))
 if __name__ == "__main__":
-    sys.path.append(os.path.join(script_path, '..'))
+    sys.path.append(os.path.join(script_path, '..', 'SNOMEDCTToOWL'))
 
-from SNOMEDCTToOWL.RF2Files import Concept
-from SNOMEDCTToOWL.RF2Files.RF2File import RF2File
-from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
-from SNOMEDCTToOWL.RF2Files.Concept import Concepts
-from SNOMEDCTToOWL.RF2Files.Description import Descriptions
-from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
-from SNOMEDCTToOWL.RF2Files.Relationship import Relationships, Relationship
-from SNOMEDCTToOWL.RF2Files.Language import Languages
-from SNOMEDCTToOWL.TransformationContext import TransformationContext
-from SNOMEDCTToOWL.OWLGraphHelper import as_uri, role_group, intersection, existential_restriction
+import RF2Files
+from SNOMEDToOWLConstants import *
+from TransformationContext import TransformationContext
+from OWLGraphHelper import as_uri, role_group, intersection, existential_restriction
 
 
 class OWLGraph(Graph):
@@ -72,11 +67,11 @@ class OWLGraph(Graph):
         self._context = transformation_context
         self._printer = printer
 
-        self._concepts = Concepts()
-        self._relationships = Relationships()
-        self._descriptions = Descriptions()
-        self._languages = Languages()
-        self._transitive = Transitive()
+        self._concepts = RF2Files.Concepts()
+        self._relationships = RF2Files.Relationships()
+        self._descriptions = RF2Files.Descriptions()
+        self._languages = RF2Files.Languages()
+        self._transitive = RF2Files.Transitive()
 
         self.add_directory(directory)
 
@@ -117,13 +112,13 @@ class OWLGraph(Graph):
         :param file: file name
         :param filedir: file directory
         """
-        if Transitive.filtr(file):
+        if RF2Files.Transitive.filtr(file):
             with open(os.path.join(filedir, file)) as f:
                 reader = csv.DictReader(f, delimiter="\t", quoting=csv.QUOTE_NONE)
                 [self._transitive.add(row) for row in reader
                  if int(row['active']) == 1 and int(row['typeId']) == Is_a_sctid]
 
-    def _proc_file(self, file: str, filedir: str, cls: RF2File) -> bool:
+    def _proc_file(self, file: str, filedir: str, cls: RF2Files.RF2File) -> bool:
         """
         See whether file should be processed for class cls.
         :param file: File name
@@ -176,7 +171,7 @@ class OWLGraph(Graph):
         self._printer("Generating OWL concepts")
         [self.add_concept(subj) for subj in self._concepts.members]
 
-    def add_concept(self, concept: Concept) -> None:
+    def add_concept(self, concept: RF2Files.Concept) -> None:
         """
         Add Class/ObjectProperty declaration
         :param concept: concept to add
@@ -200,15 +195,16 @@ class OWLGraph(Graph):
         # Generate a sctf:Description for the acceptable synonym for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
             for l in self._languages.acceptable(desc.id):
-                self.add((concept_uri, SCTF["Description.term." + l + ".synonym"],
-                          Literal(desc.term, desc.languageCode)))
+                if desc.isNative:
+                    self.add((concept_uri, SCTF["Description.term." + l + ".synonym"],
+                              Literal(desc.term, desc.languageCode)))
 
         # Currently, the TextDefinition owl mapping does not support specific language variants. Add a sctf:Definition
         #  for each unique definition for each language in $LANGUAGES.
         for defn in self._descriptions.definitions(concept.id):
             if self._languages.preferred(defn.id) or self._languages.acceptable(defn.id):
-                self.add((concept_uri, SCTF["TextDefinition.term"],
-                          Literal(defn.term, defn.languageCode)))
+                if desc.isNative:
+                    self.add((concept_uri, SCTF["TextDefinition.term"], Literal(defn.term, defn.languageCode)))
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
         if typ == OWL.ObjectProperty:
@@ -216,7 +212,7 @@ class OWLGraph(Graph):
         else:
             self.add_class_definition(concept, concept_uri)
 
-    def add_property_definition(self, concept: Concept, concept_uri: URIRef) -> None:
+    def add_property_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
         """
         Add a property definition
         :param concept: Concept entry for the given property
@@ -229,7 +225,8 @@ class OWLGraph(Graph):
             [collection.append(as_uri(parent)) for parent in parents]
             self.add((concept_uri, OWL.equivalentProperty, target))
         else:
-            [self.add((concept_uri, RDFS.subPropertyOf, as_uri(parent))) for parent in parents]
+            [self.add((concept_uri, RDFS.subPropertyOf, as_uri(parent)))
+             for parent in parents if parent != Concept_model_attribute_sctid]
 
         # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID_LIST
         for rightid in self._context.RIGHT_IDS.get(concept.id, []):
@@ -239,7 +236,7 @@ class OWLGraph(Graph):
             Collection(self, coll, [concept_uri, as_uri(rightid)])
             self.add((node, OWL.propertyChain, coll))
 
-    def add_class_definition(self, concept: Concept, concept_uri: URIRef) -> None:
+    def add_class_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
         """
         Add a class definition for the concept
         :param concept: Concept entry for the class
@@ -264,7 +261,7 @@ class OWLGraph(Graph):
                  for (g, members) in self._relationships.groups(concept.id).items()]
                 self.add((concept_uri, OWL.equivalentClass, target))
 
-    def _add_defining_attribute(self, coll: Collection, group: int, rels: Set[Relationship]) -> None:
+    def _add_defining_attribute(self, coll: Collection, group: int, rels: Set[RF2Files.Relationship]) -> None:
         if group == 0:
             for rel in rels:
                 restr = existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))
@@ -283,7 +280,7 @@ class OWLGraph(Graph):
                 rel = list(rels)[0]
                 coll.append(existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId)))
 
-    def _defining_attribute(self, subj: URIRef, pred: URIRef,  group: int, rels: Set[Relationship]) -> None:
+    def _defining_attribute(self, subj: URIRef, pred: URIRef,  group: int, rels: Set[RF2Files.Relationship]) -> None:
         """
         A defining attribute is any active descendant of 410662002 | Concept model attribute |
         with the exception of 116680003|is a| that appears in the role of typeId in the relationship file.
@@ -316,33 +313,44 @@ class OWLGraph(Graph):
                 self.add((subj, pred, existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))))
 
 
-def printer(is_stdout: bool) -> Callable[[str], None]:
+def optional_printer(is_stdout: bool) -> Callable[[str], None]:
+    """
+    Output printer -- acts as a printer if is_stdout is false, otherwise a no-op
+    :param is_stdout:
+    :return:
+    """
     def _print(text: str) -> None:
         print(text)
 
-    def _def_null(text: str) -> None:
+    def _def_null(_: str) -> None:
         pass
 
     return _def_null if is_stdout else _print
 
 
 def genargs() -> ArgumentParser:
+    """
+    Generate an input string parser
+    :return: parser
+    """
     parser = ArgumentParser()
     parser.add_argument("indir", help="Input directory - typically SNOMED CT Snapshot root")
     parser.add_argument("config", help="Configuration file name")
     parser.add_argument("-o", "--output", help="Output file (Default: stdout)")
-    # TODO: Get a full enumeration from rdflib
-    parser.add_argument("-f", "--format", help="Output format (Default: turtle", default="turtle")
+    parser.add_argument("-f", "--format",
+                        choices=set(x.name for x in rdflib_plugins(None, rdflib_Serializer)
+                                    if '/' not in str(x.name)),
+                        help="Output format (Default: turtle", default="turtle")
     return parser
 
 
 def main():
     opts = genargs().parse_args()
-    print_out = printer(not opts.output)
+    print_out = optional_printer(not opts.output)
     g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out)
 
     print_out("Writing %s" % opts.output)
-    NAME_START_CATEGORIES.append('Nd')          # Needed to generat SNOMED-CT as first class elements
+    NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements
     output = g.serialize(format=opts.format).decode('utf-8')
     (open(opts.output, 'w') if opts.output else sys.stdout).write(output)
 
