@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:sctp="http://snomed.info/field/Description.term."
+         xmlns:sctf="http://snomed.info/field/"
+         xmlns="http://snomed.info/"
+         xml:base="http://snomed.info/">
+
+    <owl:Ontology rdf:about="http://snomed.info/sct/900000000000207008">
+        <rdfs:label>SNOMED Clinical Terms, International Release, Stated Relationships in OWL RDF</rdfs:label>
+        <owl:versionIRI rdf:resource="http://snomed.info/sct/900000000000207008/version/20160731"/>
+        <owl:versionInfo>International Release, Core Module, Release Date: 20160731</owl:versionInfo>
+        <rdfs:comment>
+Generated as OWL RDF/XML from SNOMED CT release files by Perl transform script
+Input concepts file was             ../test/data/Snapshot/Base/Terminology/sct2_Concept_Snapshot_INT_20160731.txt
+Input stated relationships file was ../test/data/Snapshot/Base/Terminology/sct2_StatedRelationship_Snapshot_INT_20160731.txt
+Input descriptions file was         ../test/data/Snapshot/Base/Terminology/sct2_Description_Snapshot-en_INT_20160731.txt
+Input language refset file was      ../test/data/Snapshot/Base/Refset/Language/der2_cRefset_LanguageSnapshot-en_INT_20160731.txt
+Input definitions file was          ../test/data/Snapshot/Base/Terminology/sct2_TextDefinition_Snapshot-en_INT_20160731.txt
+Copyright 2016 The International Health Terminology Standards Development Organisation (IHTSDO). All Rights Reserved. SNOMED CT was originally created by The College of American Pathologists. \"SNOMED\" and \"SNOMED CT\" are registered trademarks of the IHTSDO.  SNOMED CT has been created by combining SNOMED RT and a computer based nomenclature and classification known as Clinical Terms Version 3, formerly known as Read Codes Version 3, which was created on behalf of the UK Department of Health.
+This document forms part of the International Release of SNOMED CT distributed by the International Health Terminology Standards Development Organisation (IHTSDO), and is subject to the IHTSDO's SNOMED CT Affiliate Licence. Details of the SNOMED CT Affiliate Licence may be found at www.ihtsdo.org/our-standards/licensing/.
+No part of this file may be reproduced or transmitted in any form or by any means, or stored in any kind of retrieval system, except by an Affiliate of the IHTSDO in accordance with the SNOMED CT Affiliate Licence. Any modification of this document (including without limitation the removal or modification of this notice) is prohibited without the express written permission of the IHTSDO.  Any copy of this file that is not obtained directly from the IHTSDO (or a Member of the IHTSDO) is not controlled by the IHTSDO, and may have been modified and may be out of date. Any recipient of this file who has received it by other means is encouraged to obtain a copy directly from the IHTSDO, or a Member of the IHTSDO.
+(Details of the Members of the IHTSDO may be found at www.ihtsdo.org/members/).
+        </rdfs:comment>
+    </owl:Ontology>
+
+<owl:ObjectProperty rdf:about="id/116676008">
+    <rdfs:label xml:lang="en">Associated morphology (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Associated morphology</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/116686009">
+    <rdfs:label xml:lang="en">Has specimen (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has specimen</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/118168003">
+    <rdfs:label xml:lang="en">Specimen source morphology (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specimen source morphology</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/118169006">
+    <rdfs:label xml:lang="en">Specimen source topography (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specimen source topography</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/118170007">
+    <rdfs:label xml:lang="en">Specimen source identity (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specimen source identity</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/118171006">
+    <rdfs:label xml:lang="en">Specimen procedure (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specimen procedure</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/123005000">
+    <rdfs:label xml:lang="en">Part of (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Part of</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/127489000">
+    <rdfs:label xml:lang="en">Has active ingredient (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has active ingredient</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/131195008">
+    <rdfs:label xml:lang="en">Subject of information (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Subject of information</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246075003">
+    <rdfs:label xml:lang="en">Causative agent (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Causative agent</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/47429007"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246090004">
+    <rdfs:label xml:lang="en">Associated finding (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Associated finding</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246093002">
+    <rdfs:label xml:lang="en">Component (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Component</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246112005">
+    <rdfs:label xml:lang="en">Severity (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Severity</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246454002">
+    <rdfs:label xml:lang="en">Occurrence (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Occurrence</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246456000">
+    <rdfs:label xml:lang="en">Episodicity (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Episodicity</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246501002">
+    <rdfs:label xml:lang="en">Technique (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Technique</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246513007">
+    <rdfs:label xml:lang="en">Revision status (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Revision status</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/246514001">
+    <rdfs:label xml:lang="en">Units (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Units</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/255234002">
+    <rdfs:label xml:lang="en">After (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">After</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/47429007"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/260507000">
+    <rdfs:label xml:lang="en">Access (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Access</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/260686004">
+    <rdfs:label xml:lang="en">Method (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Method</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/260870009">
+    <rdfs:label xml:lang="en">Priority (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Priority</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/263502005">
+    <rdfs:label xml:lang="en">Clinical course (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Clinical course</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/272741003">
+    <rdfs:label xml:lang="en">Laterality (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Laterality</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363589002">
+    <rdfs:label xml:lang="en">Associated procedure (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Associated procedure</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363698007">
+    <rdfs:label xml:lang="en">Finding site (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Finding site</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363699004">
+    <rdfs:label xml:lang="en">Direct device (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Direct device</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/405815000"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363700003">
+    <rdfs:label xml:lang="en">Direct morphology (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Direct morphology</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/405816004"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363701004">
+    <rdfs:label xml:lang="en">Direct substance (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Direct substance</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<rdf:Description>
+   <rdfs:subPropertyOf rdf:resource="id/363701004"/>
+   <owl:propertyChain rdf:parseType="Collection">
+      <rdf:Description rdf:about="id/363701004"/>
+      <rdf:Description rdf:about="id/127489000"/>
+   </owl:propertyChain>
+</rdf:Description>
+<owl:ObjectProperty rdf:about="id/363702006">
+    <rdfs:label xml:lang="en">Has focus (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has focus</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363703001">
+    <rdfs:label xml:lang="en">Has intent (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has intent</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363704007">
+    <rdfs:label xml:lang="en">Procedure site (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure site</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363705008">
+    <rdfs:label xml:lang="en">Has definitional manifestation (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has definitional manifestation</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363709002">
+    <rdfs:label xml:lang="en">Indirect morphology (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Indirect morphology</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/405816004"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363710007">
+    <rdfs:label xml:lang="en">Indirect device (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Indirect device</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/405815000"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363713009">
+    <rdfs:label xml:lang="en">Has interpretation (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has interpretation</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/363714003">
+    <rdfs:label xml:lang="en">Interprets (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Interprets</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370129005">
+    <rdfs:label xml:lang="en">Measurement method (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Measurement method</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370130000">
+    <rdfs:label xml:lang="en">Property (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Property</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370131001">
+    <rdfs:label xml:lang="en">Recipient category (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Recipient category</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370132008">
+    <rdfs:label xml:lang="en">Scale type (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Scale type</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370133003">
+    <rdfs:label xml:lang="en">Specimen substance (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specimen substance</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370134009">
+    <rdfs:label xml:lang="en">Time aspect (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Time aspect</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/370135005">
+    <rdfs:label xml:lang="en">Pathological process (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Pathological process</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/405813007">
+    <rdfs:label xml:lang="en">Procedure site - Direct (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure site - Direct</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/363704007"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/405814001">
+    <rdfs:label xml:lang="en">Procedure site - Indirect (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure site - Indirect</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/363704007"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/405815000">
+    <rdfs:label xml:lang="en">Procedure device (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure device</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/405816004">
+    <rdfs:label xml:lang="en">Procedure morphology (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure morphology</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/408729009">
+    <rdfs:label xml:lang="en">Finding context (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Finding context</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/408730004">
+    <rdfs:label xml:lang="en">Procedure context (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Procedure context</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/408731000">
+    <rdfs:label xml:lang="en">Temporal context (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Temporal context</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/408732007">
+    <rdfs:label xml:lang="en">Subject relationship context (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Subject relationship context</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/410675002">
+    <rdfs:label xml:lang="en">Route of administration (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Route of administration</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/411116001">
+    <rdfs:label xml:lang="en">Has dose form (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Has dose form</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/418775008">
+    <rdfs:label xml:lang="en">Finding method (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Finding method</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/419066007">
+    <rdfs:label xml:lang="en">Finding informer (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Finding informer</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/424226004">
+    <rdfs:label xml:lang="en">Using device (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Using device</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/405815000"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/424244007">
+    <rdfs:label xml:lang="en">Using energy (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Using energy</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/424361007">
+    <rdfs:label xml:lang="en">Using substance (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Using substance</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/424876005">
+    <rdfs:label xml:lang="en">Surgical approach (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Surgical approach</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/425391005">
+    <rdfs:label xml:lang="en">Using access device (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Using access device</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/424226004"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/42752001">
+    <rdfs:label xml:lang="en">Due to (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Due to</sctp:en-us.preferred>
+    <rdfs:subPropertyOf rdf:resource="id/47429007"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/47429007">
+    <rdfs:label xml:lang="en">Associated with (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Associated with</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/609096000">
+    <rdfs:label xml:lang="en">Role group (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Role group</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704318007">
+    <rdfs:label xml:lang="en">Property type (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Property type</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704319004">
+    <rdfs:label xml:lang="en">Inheres in (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Inheres in</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704320005">
+    <rdfs:label xml:lang="en">Towards (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Towards</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704321009">
+    <rdfs:label xml:lang="en">Characterizes (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Characterizes</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704322002">
+    <rdfs:label xml:lang="en">Process agent (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Process agent</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704323007">
+    <rdfs:label xml:lang="en">Process duration (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Process duration</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704324001">
+    <rdfs:label xml:lang="en">Process output (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Process output</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704325000">
+    <rdfs:label xml:lang="en">Relative to (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Relative to</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704326004">
+    <rdfs:label xml:lang="en">Precondition (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Precondition</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704327008">
+    <rdfs:label xml:lang="en">Direct site (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Direct site</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704346009">
+    <rdfs:label xml:lang="en">Specified by (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Specified by</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704347000">
+    <rdfs:label xml:lang="en">Observes (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Observes</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/704647008">
+    <rdfs:label xml:lang="en">Is about (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Is about</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="id/718497002">
+    <rdfs:label xml:lang="en">Inherent location (attribute)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Inherent location</sctp:en-us.preferred>
+</owl:ObjectProperty>
+<owl:Class rdf:about="id/101009">
+   <rdfs:label xml:lang="en">Quilonia ethiopica (organism)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Quilonia ethiopica</sctp:en-us.preferred>
+    <rdfs:subClassOf rdf:resource="id/44577004"/>
+</owl:Class>
+<owl:Class rdf:about="id/10110004">
+   <rdfs:label xml:lang="en">Platelet adhesiveness test (procedure)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Platelet adhesiveness test</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Platelet adhesiveness, Salzman column test</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Platelet adhesiveness, glass bead</sctp:en-us.synonym>
+    <rdfs:subClassOf rdf:resource="id/80329005"/>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Restriction>
+                    <owl:onProperty rdf:resource="id/246093002"/>
+                    <owl:someValuesFrom rdf:resource="id/42406009"/>
+                </owl:Restriction>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="id/102002">
+   <rdfs:label xml:lang="en">Hemoglobin Okaloosa (substance)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Hemoglobin Okaloosa</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Hb 48(CD7), Leu-arg</sctp:en-us.synonym>
+    <rdfs:subClassOf rdf:resource="id/40830007"/>
+</owl:Class>
+<owl:Class rdf:about="id/10243007">
+   <rdfs:label xml:lang="en">Benzoic and salicylic acid ointment (product)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Benzoic and salicylic acid ointment</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Whitfield's ointment</sctp:en-us.synonym>
+    <rdfs:subClassOf rdf:resource="id/420081005"/>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+           <owl:onProperty rdf:resource="id/411116001"/>
+           <owl:someValuesFrom rdf:resource="id/385101003"/>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+           <owl:onProperty rdf:resource="id/127489000"/>
+           <owl:someValuesFrom rdf:resource="id/387253001"/>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+           <owl:onProperty rdf:resource="id/127489000"/>
+           <owl:someValuesFrom rdf:resource="id/387350000"/>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="id/10649000">
+   <rdfs:label xml:lang="en">Hyperpituitarism (disorder)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Hyperpituitarism</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Pituitary hyperfunction</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Anterior pituitary hyperfunction</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Pituitary hyperfunction (ant.)</sctp:en-us.synonym>
+   <owl:equivalentClass><owl:Class>
+   <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="id/51742006"/>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Restriction>
+                    <owl:onProperty rdf:resource="id/363705008"/>
+                    <owl:someValuesFrom rdf:resource="id/84384007"/>
+                </owl:Restriction>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Restriction>
+                    <owl:onProperty rdf:resource="id/363698007"/>
+                    <owl:someValuesFrom rdf:resource="id/62818001"/>
+                </owl:Restriction>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+   </owl:intersectionOf>
+   </owl:Class></owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="id/109006">
+   <rdfs:label xml:lang="en">Anxiety disorder of childhood OR adolescence (disorder)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Anxiety disorder of childhood OR adolescence</sctp:en-us.preferred>
+    <rdfs:subClassOf rdf:resource="id/111476001"/>
+    <rdfs:subClassOf rdf:resource="id/268664001"/>
+    <rdfs:subClassOf rdf:resource="id/197480006"/>
+</owl:Class>
+<owl:Class rdf:about="id/111476001">
+   <rdfs:label xml:lang="en">Mental disorder usually first evident in infancy, childhood AND/OR adolescence (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/112682009">
+   <rdfs:label xml:lang="en">Fibroma, no International Classification of Diseases for Oncology subtype (morphologic abnormality)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/118455003">
+   <rdfs:label xml:lang="en">Exploration of joint (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/118663006">
+   <rdfs:label xml:lang="en">Implantation of prosthetic device (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/122868007">
+   <rdfs:label xml:lang="en">Staple implantation procedure (procedure)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Stapling</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Stapling procedure</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Staple implantation procedure</sctp:en-us.synonym>
+    <sctf:TextDefinition.term xml:lang="en">An implantation of a staple</sctf:TextDefinition.term>
+   <owl:equivalentClass><owl:Class>
+   <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="id/71861002"/>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/363699004"/>
+                        <owl:someValuesFrom rdf:resource="id/386014009"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/260686004"/>
+                        <owl:someValuesFrom rdf:resource="id/257867005"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+   </owl:intersectionOf>
+   </owl:Class></owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="id/123037004">
+   <rdfs:label xml:lang="en">Body structure (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/127944005">
+   <rdfs:label xml:lang="en">Entire endocrine gonad (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/128927009">
+   <rdfs:label xml:lang="en">Procedure by method (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129236007">
+   <rdfs:label xml:lang="en">Open approach - access (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129264002">
+   <rdfs:label xml:lang="en">Action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129265001">
+   <rdfs:label xml:lang="en">Evaluation - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129287005">
+   <rdfs:label xml:lang="en">Incision - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129288000">
+   <rdfs:label xml:lang="en">Exploratory incision - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/129314006">
+   <rdfs:label xml:lang="en">Biopsy - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/135007">
+   <rdfs:label xml:lang="en">Arthrotomy of wrist joint with exploration and biopsy (procedure)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Arthrotomy of wrist joint with exploration and biopsy</sctp:en-us.preferred>
+    <rdfs:subClassOf rdf:resource="id/118455003"/>
+    <rdfs:subClassOf rdf:resource="id/31072003"/>
+    <rdfs:subClassOf rdf:resource="id/69876007"/>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/405813007"/>
+                        <owl:someValuesFrom rdf:resource="id/74670003"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/260686004"/>
+                        <owl:someValuesFrom rdf:resource="id/129287005"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/260686004"/>
+                        <owl:someValuesFrom rdf:resource="id/129314006"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/405813007"/>
+                        <owl:someValuesFrom rdf:resource="id/74670003"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/405813007"/>
+                        <owl:someValuesFrom rdf:resource="id/74670003"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/260686004"/>
+                        <owl:someValuesFrom rdf:resource="id/281615006"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+    </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="id/138875005">
+   <rdfs:label xml:lang="en">SNOMED CT Concept (SNOMED RT+CTV3)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/18526009">
+   <rdfs:label xml:lang="en">Disorder of appendix (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/197480006">
+   <rdfs:label xml:lang="en">Anxiety disorder (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/21483005">
+   <rdfs:label xml:lang="en">Structure of central nervous system (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/225288009">
+   <rdfs:label xml:lang="en">Environmental care procedure (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/23583003">
+   <rdfs:label xml:lang="en">Inflammation (morphologic abnormality)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/24526004">
+   <rdfs:label xml:lang="en">Inflammatory bowel disease (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/255398004">
+   <rdfs:label xml:lang="en">Childhood (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/257867005">
+   <rdfs:label xml:lang="en">Insertion - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/258317007">
+   <rdfs:label xml:lang="en">Arabic numeral 0 (qualifier value)</rdfs:label>
+    <sctp:en-us.synonym xml:lang="en">Arabic numeral 0</sctp:en-us.synonym>
+    <rdfs:subClassOf rdf:resource="id/272067002"/>
+</owl:Class>
+<owl:Class rdf:about="id/261004008">
+   <rdfs:label xml:lang="en">Diagnostic intent (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/268664001">
+   <rdfs:label xml:lang="en">Childhood emotional disorder (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/272067002">
+   <rdfs:label xml:lang="en">Arabic numeral (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/281615006">
+   <rdfs:label xml:lang="en">Exploration - action (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/284398002">
+   <rdfs:label xml:lang="en">Examination of wrist joint (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/302168000">
+   <rdfs:label xml:lang="en">Inflammation of large intestine (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/31072003">
+   <rdfs:label xml:lang="en">Arthrotomy of wrist joint with joint exploration (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/363119001">
+   <rdfs:label xml:lang="en">Exploration of musculoskeletal system (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/363169009">
+   <rdfs:label xml:lang="en">Inflammation of specific body organs (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/363691001">
+   <rdfs:label xml:lang="en">Procedure categorized by device involved (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/385101003">
+   <rdfs:label xml:lang="en">Ointment (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/385275000">
+   <rdfs:label xml:lang="en">Cutaneous AND/OR transdermal dosage form (qualifier value)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/386014009">
+   <rdfs:label xml:lang="en">Surgical staple (physical object)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/387253001">
+   <rdfs:label xml:lang="en">Salicylic acid (substance)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/387350000">
+   <rdfs:label xml:lang="en">Benzoic acid (substance)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/39352004">
+   <rdfs:label xml:lang="en">Joint structure (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/40830007">
+   <rdfs:label xml:lang="en">Abnormal hemoglobin, beta-chain variant (substance)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/416118004">
+   <rdfs:label xml:lang="en">Administration (procedure)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Administration</sctp:en-us.preferred>
+    <sctf:TextDefinition.term xml:lang="en">Introduction of a substance to the body</sctf:TextDefinition.term>
+    <rdfs:subClassOf rdf:resource="id/128927009"/>
+</owl:Class>
+<owl:Class rdf:about="id/420081005">
+   <rdfs:label xml:lang="en">Benzoic acid + salicylic acid (product)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/42406009">
+   <rdfs:label xml:lang="en">Platelet adhesion, function (observable entity)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/44577004">
+   <rdfs:label xml:lang="en">Quilonia (organism)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/48694002">
+   <rdfs:label xml:lang="en">Anxiety (finding)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/51742006">
+   <rdfs:label xml:lang="en">Disorder of anterior pituitary (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/62818001">
+   <rdfs:label xml:lang="en">Adenohypophysis structure (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/63318000">
+   <rdfs:label xml:lang="en">Benzoic acid (product)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/64572001">
+   <rdfs:label xml:lang="en">Disease (disorder)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/66754008">
+   <rdfs:label xml:lang="en">Appendix structure (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/68972003">
+   <rdfs:label xml:lang="en">Insertion of therapeutic device (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/69876007">
+   <rdfs:label xml:lang="en">Arthrotomy of wrist joint for biopsy (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/709002005">
+   <rdfs:label xml:lang="en">Sclerotic fibroma (morphologic abnormality)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Sclerotic fibroma</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Storiform collagenoma</sctp:en-us.synonym>
+    <sctf:TextDefinition.term xml:lang="en">Small white or flesh-coloured waxy papules ranging in size from 0.5 to 1.2 cm.</sctf:TextDefinition.term>
+    <rdfs:subClassOf rdf:resource="id/112682009"/>
+</owl:Class>
+<owl:Class rdf:about="id/710978006">
+   <rdfs:label xml:lang="en">Minimizing environmental stimuli (procedure)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Minimizing environmental stimuli</sctp:en-us.preferred>
+    <sctp:en-us.synonym xml:lang="en">Minimizing environmental stimulation</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Minimising environmental stimulation</sctp:en-us.synonym>
+    <sctp:en-us.synonym xml:lang="en">Minimising environmental stimuli</sctp:en-us.synonym>
+    <sctf:TextDefinition.term xml:lang="en">Measures to limit noise and conversation in the patient’s room; keep light levels low and minimize tactile stimulation.</sctf:TextDefinition.term>
+    <rdfs:subClassOf rdf:resource="id/225288009"/>
+</owl:Class>
+<owl:Class rdf:about="id/716179006">
+   <rdfs:label xml:lang="en">Extraventricular neurocytoma (morphologic abnormality)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/716787002">
+   <rdfs:label xml:lang="en">Extraventricular neurocytoma (disorder)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Extraventricular neurocytoma</sctp:en-us.preferred>
+    <sctf:TextDefinition.term xml:lang="en">A variant of central neurocytoma, a rare neuronal neoplasm, composed of round cells with neuronal differentiation, which is located outside of the ventricular system, usually within the spinal cord or cerebral hemispheres and that manifests with headache, nausea, vomiting, complex partial seizures or focal neurological deficits. In some cases it may exhibit atypical features consistent with aggressive clinical behavior.</sctf:TextDefinition.term>
+   <owl:equivalentClass><owl:Class>
+   <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="id/64572001"/>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/363698007"/>
+                        <owl:someValuesFrom rdf:resource="id/21483005"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/116676008"/>
+                        <owl:someValuesFrom rdf:resource="id/716179006"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+   </owl:intersectionOf>
+   </owl:Class></owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="id/71861002">
+   <rdfs:label xml:lang="en">Implantation (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/74400008">
+   <rdfs:label xml:lang="en">Appendicitis (disorder)</rdfs:label>
+    <sctp:en-us.preferred xml:lang="en">Appendicitis</sctp:en-us.preferred>
+   <owl:equivalentClass><owl:Class>
+   <owl:intersectionOf rdf:parseType="Collection">
+    <owl:Class rdf:about="id/18526009"/>
+       <owl:Restriction>
+            <owl:onProperty rdf:resource="id/609096000"/>
+            <owl:someValuesFrom>
+                <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/116676008"/>
+                        <owl:someValuesFrom rdf:resource="id/23583003"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="id/363698007"/>
+                        <owl:someValuesFrom rdf:resource="id/66754008"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+                </owl:Class>
+            </owl:someValuesFrom>
+       </owl:Restriction>
+   </owl:intersectionOf>
+   </owl:Class></owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="id/74670003">
+   <rdfs:label xml:lang="en">Wrist joint structure (body structure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/80329005">
+   <rdfs:label xml:lang="en">Platelet function test (procedure)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/84384007">
+   <rdfs:label xml:lang="en">Increased hormone production (finding)</rdfs:label>
+</owl:Class>
+<owl:Class rdf:about="id/94784008">
+   <rdfs:label xml:lang="en">Neoplasm of uncertain behavior of central nervous system (disorder)</rdfs:label>
+</owl:Class>
+</rdf:RDF>

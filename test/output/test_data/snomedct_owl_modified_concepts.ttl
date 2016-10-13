@@ -1,0 +1,631 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix sctf: <http://snomed.info/field/> .
+@prefix sctm: <http://snomed.info/sct/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sct:101009 a owl:Class ;
+    rdfs:label "Quilonia ethiopica (organism)"@en ;
+    sctf:Description.term.en-us.preferred "MQuilonia ethiopica"@en ;
+    rdfs:subClassOf sct:44577004 .
+
+sct:10110004 a owl:Class ;
+    rdfs:label "Platelet adhesiveness test (procedure)"@en ;
+    sctf:Description.term.en-us.preferred "Platelet adhesiveness test"@en ;
+    sctf:Description.term.en-us.synonym "Platelet adhesiveness, Salzman column test"@en,
+        "Platelet adhesiveness, glass bead"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sct:609096000 ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty sct:246093002a ;
+                    owl:someValuesFrom sct:42406009 ] ],
+        sct:80329005 .
+
+sct:102002 a owl:Class ;
+    rdfs:label "Hemoglobin Okaloosa (substance)"@en ;
+    sctf:Description.term.en-us.preferred "Hemoglobin Okaloosa"@en ;
+    sctf:Description.term.en-us.synonym "Hb 48(CD7), Leu-arg"@en ;
+    rdfs:subClassOf sct:40830007a .
+
+sct:10243007 a owl:Class ;
+    rdfs:label "Benzoic and salicylic acid ointment (product)"@en ;
+    sctf:Description.term.en-us.preferred "Benzoic and salicylic acid ointment"@en ;
+    sctf:Description.term.en-us.synonym "Whitfield's ointment"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sct:127489000 ;
+            owl:someValuesFrom sct:387253001 ],
+        [ a owl:Restriction ;
+            owl:onProperty sct:411116001 ;
+            owl:someValuesFrom sct:385101003 ],
+        [ a owl:Restriction ;
+            owl:onProperty sct:127489000 ;
+            owl:someValuesFrom sct:387350000 ],
+        [ a owl:Restriction ;
+            owl:onProperty sct:127489000 ;
+            owl:someValuesFrom sct:387350000 ],
+        sct:420081005 .
+
+sct:10649000 a owl:Class ;
+    rdfs:label "Hyperpituitarism (disorder)"@en ;
+    sctf:Description.term.en-us.preferred "Hyperpituitarism"@en ;
+    sctf:Description.term.en-us.synonym "Anterior pituitary hyperfunction"@en,
+        "Pituitary hyperfunction"@en,
+        "Pituitary hyperfunction (ant.)"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( sct:51742006 [ a owl:Restriction ;
+                        owl:onProperty sct:609096000 ;
+                        owl:someValuesFrom [ a owl:Restriction ;
+                                owl:onProperty sct:363705008 ;
+                                owl:someValuesFrom sct:84384007 ] ] [ a owl:Restriction ;
+                        owl:onProperty sct:609096000 ;
+                        owl:someValuesFrom [ a owl:Restriction ;
+                                owl:onProperty sct:363698007 ;
+                                owl:someValuesFrom sct:62818001 ] ] ) ] .
+
+sct:109006 a owl:Class ;
+    rdfs:label "Anxiety disorder of childhood OR adolescence (disorder)"@en ;
+    sctf:Description.term.en-us.preferred "Anxiety disorder of childhood OR adolescence"@en ;
+    rdfs:subClassOf sct:111476001,
+        sct:197480006,
+        sct:268664001 .
+
+sct:116686009 a owl:ObjectProperty ;
+    rdfs:label "Has specimen (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has specimen"@en .
+
+sct:118168003 a owl:ObjectProperty ;
+    rdfs:label "Specimen source morphology (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specimen source morphology"@en .
+
+sct:118169006 a owl:ObjectProperty ;
+    rdfs:label "Specimen source topography (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specimen source topography"@en .
+
+sct:118170007 a owl:ObjectProperty ;
+    rdfs:label "Specimen source identity (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specimen source identity"@en .
+
+sct:118171006 a owl:ObjectProperty ;
+    rdfs:label "Specimen procedure (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specimen procedure"@en .
+
+sct:118663006 a owl:Class ;
+    rdfs:label "Implantation of prosthetic device (procedure)"@en .
+
+sct:122868007 a owl:Class ;
+    rdfs:label "Staple implantation procedure (procedure)"@en ;
+    sctf:Description.term.en-us.preferred "Stapling"@en ;
+    sctf:Description.term.en-us.synonym "Staple implantation procedure"@en,
+        "Stapling procedure"@en ;
+    sctf:TextDefinition.term "An implantation of a staple"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( sct:71861002 [ a owl:Restriction ;
+                        owl:onProperty sct:609096000 ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( [ a owl:Restriction ;
+                                            owl:onProperty sct:363699004 ;
+                                            owl:someValuesFrom sct:386014009 ] [ a owl:Restriction ;
+                                            owl:onProperty sct:260686004 ;
+                                            owl:someValuesFrom sct:257867005 ] ) ] ] ) ] .
+
+sct:123005000 a owl:ObjectProperty ;
+    rdfs:label "Part of (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Part of"@en .
+
+sct:123037004 a owl:Class ;
+    rdfs:label "Body structure (body structure)"@en .
+
+sct:127944005 a owl:Class ;
+    rdfs:label "Entire endocrine gonad (body structure)"@en .
+
+sct:129236007 a owl:Class ;
+    rdfs:label "Open approach - access (qualifier value)"@en .
+
+sct:129264002 a owl:Class ;
+    rdfs:label "Action (qualifier value)"@en .
+
+sct:129265001 a owl:Class ;
+    rdfs:label "Evaluation - action (qualifier value)"@en .
+
+sct:129288000 a owl:Class ;
+    rdfs:label "Exploratory incision - action (qualifier value)"@en .
+
+sct:131195008 a owl:ObjectProperty ;
+    rdfs:label "Subject of information (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Subject of information"@en .
+
+sct:135007 a owl:Class ;
+    rdfs:label "Arthrotomy of wrist joint with exploration and biopsy (procedure)"@en ;
+    sctf:Description.term.en-us.preferred "Arthrotomy of wrist joint with exploration and biopsy"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty sct:609096000 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( [ a owl:Restriction ;
+                                owl:onProperty sct:260686004 ;
+                                owl:someValuesFrom sct:129314006 ] [ a owl:Restriction ;
+                                owl:onProperty sct:405813007 ;
+                                owl:someValuesFrom sct:74670003 ] ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty sct:609096000 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( [ a owl:Restriction ;
+                                owl:onProperty sct:405813007 ;
+                                owl:someValuesFrom sct:74670003 ] [ a owl:Restriction ;
+                                owl:onProperty sct:260686004 ;
+                                owl:someValuesFrom sct:281615006 ] ) ] ],
+        [ a owl:Restriction ;
+            owl:onProperty sct:609096000 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( [ a owl:Restriction ;
+                                owl:onProperty sct:405813007 ;
+                                owl:someValuesFrom sct:74670003 ] [ a owl:Restriction ;
+                                owl:onProperty sct:260686004 ;
+                                owl:someValuesFrom sct:129287005 ] ) ] ],
+        sct:118455003,
+        sct:31072003,
+        sct:69876007 .
+
+sct:138875005 a owl:Class ;
+    rdfs:label "SNOMED CT Concept (SNOMED RT+CTV3)"@en .
+
+sct:24526004 a owl:Class ;
+    rdfs:label "Inflammatory bowel disease (disorder)"@en .
+
+sct:246075003 a owl:ObjectProperty ;
+    rdfs:label "Causative agent (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Causative agent"@en ;
+    rdfs:subPropertyOf sct:47429007 .
+
+sct:246090004 a owl:ObjectProperty ;
+    rdfs:label "Associated finding (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Associated finding"@en .
+
+sct:246112005 a owl:ObjectProperty ;
+    rdfs:label "Severity (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Severity"@en .
+
+sct:246454002 a owl:ObjectProperty ;
+    rdfs:label "Occurrence (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Occurrence"@en .
+
+sct:246456000 a owl:ObjectProperty ;
+    rdfs:label "Episodicity (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Episodicity"@en .
+
+sct:246501002 a owl:ObjectProperty ;
+    rdfs:label "Technique (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Technique"@en .
+
+sct:246513007 a owl:ObjectProperty ;
+    rdfs:label "Revision status (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Revision status"@en .
+
+sct:246514001 a owl:ObjectProperty ;
+    rdfs:label "Units (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Units"@en .
+
+sct:255234002 a owl:ObjectProperty ;
+    rdfs:label "After (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "After"@en ;
+    rdfs:subPropertyOf sct:47429007 .
+
+sct:255398004 a owl:Class ;
+    rdfs:label "Childhood (qualifier value)"@en .
+
+sct:260507000 a owl:ObjectProperty ;
+    rdfs:label "Access (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Access"@en .
+
+sct:260870009 a owl:ObjectProperty ;
+    rdfs:label "Priority (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Priority"@en .
+
+sct:261004008 a owl:Class ;
+    rdfs:label "Diagnostic intent (qualifier value)"@en .
+
+sct:263502005 a owl:ObjectProperty ;
+    rdfs:label "Clinical course (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Clinical course"@en .
+
+sct:272741003 a owl:ObjectProperty ;
+    rdfs:label "Laterality (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Laterality"@en .
+
+sct:284398002 a owl:Class ;
+    rdfs:label "Examination of wrist joint (procedure)"@en .
+
+sct:302168000 a owl:Class ;
+    rdfs:label "Inflammation of large intestine (disorder)"@en .
+
+sct:363119001 a owl:Class ;
+    rdfs:label "Exploration of musculoskeletal system (procedure)"@en .
+
+sct:363169009 a owl:Class ;
+    rdfs:label "Inflammation of specific body organs (disorder)"@en .
+
+sct:363589002 a owl:ObjectProperty ;
+    rdfs:label "Associated procedure (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Associated procedure"@en .
+
+sct:363691001 a owl:Class ;
+    rdfs:label "Procedure categorized by device involved (procedure)"@en .
+
+sct:363700003 a owl:ObjectProperty ;
+    rdfs:label "Direct morphology (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Direct morphology"@en ;
+    rdfs:subPropertyOf sct:405816004 .
+
+sct:363702006 a owl:ObjectProperty ;
+    rdfs:label "Has focus (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has focus"@en .
+
+sct:363703001 a owl:ObjectProperty ;
+    rdfs:label "Has intent (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has intent"@en .
+
+sct:363709002 a owl:ObjectProperty ;
+    rdfs:label "Indirect morphology (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Indirect morphology"@en ;
+    rdfs:subPropertyOf sct:405816004 .
+
+sct:363710007 a owl:ObjectProperty ;
+    rdfs:label "Indirect device (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Indirect device"@en ;
+    rdfs:subPropertyOf sct:405815000 .
+
+sct:363713009 a owl:ObjectProperty ;
+    rdfs:label "Has interpretation (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has interpretation"@en .
+
+sct:363714003 a owl:ObjectProperty ;
+    rdfs:label "Interprets (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Interprets"@en .
+
+sct:370129005 a owl:ObjectProperty ;
+    rdfs:label "Measurement method (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Measurement method"@en .
+
+sct:370130000 a owl:ObjectProperty ;
+    rdfs:label "Property (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Property"@en .
+
+sct:370131001 a owl:ObjectProperty ;
+    rdfs:label "Recipient category (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Recipient category"@en .
+
+sct:370132008 a owl:ObjectProperty ;
+    rdfs:label "Scale type (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Scale type"@en .
+
+sct:370133003 a owl:ObjectProperty ;
+    rdfs:label "Specimen substance (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specimen substance"@en .
+
+sct:370134009 a owl:ObjectProperty ;
+    rdfs:label "Time aspect (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Time aspect"@en .
+
+sct:370135005 a owl:ObjectProperty ;
+    rdfs:label "Pathological process (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Pathological process"@en .
+
+sct:385275000 a owl:Class ;
+    rdfs:label "Cutaneous AND/OR transdermal dosage form (qualifier value)"@en .
+
+sct:39352004 a owl:Class ;
+    rdfs:label "Joint structure (body structure)"@en .
+
+sct:405814001 a owl:ObjectProperty ;
+    rdfs:label "Procedure site - Indirect (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure site - Indirect"@en ;
+    rdfs:subPropertyOf sct:363704007 .
+
+sct:408729009 a owl:ObjectProperty ;
+    rdfs:label "Finding context (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Finding context"@en .
+
+sct:408730004 a owl:ObjectProperty ;
+    rdfs:label "Procedure context (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure context"@en .
+
+sct:408731000 a owl:ObjectProperty ;
+    rdfs:label "Temporal context (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Temporal context"@en .
+
+sct:408732007 a owl:ObjectProperty ;
+    rdfs:label "Subject relationship context (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Subject relationship context"@en .
+
+sct:410675002 a owl:ObjectProperty ;
+    rdfs:label "Route of administration (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Route of administration"@en .
+
+sct:416118004 a owl:Class ;
+    rdfs:label "Administration (procedure)"@en ;
+    sctf:Description.term.en-us.preferred "Administration"@en ;
+    sctf:TextDefinition.term "Introduction of a substance to the body"@en ;
+    rdfs:subClassOf sct:128927009 .
+
+sct:418775008 a owl:ObjectProperty ;
+    rdfs:label "Finding method (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Finding method"@en .
+
+sct:419066007 a owl:ObjectProperty ;
+    rdfs:label "Finding informer (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Finding informer"@en .
+
+sct:424244007 a owl:ObjectProperty ;
+    rdfs:label "Using energy (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Using energy"@en .
+
+sct:424361007 a owl:ObjectProperty ;
+    rdfs:label "Using substance (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Using substance"@en .
+
+sct:424876005 a owl:ObjectProperty ;
+    rdfs:label "Surgical approach (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Surgical approach"@en .
+
+sct:425391005 a owl:ObjectProperty ;
+    rdfs:label "Using access device (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Using access device"@en ;
+    rdfs:subPropertyOf sct:424226004 .
+
+sct:42752001 a owl:ObjectProperty ;
+    rdfs:label "Due to (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Due to"@en ;
+    rdfs:subPropertyOf sct:47429007 .
+
+sct:48694002 a owl:Class ;
+    rdfs:label "Anxiety (finding)"@en .
+
+sct:63318000 a owl:Class ;
+    rdfs:label "Benzoic acid (product)"@en .
+
+sct:68972003 a owl:Class ;
+    rdfs:label "Insertion of therapeutic device (procedure)"@en .
+
+sct:704318007 a owl:ObjectProperty ;
+    rdfs:label "Property type (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Property type"@en .
+
+sct:704319004 a owl:ObjectProperty ;
+    rdfs:label "Inheres in (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Inheres in"@en .
+
+sct:704320005 a owl:ObjectProperty ;
+    rdfs:label "Towards (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Towards"@en .
+
+sct:704321009 a owl:ObjectProperty ;
+    rdfs:label "Characterizes (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Characterizes"@en .
+
+sct:704322002 a owl:ObjectProperty ;
+    rdfs:label "Process agent (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Process agent"@en .
+
+sct:704323007 a owl:ObjectProperty ;
+    rdfs:label "Process duration (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Process duration"@en .
+
+sct:704324001 a owl:ObjectProperty ;
+    rdfs:label "Process output (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Process output"@en .
+
+sct:704325000 a owl:ObjectProperty ;
+    rdfs:label "Relative to (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Relative to"@en .
+
+sct:704326004 a owl:ObjectProperty ;
+    rdfs:label "Precondition (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Precondition"@en .
+
+sct:704327008 a owl:ObjectProperty ;
+    rdfs:label "Direct site (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Direct site"@en .
+
+sct:704346009 a owl:ObjectProperty ;
+    rdfs:label "Specified by (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Specified by"@en .
+
+sct:704347000 a owl:ObjectProperty ;
+    rdfs:label "Observes (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Observes"@en .
+
+sct:704647008 a owl:ObjectProperty ;
+    rdfs:label "Is about (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Is about"@en .
+
+sct:718497002 a owl:ObjectProperty ;
+    rdfs:label "Inherent location (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Inherent location"@en .
+
+sct:74400008 a owl:Class ;
+    rdfs:label "Appendicitis (disorder)"@en ;
+    sctf:Description.term.en-us.preferred "Appendicitis"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( sct:18526009 [ a owl:Restriction ;
+                        owl:onProperty sct:609096000 ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( [ a owl:Restriction ;
+                                            owl:onProperty sct:363698007 ;
+                                            owl:someValuesFrom sct:66754008 ] [ a owl:Restriction ;
+                                            owl:onProperty sct:116676008 ;
+                                            owl:someValuesFrom sct:23583003 ] ) ] ] ) ] .
+
+sctm:900000000000207008 a owl:Ontology ;
+    rdfs:label "SNOMED Clinical Terms, International Release, Stated Relationships in OWL RDF" ;
+    rdfs:comment """Copyright 2016 The International Health Terminology Standards Development Organisation (IHTSDO).
+All Rights Reserved. SNOMED CT was originally created by The College of American Pathologists. "SNOMED" and
+ "SNOMED CT" are registered trademarks of the IHTSDO.  SNOMED CT has been created by combining SNOMED RT
+and a computer based nomenclature and classification known as Clinical Terms Version 3, formerly known as 
+Read Codes Version 3, which was created on behalf of the UK Department of Health.
+
+This document forms part of the International Release of SNOMED CT distributed by the International Health
+Terminology Standards Development Organisation (IHTSDO), and is subject to the IHTSDO's SNOMED CT Affiliate
+Licence. Details of the SNOMED CT Affiliate Licence may be found at www.ihtsdo.org/our-standards/licensing/""",
+        "Generated as OWL RDF/XML from SNOMED CT release files" ;
+    owl:versionIRI <http://snomed.info/field/http://snomed.info/sct/900000000000207008/version/20160131> ;
+    owl:versionInfo "International Release, Core Module, Release Date: 20160131" .
+
+sct:111476001 a owl:Class ;
+    rdfs:label "Mental disorder usually first evident in infancy, childhood AND/OR adolescence (disorder)"@en .
+
+sct:116676008 a owl:ObjectProperty ;
+    rdfs:label "Associated morphology (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Associated morphology"@en .
+
+sct:118455003 a owl:Class ;
+    rdfs:label "Exploration of joint (procedure)"@en .
+
+sct:128927009 a owl:Class ;
+    rdfs:label "Procedure by method (procedure)"@en .
+
+sct:129287005 a owl:Class ;
+    rdfs:label "Incision - action (qualifier value)"@en .
+
+sct:129314006 a owl:Class ;
+    rdfs:label "Biopsy - action (qualifier value)"@en .
+
+sct:18526009 a owl:Class ;
+    rdfs:label "Disorder of appendix (disorder)"@en .
+
+sct:197480006 a owl:Class ;
+    rdfs:label "Anxiety disorder (disorder)"@en .
+
+sct:23583003 a owl:Class ;
+    rdfs:label "Inflammation (morphologic abnormality)"@en .
+
+sct:246093002 a owl:ObjectProperty ;
+    rdfs:label "Component (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Component"@en .
+
+sct:257867005 a owl:Class ;
+    rdfs:label "Insertion - action (qualifier value)"@en .
+
+sct:268664001 a owl:Class ;
+    rdfs:label "Childhood emotional disorder (disorder)"@en .
+
+sct:281615006 a owl:Class ;
+    rdfs:label "Exploration - action (qualifier value)"@en .
+
+sct:31072003 a owl:Class ;
+    rdfs:label "Arthrotomy of wrist joint with joint exploration (procedure)"@en .
+
+sct:363699004 a owl:ObjectProperty ;
+    rdfs:label "Direct device (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Direct device"@en ;
+    rdfs:subPropertyOf sct:405815000 .
+
+sct:363705008 a owl:ObjectProperty ;
+    rdfs:label "Has definitional manifestation (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has definitional manifestation"@en .
+
+sct:385101003 a owl:Class ;
+    rdfs:label "Ointment (qualifier value)"@en .
+
+sct:386014009 a owl:Class ;
+    rdfs:label "Surgical staple (physical object)"@en .
+
+sct:387253001 a owl:Class ;
+    rdfs:label "Salicylic acid (substance)"@en .
+
+sct:387350000 a owl:Class ;
+    rdfs:label "Benzoic acid (substance)"@en .
+
+sct:40830007 a owl:Class ;
+    rdfs:label "Abnormal hemoglobin, beta-chain variant (substance)"@en .
+
+sct:411116001 a owl:ObjectProperty ;
+    rdfs:label "Has dose form (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has dose form"@en .
+
+sct:420081005 a owl:Class ;
+    rdfs:label "Benzoic acid + salicylic acid (product)"@en .
+
+sct:42406009 a owl:Class ;
+    rdfs:label "Platelet adhesion, function (observable entity)"@en .
+
+sct:424226004 a owl:ObjectProperty ;
+    rdfs:label "Using device (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Using device"@en ;
+    rdfs:subPropertyOf sct:405815000 .
+
+sct:44577004 a owl:Class ;
+    rdfs:label "Quilonia (organism)"@en .
+
+sct:51742006 a owl:Class ;
+    rdfs:label "Disorder of anterior pituitary (disorder)"@en .
+
+sct:62818001 a owl:Class ;
+    rdfs:label "Adenohypophysis structure (body structure)"@en .
+
+sct:66754008 a owl:Class ;
+    rdfs:label "Appendix structure (body structure)"@en .
+
+sct:69876007 a owl:Class ;
+    rdfs:label "Arthrotomy of wrist joint for biopsy (procedure)"@en .
+
+sct:71861002 a owl:Class ;
+    rdfs:label "Implantation (procedure)"@en .
+
+sct:80329005 a owl:Class ;
+    rdfs:label "Platelet function test (procedure)"@en .
+
+sct:84384007 a owl:Class ;
+    rdfs:label "Increased hormone production (finding)"@en .
+
+sct:363698007 a owl:ObjectProperty ;
+    rdfs:label "Finding site (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Finding site"@en .
+
+sct:363704007 a owl:ObjectProperty ;
+    rdfs:label "Procedure site (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure site"@en .
+
+sct:405816004 a owl:ObjectProperty ;
+    rdfs:label "Procedure morphology (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure morphology"@en .
+
+sct:405813007 a owl:ObjectProperty ;
+    rdfs:label "Procedure site - Direct (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure site - Direct"@en ;
+    rdfs:subPropertyOf sct:363704007 .
+
+sct:405815000 a owl:ObjectProperty ;
+    rdfs:label "Procedure device (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Procedure device"@en .
+
+sct:47429007 a owl:ObjectProperty ;
+    rdfs:label "Associated with (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Associated with"@en .
+
+sct:74670003 a owl:Class ;
+    rdfs:label "Wrist joint structure (body structure)"@en .
+
+sct:127489000 a owl:ObjectProperty ;
+    rdfs:label "Has active ingredient (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Has active ingredient"@en .
+
+sct:260686004 a owl:ObjectProperty ;
+    rdfs:label "Method (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Method"@en .
+
+sct:363701004 a owl:ObjectProperty ;
+    rdfs:label "Direct substance (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Direct substance"@en .
+
+sct:609096000 a owl:ObjectProperty ;
+    rdfs:label "Role group (attribute)"@en ;
+    sctf:Description.term.en-us.preferred "Role group"@en .
+
+[] rdfs:subPropertyOf sct:363701004 ;
+    owl:propertyChain ( sct:363701004 sct:127489000 ) .
+
+[] rdfs:subPropertyOf sct:363701004 ;
+    owl:propertyChain ( sct:363701004 sct:127489000 ) .
+

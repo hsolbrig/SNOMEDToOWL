@@ -61,15 +61,15 @@ class RF2DictWriter(csv.DictWriter):
 
 
 class DirectoryWalker:
-    def __init__(self, indir: str, outdir, init: bool):
+    def __init__(self, indir: str, outdir: str, init: bool):
         """
         Directory walking utility
         :param indir: directory root to walk from
         :param outdir: output directory root to walk to
         :param init: If true, remove existing content in output files
         """
-        self._indir = indir
-        self._outdir = outdir
+        self._indir = indir if indir.endswith(os.path.sep) else indir + os.path.sep
+        self._outdir = outdir if outdir.endswith(os.path.sep) else outdir + os.path.sep
         self._init = init
 
     def walk(self, filtr: Callable[[str], bool], processor: Callable[[Dict], bool]) -> None:
@@ -194,7 +194,7 @@ class RF2Filter:
 
 
 def genargs() -> ArgumentParser:
-    parser = ArgumentParser()
+    parser = ArgumentParser(description="Extract selected SNOMED-CT RF2 concepts")
     parser.add_argument("indir", help="Location of existing RF2 Snapshot directory")
     parser.add_argument("outdir", help="Target directory for filtered RF2 content")
     parser.add_argument("-i", "--init", help="Initialize the target output files", action="store_true")

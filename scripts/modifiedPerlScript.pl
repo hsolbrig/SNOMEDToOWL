@@ -348,7 +348,9 @@ while (<TEXTDEF>) {
 	   # Filter out the header/blank/inactive lines, and keep only core module rows 
 	if ( $values[0] && ( $values[2] eq "1") && ( $values[3] eq $coreModuleId )  )
 	{
-        $textDefs{ $values[4] } = &xmlify($values[7]);
+	    if ( $acceptability{ $values[0] }) { # if the language refset indicates an acceptability for this description
+            $textDefs{ $values[4] } = &xmlify($values[7]);
+        }
 	}
 }
 close(TEXTDEF);
