@@ -28,9 +28,7 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Optional
-from rdflib import Graph, BNode, URIRef
-from rdflib import OWL
-from rdflib import RDF
+from rdflib import Graph, BNode, URIRef, OWL, RDF
 from rdflib.term import Identifier
 from rdflib.plugin import plugins as rdflib_plugins, Parser as rdflib_Parser
 from rdflib.util import guess_format
@@ -62,7 +60,7 @@ class SNOMEDGraph(Graph):
                                       base, encoding, **args).decode(), flags=re.MULTILINE).strip()
 
 
-class Timer():
+class Timer:
     def __init__(self, enabled: bool=True):
         self._t0 = time.time()
         self.enabled = enabled
@@ -105,7 +103,7 @@ def genargs() -> ArgumentParser:
     parser.add_argument("-f1", help="File 1 format", choices=possible_formats)
     parser.add_argument("-f2", help="File 2 format", choices=possible_formats)
     parser.add_argument("-p", help="Print progress and timing information", action="store_true")
-    parser.add_argument("-nh", "--noheader", help="Ignore ontology header comparison", action="store_true")
+    parser.add_argument("-nh", "--noheader", help="Omit ontology header comparison", action="store_true")
     return parser
 
 
@@ -132,12 +130,11 @@ def main():
             s_in_g1 = complete_definition(s, g1)
             s_in_g2 = complete_definition(s, g2)
             if not s_in_g1.isomorphic(s_in_g2):
-                print("\nREFERENCE:", end='')
+                print("\nFILE 1:", end='')
                 print(s_in_g1.serialize(format="turtle"))
-                print("\nTARGET:", end='')
+                print("\nFILE 2:", end='')
                 print(s_in_g2.serialize(format="turtle"))
     t.time("Done")
-
 
 
 if __name__ == '__main__':
