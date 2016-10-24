@@ -148,7 +148,7 @@ class OWLGraph(Graph):
         self.add((module_uri, RDF.type, OWL.Ontology))
         self.add((module_uri, RDFS.label, Literal(self._context.MODULE_LABEL)))
         self.add((module_uri, OWL.versionIRI,
-                  SCTF[str(module_uri + '/version/' + str(self._context.VERSION))]))
+                  URIRef(str(module_uri + '/version/' + str(self._context.VERSION)))))
         self.add((module_uri, OWL.versionInfo, Literal(self._context.VERSION_DESCRIPTION)))
         self.add((module_uri, RDFS.comment, Literal(self._context.MODULE_DESCRIPTION)))
         self.add((module_uri, RDFS.comment, Literal(self._context.MODULE_COPYRIGHT)))
@@ -228,12 +228,12 @@ class OWLGraph(Graph):
             [self.add((concept_uri, RDFS.subPropertyOf, as_uri(parent)))
              for parent in parents if parent != Concept_model_attribute_sctid]
 
-        # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID_LIST
-        for rightid in self._context.RIGHT_IDS.get(concept.id, []):
+        # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID
+        if concept.id in self._context.RIGHT_ID:
             node = BNode()
             self.add((node, RDFS.subPropertyOf, concept_uri))
             coll = BNode()
-            Collection(self, coll, [concept_uri, as_uri(rightid)])
+            Collection(self, coll, [concept_uri, as_uri(self._context.RIGHT_ID(concept.id))])
             self.add((node, OWL.propertyChain, coll))
 
     def add_class_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
@@ -265,7 +265,7 @@ class OWLGraph(Graph):
         if group == 0:
             for rel in rels:
                 restr = existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))
-                if rel.typeId in self._context.NEVER_GROUPED_LIST:
+                if rel.typeId in self._context.NEVER_GROUPED:
                     coll.append(restr)
                 else:
                     coll.append(role_group(self, restr))
@@ -297,7 +297,7 @@ class OWLGraph(Graph):
         if group == 0:
             for rel in rels:
                 restr = existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))
-                if rel.typeId in self._context.NEVER_GROUPED_LIST:
+                if rel.typeId in self._context.NEVER_GROUPED:
                     self.add((subj, pred, restr))
                 else:
                     self.add((subj, pred, role_group(self, restr)))
@@ -339,8 +339,8 @@ def genargs() -> ArgumentParser:
     parser.add_argument("-o", "--output", help="Output file (Default: stdout)")
     parser.add_argument("-f", "--format",
                         choices=set(x.name for x in rdflib_plugins(None, rdflib_Serializer)
-                                    if '/' not in str(x.name)),
-                        help="Output format (Default: turtle", default="turtle")
+                                    if '/' not in str(x.name)).add('json-ld'),  # don't know why this has to be manual
+                        help="Output format (Default: turtle)", default="turtle")
     return parser
 
 

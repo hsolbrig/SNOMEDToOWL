@@ -42,8 +42,8 @@ class TransformationContext:
         MODULE_LABEL            str         The label of the module/ontology
         MODULE_DESCRIPTION      str         A description of the module
         MODULE_COPYRIGHT        str         The module copyright
-        NEVER_GROUPED_LIST      List[int]   A list of SCTIDS that never occur inside relationship groups
-        RIGHT_IDS               Map[int, List[int]]
+        NEVER_GROUPED           List[int]   A list of SCTIDS that never occur inside relationship groups
+        RIGHT_ID                Map[int, List[int]]
         USE_STATED_RELATIONSHIPS bool   True or absent means use the stated relationships, else use inferred
     """
     def __init__(self, context_config: TextIOWrapper):
@@ -56,8 +56,8 @@ class TransformationContext:
         self.MODULE_LABEL = ctxt.MODULE_LABEL
         self.MODULE_DESCRIPTION = self.multi_line(ctxt.MODULE_DESCRIPTION)
         self.MODULE_COPYRIGHT = self.multi_line(ctxt.MODULE_COPYRIGHT)
-        self.NEVER_GROUPED_LIST = ctxt.NEVER_GROUPED_LIST
-        self.RIGHT_IDS = {int(k): v for k, v in ctxt.RIGHT_IDS._as_dict.items()}
+        self.NEVER_GROUPED = ctxt.NEVER_GROUPED
+        self.RIGHT_ID = {int(k): v for k, v in ctxt.RIGHT_ID._as_dict.items()}
         self.USE_STATED_RELATIONSHIPS = ctxt._as_dict.get("USE_STATED_RELATIONSHIPS", True)
 
     @staticmethod
