@@ -107,48 +107,80 @@ class RF2Filter:
         Construct an RF2 Filter context
 
         """
-        self._opts = opts
-        self._transitive = Transitive()
-        self._matched_concepts = set()
-        self._visited_concepts = set()
-        self._visited_descriptions = set()
+        self._opts = opts                       # user options
+
+        self._matched_concepts = set()          # List of matched concepts -- used to report conceptid's not found
+        self._visited_concepts = set()          # Concepts that have already been seen
+        self._visited_descriptions = set()      # Descriptions that have already been seen
+        self._ancestors = set()                 # Ancestors of any concepts that appear
 
         self._walker = DirectoryWalker(opts.indir, opts.outdir, opts.init)
 
-        print("Build transitive closure")
-        self._process_transitive()
+        print("Build transitive closure list")
+        self._transitive = Transitive()
+        self._process_transitive()              # Compute transitive closure list
         AlwaysLoad.update(self._transitive.descendants_of(Concept_model_attribute_sctid))
+
         print("Filtering files")
-        self._process_relationships()
-        self._process_concepts()
-        self._process_descriptions()
-        self._process_textdefinitions()
-        self._process_languages()
+        self._process_relationships()           # Pass over requested concepts adding
+        print("Adding {} concepts".format(len(self._visited_concepts)))
+        self._process_concepts()                # Copy all visited concept entries
+        self._process_descriptions()            # ... their descriptions
+        self._process_textdefinitions()         # ... their definitions
+        self._process_languages()               # ... and the corresponding language entries
 
     @property
     def matches(self):
         return self._matched_concepts
 
     def _process_transitive(self) -> None:
+        """
+        Walk through the relationship file building the transitive closures
+        :return:
+        """
         self._walker.walk(lambda file: file.startswith(RelationshipFilePrefix),
                           lambda row: self._proc_transitive_row(row))
 
-    def _proc_transitive_row(self, row):
+    def _proc_transitive_row(self, row) -> bool:
+        """
+        Add IS_A relationships to the transitive file
+        :param row:
+        :return: False -- nothing is added to output at this point
+        """
         if int(row['active']) == 1 and int(row['typeId']) == Is_a_sctid:
             self._transitive.add(row)
-        return False        # Don't add anything to the output files now
+        return False
 
     def _process_relationships(self) -> None:
-        self._walker.walk(lambda file: file.startswith(RelationshipFilePrefix) or
-                                       file.startswith(StatedRelationshipFilePrefix),
-                          lambda row: self._proc_relationship_row(row))
+        """
+        Iteratively all relationship entries whose subject is in the required concepts
+        """
+        self._visited_concepts.update(self._opts.conceptid)
+        self._visited_concepts.update(AlwaysLoad)
+        iteration = 1
+        while True:
+            num_entries = len(self._visited_concepts)
+            self._walker.walk(lambda file: file.startswith(RelationshipFilePrefix) or
+                                           file.startswith(StatedRelationshipFilePrefix),
+                              lambda row: self._proc_relationship_row(row))
+            if not self._opts.doancestors or len(self._visited_concepts) == num_entries:
+                break
+            print("Iteration {}: {} new concepts".format(iteration, len(self._visited_concepts) - num_entries))
+            num_entries = len(self._visited_concepts)
+            iteration += 1
 
     def _proc_relationship_row(self, row: Dict) -> bool:
+        """
+        Return true if the sourceId of row is in the list of concepts to process
+        :param row: relationship row
+        :return:
+        """
         sourceid = int(row['sourceId'])
         destinationid = int(row['destinationId'])
         typeid = int(row['typeId'])
-        if sourceid in self._opts.conceptid or sourceid in AlwaysLoad:
+        if self._opts.children and destinationid in self._opts.conceptid and typeid == Is_a_sctid:
             self._visited_concepts.add(sourceid)
+        if sourceid in self._visited_concepts:
             self._visited_concepts.add(destinationid),
             self._visited_concepts.add(typeid)
             return True
@@ -191,6 +223,7 @@ class RF2Filter:
     def _process_languages(self):
         self._walker.walk(lambda file: file.startswith(LanguageFilePrefix),
                           lambda row: int(row['referencedComponentId']) in self._visited_descriptions)
+""
 
 
 def genargs() -> ArgumentParser:
@@ -198,6 +231,8 @@ def genargs() -> ArgumentParser:
     parser.add_argument("indir", help="Location of existing RF2 Snapshot directory")
     parser.add_argument("outdir", help="Target directory for filtered RF2 content")
     parser.add_argument("-i", "--init", help="Initialize the target output files", action="store_true")
+    parser.add_argument("-a", "--doancestors", help="Add touched concept ancestors", action="store_true")
+    parser.add_argument("--children", help="Add direct children of selected concepts", action="store_true")
     parser.add_argument("-c", "--conceptid", help="List of concept identifiers to add",
                         nargs="+", type=int, required=True)
     return parser

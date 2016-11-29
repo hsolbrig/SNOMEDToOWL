@@ -20,16 +20,20 @@ The purpose of RF2Filter is to create a subset of an RF2 Snapshot for testing pu
 RF2Filter takes a list of SNOMED CT concept identifiers and a directory containing RF2 Snapshot files an transfers all of the rows in the RF2 files that describe or define the listed concepts into a corresponding list of RF2 files in a target directory.
 
 
-**usage**: RF2Filter indir outdir  [-h] [-i] -c CONCEPTID [CONCEPTID ...] 
+**usage**: RF2Filter indir outdir  [-h] [-i] [-t] [--children] -c CONCEPTID [CONCEPTID ...] 
 
 ```text
+Extract selected SNOMED-CT RF2 concepts
+
 positional arguments:
-  indir                Input directory
-  outdir               Output directory
+  indir                 Location of existing RF2 Snapshot directory
+  outdir                Target directory for filtered RF2 content
 
 optional arguments:
   -h, --help            show this help message and exit
   -i, --init            Initialize the target output files
+  -a, --doancestors     Add touched concept ancestors
+  --children            Add direct children of selected concepts
   -c CONCEPTID [CONCEPTID ...], --conceptid CONCEPTID [CONCEPTID ...]
                         List of concept identifiers to add
 ```
@@ -57,6 +61,14 @@ Add concepts 135007 and 122868007 to the output list:
 RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/Snapshot -c 135007 122868007
    ...
 ```
+
+Extract all of the concepts that are used to define `75570004 | Viral pneumonia |`:
+
+```bash
+(scttoowl) >
+RF2Filter /home/data/SNOMEDCT/SnomedCT_RF2Release_INT_20160731/Snapshot /home/data/test/vp -a -i -c 75570004 --children
+     ...
+``` 
 
 ## SNOMEDToOWL
 SNOMEDToOWL takes a set of RF2 Snapshot files and generates the OWL equivalent according to the <u>Representation of SNOMED in OWL</u>  specification
