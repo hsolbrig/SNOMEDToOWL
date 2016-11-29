@@ -13,7 +13,7 @@
 #     this list of conditions and the following disclaimer in the documentation
 #     and/or other materials provided with the distribution.
 #
-#     Neither the name of the <ORGANIZATION> nor the names of its contributors
+#     Neither the name of the Mayo Clinic nor the names of its contributors
 #     may be used to endorse or promote products derived from this software
 #     without specific prior written permission.
 #
@@ -203,7 +203,7 @@ class OWLGraph(Graph):
         #  for each unique definition for each language in $LANGUAGES.
         for defn in self._descriptions.definitions(concept.id):
             if self._languages.preferred(defn.id) or self._languages.acceptable(defn.id):
-                if desc.isNative:
+                if defn.isNative:
                     self.add((concept_uri, SCTF["TextDefinition.term"], Literal(defn.term, defn.languageCode)))
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
@@ -233,7 +233,7 @@ class OWLGraph(Graph):
             node = BNode()
             self.add((node, RDFS.subPropertyOf, concept_uri))
             coll = BNode()
-            Collection(self, coll, [concept_uri, as_uri(self._context.RIGHT_ID(concept.id))])
+            Collection(self, coll, [concept_uri, as_uri(self._context.RIGHT_ID[concept.id])])
             self.add((node, OWL.propertyChain, coll))
 
     def add_class_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
@@ -253,7 +253,11 @@ class OWLGraph(Graph):
         else:
             # SNOMED assumes that every defined concept has at least one parent
             if len(self._relationships.parents(concept.id)) + len(self._relationships.groups(concept.id)) == 1:
-                self.add((concept_uri, OWL.equivalentClass, list(self._relationships.parents(concept.id))[0]))
+                if len(self._relationships.parents(concept.id)) == 0:
+                    print("Orphan concept: {}".format(concept.id), file=sys.stderr)
+                else:
+                    self.add((concept_uri, RDFS.equivalentClass,
+                              as_uri(list(self._relationships.parents(concept.id))[0])))
             elif len(self._relationships.parents(concept.id)) + len(self._relationships.groups(concept.id)) > 1:
                 target, coll = intersection(self)
                 [coll.append(as_uri(parent)) for parent in self._relationships.parents(concept.id)]
