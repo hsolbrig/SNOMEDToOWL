@@ -34,10 +34,10 @@ from typing import Callable, Dict
 from argparse import ArgumentParser, Namespace
 
 if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..', 'SNOMEDCTToOWL'))
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
 
-from RF2Files.Transitive import Transitive
-from SNOMEDToOWLConstants import *
+from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
+from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
 
 AlwaysLoad = {Is_a_sctid, Concept_model_attribute_sctid, Linkage_concept_sctid, Defined_sctid,
               Primitive_sctid, Fully_specified_name_sctid, Definition_sctid, Synonym_sctid,

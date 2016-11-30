@@ -27,10 +27,10 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 from typing import Dict
 
-from RF2Files.RF2File import RF2File
-from RF2Files.Transitive import Transitive
-from TransformationContext import TransformationContext
-from SNOMEDToOWLConstants import *
+from .RF2File import RF2File
+from .Transitive import Transitive
+from SNOMEDCTToOWL.TransformationContext import TransformationContext
+from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
 
 
 class Concept:

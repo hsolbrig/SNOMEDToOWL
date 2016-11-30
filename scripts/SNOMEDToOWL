@@ -39,12 +39,12 @@ from rdflib.namespace import NAME_START_CATEGORIES
 
 script_path = os.path.join(os.getcwd(), os.path.dirname(__file__))
 if __name__ == "__main__":
-    sys.path.append(os.path.join(script_path, '..', 'SNOMEDCTToOWL'))
+    sys.path.append(os.path.join(script_path, '..'))
 
-import RF2Files
-from SNOMEDToOWLConstants import *
-from TransformationContext import TransformationContext
-from OWLGraphHelper import as_uri, role_group, intersection, existential_restriction
+import SNOMEDCTToOWL.RF2Files as RF2Files
+from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
+from SNOMEDCTToOWL.TransformationContext import TransformationContext
+from SNOMEDCTToOWL.OWLGraphHelper import as_uri, role_group, intersection, existential_restriction
 
 
 class OWLGraph(Graph):

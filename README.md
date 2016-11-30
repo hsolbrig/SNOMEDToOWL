@@ -4,6 +4,7 @@ A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a 
 
 ## Requirements
 [python 3](https://www.python.org/) -- this has been tested with python 3.5.0
+A [SNOMED CT](http://www.ihtsdo.org/snomed-ct) [RF2](https://confluence.ihtsdotools.org/display/DOCRELFMT/2.2.+Release+Format+2+-+Introduction) release.  (US Citizens can download an image from the [NLM Site](https://www.nlm.nih.gov/healthit/snomedct/index.html))
 
 ## Installation
 Set up a python3 virtual environment:
@@ -124,4 +125,5 @@ The SNOMEDToOWL configuration file defines additional parameters that aren't cur
 | MODULE_COPYRIGHT | Copyright notice to include in ontology header | "Copyright 2016 The International Health Terminology Standards Development Organisation (IHTSDO).", "All Rights Reserved. SNOMED CT was originally created by The College of American Pathologists. \"SNOMED\" and", ' "SNOMED CT" are registered trademarks of the IHTSDO.  SNOMED CT has been created by combining SNOMED RT', ... "Licence. Details of the SNOMED CT Affiliate Licence may be found at www.ihtsdo.org/our-standards/licensing/" |
 | NEVER_GROUPED | List of SCT attributes that (should) never appear in a role group | [123005000, 272741003, 127489000, 411116001] |
 | RIGHT_ID | A list of "right identities", in the form `{"p11": p12}, ..., {"pn1":pn2}` that are mapped to an `owl:propertyChain` axiom in the form `p1 ∘ p2 SubPropertyOf p1`  .  The example represents the assertion: `'Direct substance (attribute)' ∘ 'Has active ingredient (attribute)' SubPropertyOf 'Direct substance (attribute)'` | { "363701004": 127489000 } |
+| USE_STATED_RELATIONSHIPS | If `true` or absent, use the stated relationships file.  If `false`, use the (inferred) relationships file | false |
 
