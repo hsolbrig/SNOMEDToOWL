@@ -32,7 +32,7 @@ from typing import Tuple
 from rdflib import Graph, BNode, RDF, OWL, URIRef
 from rdflib.collection import Collection
 from rdflib.term import Node
-from SNOMEDToOWLConstants import Role_group, SCT
+from SNOMEDCTToOWL.SNOMEDToOWLConstants import Role_group, SCT
 
 
 def as_uri(sctid: int) -> URIRef:

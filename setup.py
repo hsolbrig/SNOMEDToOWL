@@ -12,7 +12,7 @@ if sys.version_info < (3, 5):
 
 setup(
     name='SNOMEDToOWL',
-    version='0.1.0',
+    version='0.1.1',
     packages=['SNOMEDCTToOWL', 'SNOMEDCTToOWL.RF2Files'],
     url='http://github.com/hsolbrig/SNOMEDToOWL',
     license='Apache License 2.0',
