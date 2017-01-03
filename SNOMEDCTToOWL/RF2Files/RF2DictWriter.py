@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # Copyright (c) 2016, Mayo Clinic
 # All rights reserved.
 #
@@ -13,7 +11,7 @@
 #     this list of conditions and the following disclaimer in the documentation
 #     and/or other materials provided with the distribution.
 #
-#     Neither the name of the Mayo Clinic nor the names of its contributors
+#     Neither the name of the <ORGANIZATION> nor the names of its contributors
 #     may be used to endorse or promote products derived from this software
 #     without specific prior written permission.
 #
@@ -27,10 +25,19 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
-import os
-import sys
+import csv
 
-if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
-    from SNOMEDCTToOWL.SNOMEDToOWL import main
-    main(sys.argv[1:])
+
+class RF2DictWriter(csv.DictWriter):
+    """
+    DictWriter wrapper with "with" idiom to close the output file
+    """
+    def __init__(self, f, *args, **argv):
+        self._f = f
+        csv.DictWriter.__init__(self, f, *args, **argv)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self._f.close()

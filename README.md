@@ -4,16 +4,20 @@ A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a 
 
 ## Requirements
 * [python 3](https://www.python.org/) -- this has been tested with python 3.5.0
+* [virtualenv](https://pypi.python.org/pypi/virtualenv) -- useful but not absolutely necessary 
 * A [SNOMED CT](http://www.ihtsdo.org/snomed-ct) [RF2](https://confluence.ihtsdotools.org/display/DOCRELFMT/2.2.+Release+Format+2+-+Introduction) release.  (US Citizens can download an image from the [NLM Site](https://www.nlm.nih.gov/healthit/snomedct/index.html))
 
 ## Installation
-Set up a python3 virtual environment:
+### Option 1: Setup as a python 3 virtual environment
+(Assumes virtualenv has been installed)
 
 ```bash
 > virtualenv scttoowl -p python3
 > . scttoowl/bin/activate
 (scttoowl) > pip install SNOMEDToOWL
 ```
+
+### Option 2: 
 
 ## RF2Filter
 The purpose of RF2Filter is to create a subset of an RF2 Snapshot for testing purposes.
@@ -33,7 +37,7 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   -i, --init            Initialize the target output files
-  -a, --doancestors     Add touched concept ancestors
+  -a, --ancestors     Add touched concept ancestors
   --children            Add direct children of selected concepts
   -c CONCEPTID [CONCEPTID ...], --conceptid CONCEPTID [CONCEPTID ...]
                         List of concept identifiers to add
@@ -115,7 +119,7 @@ The SNOMEDToOWL configuration file defines additional parameters that aren't cur
 
 | **Name** | **Function** | **Example** |
 |:----|:--------|:-------|
-|  MODULE    | Identifier of the module to be transformed. Concepts defined in this module are converted to OWL.  Forms the `owl:ontology` URI.   | 900000000000207008  |
+|  MODULE    | Identifier of the module to be transformed. Concepts defined in this module are converted to OWL.  Forms the `owl:ontology` URI.   | 900000000000207008 410662002  |
 | VERSION    |  The ontology version identifier. Forms the `owl:versionIRI` in combination with MODULE  |         20160131 |
 | VERSION_DESCRIPTION   |   Short description of the ontology  version, that becomes the `owl:versionInfo`    |  "International Release, Core Module, Release Date: 20160131" |
 | LANGUAGES | List of Language Refset Identifiers to be included in the OWL representation | [900000000000509007, 900000000000508004] |
