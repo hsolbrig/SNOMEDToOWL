@@ -35,6 +35,8 @@ from rdflib.plugin import plugins as rdflib_plugins, Serializer as rdflib_Serial
 from rdflib.collection import Collection
 from rdflib.namespace import NAME_START_CATEGORIES
 
+from SNOMEDCTToOWL.RF2Files import Concept
+
 script_path = os.path.join(os.getcwd(), os.path.dirname(__file__))
 if __name__ == "__main__":
     sys.path.append(os.path.join(script_path, '..'))
@@ -67,7 +69,7 @@ class OWLGraph(Graph):
 
         self._concepts = RF2Files.Concepts()
         self._relationships = RF2Files.Relationships()
-        self._descriptions = RF2Files.Descriptions()
+        self._descriptions = RF2Files.Descriptions(self._concepts)
         self._languages = RF2Files.Languages()
         self._transitive = RF2Files.Transitive()
 
@@ -84,6 +86,9 @@ class OWLGraph(Graph):
 
         # Add any additional object property declarations
         self.add_object_property_declarations()
+
+        # Add any additional concepts from other modules that have local descriptions
+        self.add_additional_concept_declarations()
 
     def add_directory(self, directory: str) -> None:
         """
@@ -158,7 +163,7 @@ class OWLGraph(Graph):
         file no matter which module they are defined in.
         """
         self._printer("Generating OWL properties")
-        [self.add_concept(subj) for subj in self._concepts.properties]
+        [self.add_concept(subj) for subj in self._concepts.properties.values()]
 
     def add_module_definitions(self) -> None:
         """
@@ -167,7 +172,12 @@ class OWLGraph(Graph):
         b) ARE descendants of 410662002 |Concept model attribute|
         """
         self._printer("Generating OWL concepts")
-        [self.add_concept(subj) for subj in self._concepts.members]
+        [self.add_concept(subj) for subj in self._concepts.members.values()]
+
+    def add_additional_concept_declarations(self) -> None:
+        if len(self._concepts.added_concepts) > 0:
+            self._printer("Adding localized descriptions")
+            [self.add_concept(Concept(e)) for e in self._concepts.added_concepts]
 
     def add_concept(self, concept: RF2Files.Concept) -> None:
         """

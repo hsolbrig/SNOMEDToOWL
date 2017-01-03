@@ -25,8 +25,9 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
-from typing import Dict, Set
+from typing import Dict, List
 
+from SNOMEDCTToOWL.RF2Files import Concepts
 from .RF2File import RF2File
 from .Transitive import Transitive
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
@@ -51,29 +52,30 @@ class Description:
         * descriptions whose conceptId's are  descendants of 410662002 |Concept model attribute| are used.
     """
 
-    def __init__(self, row: Dict, isNative: bool):
+    def __init__(self, row: Dict, is_native: bool):
         """
         Construct an RF2 description file entry
         :param row: RF2 row
-        :param isNative: True means description is in target module.  False means it is added as a property.  Used to
+        :param is_native: True means description is in target module.  False means it is added as a property.  Used to
         determine whether to emit synonyms and definitions, as native transform does not.
         """
         self.id = int(row["id"])
         self.typeId = int(row["typeId"])
         self.term = row["term"]
         self.languageCode = row["languageCode"]
-        self.isNative = isNative
+        self.isNative = is_native
 
 
 class Descriptions(RF2File):
     description_prefix = DescriptionFilePrefix
     textdefinition_prefix = TextDefinitionFilePrefix
 
-    def __init__(self):
+    def __init__(self, concepts: Concepts):
         """
         Construct a list of term descriptions / definitions keyed by concept identifier
         """
         self._members = {}             # Dict[conceptid, Set[Description]]
+        self._concepts = concepts
 
     @classmethod
     def filtr(cls, fname: str, _: TransformationContext) -> bool:
@@ -94,8 +96,10 @@ class Descriptions(RF2File):
         """
         conceptid = int(row['conceptId'])
         if int(row['moduleId']) == context.MODULE or \
-                transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid):
+                transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid) or \
+                int(row['typeId']) == Fully_specified_name_sctid:
             self._members.setdefault(conceptid, set()).add(Description(row, int(row['moduleId']) == context.MODULE))
+            self._concepts.add_concept_id(conceptid)
 
     def fsn(self, conceptid: SCTID) -> str:
         """
@@ -106,7 +110,7 @@ class Descriptions(RF2File):
         return [desc.term for desc in self._members[conceptid]
                 if desc.typeId == Fully_specified_name_sctid and desc.languageCode == 'en'][0]
 
-    def synonyms(self, conceptid: SCTID) -> Set[Description]:
+    def synonyms(self, conceptid: SCTID) -> List[Description]:
         """
         Return the synonyms for conceptid
         :param conceptid: sctid
@@ -114,7 +118,7 @@ class Descriptions(RF2File):
         """
         return [desc for desc in self._members[conceptid] if desc.typeId == Synonym_sctid]
 
-    def definitions(self, conceptid: SCTID) -> Set[Description]:
+    def definitions(self, conceptid: SCTID) -> List[Description]:
         """
         Return the text definitions for conceptid
         :param conceptid: sctid

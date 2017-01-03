@@ -25,7 +25,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
-from typing import Dict
+from typing import Dict, Union
 
 from .RF2File import RF2File
 from .Transitive import Transitive
@@ -49,13 +49,17 @@ class Concept:
         All (active) descendants of 410662002 |Concept model attribute| are also included whether the module matches or
          not, but are minimally represented in the output
     """
-    def __init__(self, row: Dict):
+    def __init__(self, row_or_id: Union[Dict, int]):
         """
         Construct a representative of an RF2 concept row
-        :param row: RF2 concept file row
+        :param row_or_id: RF2 concept file row or concept identifier
         """
-        self.id = int(row['id'])
-        self.definitionStatusId = int(row["definitionStatusId"])
+        if isinstance(row_or_id, dict):
+            self.id = int(row_or_id['id'])
+            self.definitionStatusId = int(row_or_id["definitionStatusId"])
+        else:
+            self.id = row_or_id
+            self.definitionStatusId = Primitive_sctid
 
 
 class Concepts(RF2File):
@@ -65,8 +69,9 @@ class Concepts(RF2File):
         """
         Construct a list of qualifying concepts
         """
-        self.properties = set()        # Non-member properties:         Set[Concept]
-        self.members = set()           # Member properties or classes:  Set[Concept]
+        self.properties = dict()        # Non-member properties: Dict[conceptid, Concept]
+        self.members = dict()           # Member properties or classes:  Dict[conceptid, Concept]
+        self.added_concepts = set()    # Concepts not in module, but having added descriptions or definitions: Set[int]
 
     def add(self, row: Dict, context: TransformationContext, transitive: Transitive) -> None:
         """
@@ -76,7 +81,17 @@ class Concepts(RF2File):
         :param transitive: transitive closure file
         """
         conceptid = int(row['id'])
-        if int(row['moduleId']) == context.MODULE and not transitive.is_descendant_of(conceptid, Linkage_concept_sctid):
-            self.members.add(Concept(row))
+        if int(row['moduleId']) == context.MODULE and\
+                not transitive.is_descendant_of(conceptid, Linkage_concept_sctid):
+            self.members[conceptid] = Concept(row)
         elif transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid):
-            self.properties.add(Concept(row))
+            self.properties[conceptid] = Concept(row)
+
+    def add_concept_id(self, conceptid: int) -> None:
+        """
+        Add conceptid to members.  Used for descriptions whose concepts aren't in the target module
+        :param conceptid: concept to add
+        :return:
+        """
+        if conceptid not in self.members and conceptid not in self.properties:
+            self.added_concepts.add(conceptid)
