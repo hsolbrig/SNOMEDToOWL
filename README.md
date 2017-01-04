@@ -32,3 +32,5 @@ A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a 
 * [SNOMEDToOWL](scripts/SNOMEDToOWL.md) -- Convert an RF2 Snapshot distribution into OWL
 * [RF2Filter](scripts/RF2Filter.md) -- extract selected concepts from an RF2 distribution
 * [CompareRDF](scripts/CompareRDF.md) -- Compare two RDF/OWL files
+
+[Notes on module imports](Modules.md)
