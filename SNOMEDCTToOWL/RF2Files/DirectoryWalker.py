@@ -29,7 +29,7 @@ import csv
 import os
 from typing import Callable, Dict
 
-from RF2Files.RF2DictWriter import RF2DictWriter
+from SNOMEDCTToOWL.RF2Files.RF2DictWriter import RF2DictWriter
 
 
 class DirectoryWalker:

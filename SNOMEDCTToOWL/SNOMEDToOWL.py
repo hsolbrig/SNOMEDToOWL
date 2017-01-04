@@ -36,11 +36,6 @@ from rdflib.collection import Collection
 from rdflib.namespace import NAME_START_CATEGORIES
 
 from SNOMEDCTToOWL.RF2Files import Concept
-
-script_path = os.path.join(os.getcwd(), os.path.dirname(__file__))
-if __name__ == "__main__":
-    sys.path.append(os.path.join(script_path, '..'))
-
 import SNOMEDCTToOWL.RF2Files as RF2Files
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
 from SNOMEDCTToOWL.TransformationContext import TransformationContext
@@ -365,7 +360,3 @@ def main(argv):
     NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements
     output = g.serialize(format=opts.format).decode('utf-8')
     (open(opts.output, 'w') if opts.output else sys.stdout).write(output)
-
-
-if __name__ == '__main__':
-    main(sys.argv[1:])

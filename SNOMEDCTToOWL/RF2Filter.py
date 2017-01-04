@@ -30,13 +30,10 @@ import sys
 from typing import Dict
 from argparse import ArgumentParser, Namespace
 
-from RF2Files.DirectoryWalker import DirectoryWalker
-
-if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
-
+from SNOMEDCTToOWL.RF2Files.DirectoryWalker import DirectoryWalker
 from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
+
 
 AlwaysLoad = {Is_a_sctid, Concept_model_attribute_sctid, Linkage_concept_sctid, Defined_sctid,
               Primitive_sctid, Fully_specified_name_sctid, Definition_sctid, Synonym_sctid,
@@ -127,8 +124,8 @@ class RF2Filter:
         destinationid = int(row['destinationId'])
         typeid = int(row['typeId'])
         if self._opts.children and not self._opts.descendants and \
-                        destinationid in self._opts.conceptid and typeid == Is_a_sctid:
-            self._visited_concepts.add(sourceid)
+           destinationid in self._opts.conceptid and typeid == Is_a_sctid:
+               self._visited_concepts.add(sourceid)
         if sourceid in self._visited_concepts:
             self._visited_concepts.add(destinationid),
             self._visited_concepts.add(typeid)
@@ -201,6 +198,3 @@ def main(argv):
     generated = RF2Filter(opts).matches
     for c in set(opts.conceptid) - generated:
         print("*** CONCEPT: %s not found ***", str(c))
-
-if __name__ == '__main__':
-    main(sys.argv)
