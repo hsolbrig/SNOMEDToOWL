@@ -69,6 +69,7 @@ class Concepts(RF2File):
         """
         Construct a list of qualifying concepts
         """
+        self.all_active_concepts = set()
         self.properties = dict()        # Non-member properties: Dict[conceptid, Concept]
         self.members = dict()           # Member properties or classes:  Dict[conceptid, Concept]
         self.added_concepts = set()    # Concepts not in module, but having added descriptions or definitions: Set[int]
@@ -81,6 +82,7 @@ class Concepts(RF2File):
         :param transitive: transitive closure file
         """
         conceptid = int(row['id'])
+        self.all_active_concepts.add(conceptid)
         if int(row['moduleId']) == context.MODULE and\
                 not transitive.is_descendant_of(conceptid, Linkage_concept_sctid):
             self.members[conceptid] = Concept(row)
@@ -93,5 +95,5 @@ class Concepts(RF2File):
         :param conceptid: concept to add
         :return:
         """
-        if conceptid not in self.members and conceptid not in self.properties:
+        if conceptid in self.all_active_concepts and conceptid not in self.members and conceptid not in self.properties:
             self.added_concepts.add(conceptid)
