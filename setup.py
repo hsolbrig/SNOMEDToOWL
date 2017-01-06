@@ -12,7 +12,7 @@ if sys.version_info < (3, 5):
 
 setup(
     name='SNOMEDToOWL',
-    version='0.2.2',
+    version='0.2.3',
     packages=['SNOMEDCTToOWL', 'SNOMEDCTToOWL.RF2Files'],
     package_data={'SNOMEDCTToOWL' : ['conf/*.json']},
     url='http://github.com/hsolbrig/SNOMEDToOWL',
