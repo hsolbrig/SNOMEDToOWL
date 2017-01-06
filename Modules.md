@@ -2,7 +2,7 @@
 SNOMED is distributed in multiple "modules".  Each module makes a set of assertions about a collection of SNOMED CT concepts.  SNOMED CT International is composed of two modules:
 
 * International Release, Core Module (900000000000207008)
-* SNOMED CT Model Component Module (900000000000012004) (aka. "Metadata module)
+* SNOMED CT Model Component Module (900000000000012004) (aka. "Metadata module")
 
 While the SNOMED CT core module is dependent on parts of the SNOMED CT Model Component Module, normally only a small subset of the metadata module concepts are included in the OWL representation of the core module.
 
@@ -16,13 +16,21 @@ The general notion is that the International Release, Core Module could use an `
 ```
 
 We could then load ```sct_core_us.ttl``` into Protege and note that the SNOMED CT Model Component (metadata) section has limited content -- only the concepts declared as members of the core module + their ancestors:
+
 ![Protege Image](images/sct_core_us.png)
 
 We can then import the Model Component Module:
+
 ![Protege Image](images/sct_core_import.png)
 
 which completely fills out the metadata section:
+
 ![Protege Image](images/sct_core_plus_metadata.png)
+
+Note that the SNOMED CT concept ```410662002 | Concept model attribute |``` and its descendants are represented as OWL ObjectProperties.  Concept model attribute and its descendants are included in *ever* module representation.  All other descendants of ```106237007 | Linkage concept |``` are currently represented as OWL Classes and only in the Model Component module.
+
+![Protege Image](images/sct_core_object_properties.png)
+
 
 
 In a similar fashion, we could generate the inferred US Edition (using US english) and the inferred SNOMED CT Core:
