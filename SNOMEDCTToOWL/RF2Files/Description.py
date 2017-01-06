@@ -89,16 +89,19 @@ class Descriptions(RF2File):
 
     def add(self, row: Dict, context: TransformationContext, transitive: Transitive) -> None:
         """
-        Add RF2 description file row if belongs to the target module or is a FSN for a property
+        Add RF2 description file row if belongs to the target module or is a FSN for a property.  Note, however, that
+        FSN's are added so they can be supplied if the concept itself is used (i.e. has one or more descriptions or
+        definitions supplied by the target module)
         :param row: row to add -- already tested for active
         :param context: transformation context
         :param transitive: Transitive relationships
         """
         conceptid = int(row['conceptId'])
         if int(row['moduleId']) == context.MODULE or \
-                transitive.is_descendant_of(conceptid, Concept_model_attribute_sctid) or \
+                transitive.is_descendant_or_self_of(conceptid, Concept_model_attribute_sctid) or \
                 int(row['typeId']) == Fully_specified_name_sctid:
             self._members.setdefault(conceptid, set()).add(Description(row, int(row['moduleId']) == context.MODULE))
+        if int(row['moduleId']) == context.MODULE or conceptid in AlwaysEmitOWLFor:
             self._concepts.add_concept_id(conceptid)
 
     def fsn(self, conceptid: SCTID) -> str:

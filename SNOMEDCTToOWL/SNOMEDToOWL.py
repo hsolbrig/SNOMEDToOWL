@@ -180,7 +180,7 @@ class OWLGraph(Graph):
         :param concept: concept to add
         """
         concept_uri = as_uri(concept.id)
-        typ = OWL.ObjectProperty if self._transitive.is_descendant_of(concept.id, Concept_model_attribute_sctid) \
+        typ = OWL.ObjectProperty if self._transitive.is_descendant_or_self_of(concept.id, Concept_model_attribute_sctid) \
             else OWL.Class
 
         # Add the concept itself
@@ -222,14 +222,15 @@ class OWLGraph(Graph):
         :param concept_uri: Concept URI
         :return:
         """
-        parents = [parent for parent in self._relationships.parents(concept.id)]
+        parents = [parent for parent in self._relationships.parents(concept.id)
+                   if concept.id != Concept_model_attribute_sctid]
         if len(parents) > 1 and concept.definitionStatusId == Defined_sctid:
             target, collection = intersection(self)
             [collection.append(as_uri(parent)) for parent in parents]
             self.add((concept_uri, OWL.equivalentProperty, target))
         else:
             [self.add((concept_uri, RDFS.subPropertyOf, as_uri(parent)))
-             for parent in parents if parent != Concept_model_attribute_sctid]
+             for parent in parents]
 
         # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID
         if concept.id in self._context.RIGHT_ID:
@@ -358,5 +359,4 @@ def main(argv):
 
     print_out("Writing %s" % opts.output)
     NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements
-    output = g.serialize(format=opts.format).decode('utf-8')
-    (open(opts.output, 'w') if opts.output else sys.stdout).write(output)
+    g.serialize(destination=opts.output if opts.output else sys.stdout, format=opts.format)

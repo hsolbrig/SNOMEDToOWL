@@ -73,3 +73,14 @@ TextDefinitionFilePrefix = "sct2_TextDefinition_Snapshot"
 LanguageFilePrefix = "der2_cRefset_LanguageSnapshot"
 StatedRelationshipFilePrefix = "sct2_StatedRelationship_Snapshot_"
 RelationshipFilePrefix = "sct2_Relationship_Snapshot_"
+
+# Both IHTSDO maintained module and namespace concept sctid have children declared
+# in the SNOMED Core module.  We add them and their ancestors to the "always load" branch
+Module_sctid = 900000000000443000
+IHTSDO_maintained_module_sctid = 900000000000445007
+Namespace_concept_sctid = 370136006
+Core_metadata_concept_sctid = 900000000000442005
+SNOMED_CT_Model_Component_sctid = 900000000000441003
+
+AlwaysEmitOWLFor = {IHTSDO_maintained_module_sctid, Namespace_concept_sctid, Concept_model_attribute_sctid,
+                    Core_metadata_concept_sctid, SNOMED_CT_Model_Component_sctid, Module_sctid}

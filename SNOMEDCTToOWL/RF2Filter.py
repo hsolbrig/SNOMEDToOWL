@@ -34,11 +34,11 @@ from SNOMEDCTToOWL.RF2Files.DirectoryWalker import DirectoryWalker
 from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
 
-
 AlwaysLoad = {Is_a_sctid, Concept_model_attribute_sctid, Linkage_concept_sctid, Defined_sctid,
-              Primitive_sctid, Fully_specified_name_sctid, Definition_sctid, Synonym_sctid,
+              Primitive_sctid, Fully_specified_name_sctid, Definition_sctid, Synonym_sctid, Module_sctid,
               Preferred_sctid, Acceptable_sctid, Role_group_sctid, Defining_relationship_sctid, Some_sctid,
-              Inferred_relationship_sctid, Stated_relationship_sctid}
+              Inferred_relationship_sctid, Stated_relationship_sctid, IHTSDO_maintained_module_sctid,
+              Namespace_concept_sctid, Core_metadata_concept_sctid, SNOMED_CT_Model_Component_sctid}
 
 
 class RF2Filter:
@@ -169,7 +169,6 @@ class RF2Filter:
     def _process_languages(self):
         self._walker.walk(lambda file: file.startswith(LanguageFilePrefix),
                           lambda row: int(row['referencedComponentId']) in self._visited_descriptions)
-""
 
 
 def genargs() -> ArgumentParser:

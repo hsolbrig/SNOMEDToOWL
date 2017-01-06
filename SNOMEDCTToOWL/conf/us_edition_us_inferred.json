@@ -8,7 +8,7 @@
   "LANGUAGE_MAP": {
     "900000000000509007": "en-us"
   },
-  "MODULE_LABEL": "SNOMED Clinical Terms, US Edition, Stated Relationships in OWL RDF",
+  "MODULE_LABEL": "SNOMED Clinical Terms, US Edition, US English, Inferred Relationships in OWL RDF",
   "MODULE_DESCRIPTION": [
     "Generated as OWL RDF/XML from SNOMED CT release files"
   ],

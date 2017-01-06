@@ -77,6 +77,15 @@ class Transitive:
             self.__desc_cache[parent] = self.descendants_of(parent)
         return desc in self.__desc_cache[parent]
 
+    def is_descendant_or_self_of(self, desc: int, parent: int) -> bool:
+        """
+        Determine whether desc is a descendant of the parent or is the parent itself
+        :param desc: descendant to test
+        :param parent: parent concept
+        :return: True or False
+        """
+        return self.is_descendant_of(desc, parent) or desc == parent
+
     def ancestors_of(self, child: int) -> Set[int]:
         return self._parents.get(child, set())\
             .union(*[self.ancestors_of(x) for x in self._parents.get(child, set())])

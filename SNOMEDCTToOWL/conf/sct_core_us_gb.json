@@ -9,7 +9,7 @@
     "900000000000509007": "en-us",
     "900000000000508004": "en-gb"
   },
-  "MODULE_LABEL": "SNOMED Clinical Terms, International Release, Stated Relationships in OWL RDF",
+  "MODULE_LABEL": "SNOMED Clinical Terms, International Release, GB and US English, Stated Relationships in OWL RDF",
   "MODULE_DESCRIPTION": [
     "Generated as OWL RDF/XML from SNOMED CT release files"
   ],

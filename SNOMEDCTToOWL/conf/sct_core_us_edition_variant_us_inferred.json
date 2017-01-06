@@ -1,14 +1,14 @@
 {
   "MODULE": 900000000000207008,
-  "VERSION": 20160131,
-  "VERSION_DESCRIPTION": "International Release, Core Module, Release Date: 20160131",
+  "VERSION": 201603310101,
+  "VERSION_DESCRIPTION": "International Release, Core Module, US Edition Modifications, Release Date: 20160331",
   "LANGUAGES": [
     900000000000509007
   ],
   "LANGUAGE_MAP": {
     "900000000000509007": "en-us"
   },
-  "MODULE_LABEL": "SNOMED Clinical Terms, International Release, US English Stated Relationships in OWL RDF",
+  "MODULE_LABEL": "SNOMED Clinical Terms, International Release, US Edition Modifications, Inferred Relationships in OWL RDF",
   "MODULE_DESCRIPTION": [
     "Generated as OWL RDF/XML from SNOMED CT release files"
   ],
@@ -31,6 +31,6 @@
   "RIGHT_ID": {
     "363701004": 127489000
   },
-  "USE_STATED_RELATIONSHIPS": true
+  "USE_STATED_RELATIONSHIPS": false
 }
 
