@@ -37,18 +37,23 @@ When the US edition is loaded by itself, we only get what has been defined or ch
 ![Protege Image](images/us_edition_stand_alone.png)
 
 If we then import the SNOMED International Core:
+
 ![Protege Image](images/us_edition_core_import.png)
 
 Where we then find the additions properly positioned:
+
 ![Protege Image](images/us_edition_and_core.png)
 
 It is interesting to note that there are a number of concepts that aren't recognized:
+
 ![Protege Image](images/us_edition_unclassified.png)
 
 Some of these are references to SCT International Metadata -- the US edition is partly dependent on it.  We can import the core metadata:
+
 ![Protege Image](images/us_edition_metadata_import.png)
 
 Which resolves some of the references:  
+
 ![Protege Image](images/us_edition_including_metadata_1.png)
 
 The remainder, however, turn out to be retired concepts, which simply do not appear in the OWL representation.  ```69960004 | Antineoplastic chemotherapy regimen (procedure) |```, ```185972007 | Patient on waiting list for op (finding) |```, and ```81877007 | Housing problems (finding) |``` are all retired.
