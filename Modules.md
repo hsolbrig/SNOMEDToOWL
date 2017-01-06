@@ -8,6 +8,7 @@ While the SNOMED CT core module is dependent on parts of the SNOMED CT Model Com
 
 The SNOMED CT US Edition (731000124108) includes both the International Core module and the Model Component module.  It does, however, add some concepts, de-activate some descriptions, add some new ones, etc.
 
+## International Release Core and Model Component imports
 The general notion is that the International Release, Core Module could use an ```owl:import``` to include the Model Component module if so desired -- the approach would be to generate both the SNOMED International Core module (using US English) and the SNOMED International Model Component module (using US and GB English...)
 
 ```bash
@@ -27,13 +28,14 @@ which completely fills out the metadata section:
 
 ![Protege Image](images/sct_core_plus_metadata.png)
 
-Note that the SNOMED CT concept ```410662002 | Concept model attribute |``` and its descendants are represented as OWL ObjectProperties.  Concept model attribute and its descendants are included in *ever* module representation.  All other descendants of ```106237007 | Linkage concept |``` are currently represented as OWL Classes and only in the Model Component module.
+Note that the SNOMED CT concept ```410662002 | Concept model attribute |``` and its descendants are represented as OWL ObjectProperties.  Concept model attribute and its descendants are included in *every* module representation.  All other descendants of ```106237007 | Linkage concept |``` are currently represented as OWL Classes and only in the Model Component module.
 
 ![Protege Image](images/sct_core_object_properties.png)
 
 
+## US Edition and International Edition imports
 
-In a similar fashion, we could generate the inferred US Edition (using US english) and the inferred SNOMED CT Core:
+We could generate the inferred US Edition (using US english) and the inferred SNOMED CT Core:
 
 ```bash
 >  SNOMEDToOWL -o us_edition_us_inferred.ttl  ~/data/terminology/SNOMEDCT/SnomedCT_RF2Release_US1000124_20160301/Snapshot/ us_edition_us_inferred.json
