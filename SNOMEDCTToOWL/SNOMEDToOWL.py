@@ -33,7 +33,7 @@ from typing import Set, Callable
 from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.plugin import plugins as rdflib_plugins, Serializer as rdflib_Serializer
 from rdflib.collection import Collection
-from rdflib.namespace import NAME_START_CATEGORIES
+from rdflib.namespace import NAME_START_CATEGORIES, SKOS
 
 from SNOMEDCTToOWL.RF2Files import Concept
 import SNOMEDCTToOWL.RF2Files as RF2Files
@@ -137,6 +137,8 @@ class OWLGraph(Graph):
         Add the required namespaces to the graph
         """
         [self.bind(e[0], e[1]) for e in required_namespaces.items()]
+        if self._context.SKOS_DESCRIPTIONS:
+            self.bind("skos", SKOS)
 
     def add_ontology_header(self) -> None:
         """
@@ -180,7 +182,8 @@ class OWLGraph(Graph):
         :param concept: concept to add
         """
         concept_uri = as_uri(concept.id)
-        typ = OWL.ObjectProperty if self._transitive.is_descendant_or_self_of(concept.id, Concept_model_attribute_sctid) \
+        typ = OWL.ObjectProperty if \
+            self._transitive.is_descendant_or_self_of(concept.id, Concept_model_attribute_sctid) \
             else OWL.Class
 
         # Add the concept itself
@@ -192,21 +195,30 @@ class OWLGraph(Graph):
         # Generate a sctf:Description.term.$map.preferred for the preferred description for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
             for l in self._languages.preferred(desc.id):
-                self.add((concept_uri, SCTF["Description.term." + l + ".preferred"],
-                          Literal(desc.term, desc.languageCode)))
+                if self._context.SKOS_DESCRIPTIONS:
+                    self.add((concept_uri, SKOS.prefName, Literal(desc.term, l)))
+                else:
+                    self.add((concept_uri, SCTF["Description.term." + l + ".preferred"],
+                              Literal(desc.term, desc.languageCode)))
 
         # Generate a sctf:Description for the acceptable synonym for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
-            for l in self._languages.acceptable(desc.id):
-                if desc.isNative:
-                    self.add((concept_uri, SCTF["Description.term." + l + ".synonym"],
-                              Literal(desc.term, desc.languageCode)))
+            if desc.isNative:
+                for l in self._languages.acceptable(desc.id):
+                    if self._context.SKOS_DESCRIPTIONS:
+                        self.add((concept_uri, SKOS.altName, Literal(desc.term, l)))
+                    else:
+                        self.add((concept_uri, SCTF["Description.term." + l + ".synonym"],
+                                  Literal(desc.term, desc.languageCode)))
 
         # Currently, the TextDefinition owl mapping does not support specific language variants. Add a sctf:Definition
         #  for each unique definition for each language in $LANGUAGES.
         for defn in self._descriptions.definitions(concept.id):
-            if self._languages.preferred(defn.id) or self._languages.acceptable(defn.id):
-                if defn.isNative:
+            if defn.isNative:
+                if self._context.SKOS_DESCRIPTIONS:
+                    for l in (self._languages.preferred(defn.id) + self._languages.acceptable(defn.id)):
+                        self.add((concept_uri, SKOS.definition, Literal(defn.term, l)))
+                elif self._languages.preferred(defn.id) or self._languages.acceptable(defn.id):
                     self.add((concept_uri, SCTF["TextDefinition.term"], Literal(defn.term, defn.languageCode)))
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
@@ -346,8 +358,8 @@ def genargs() -> ArgumentParser:
     parser.add_argument("config", help="Configuration file name")
     parser.add_argument("-o", "--output", help="Output file (Default: stdout)")
     parser.add_argument("-f", "--format",
-                        choices=set(x.name for x in rdflib_plugins(None, rdflib_Serializer)
-                                    if '/' not in str(x.name)).add('json-ld'),  # don't know why this has to be manual
+                        choices=list(set(x.name for x in rdflib_plugins(None, rdflib_Serializer)
+                                         if '/' not in str(x.name))),
                         help="Output format (Default: turtle)", default="turtle")
     return parser
 

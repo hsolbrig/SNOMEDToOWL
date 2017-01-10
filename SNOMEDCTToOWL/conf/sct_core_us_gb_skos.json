@@ -1,0 +1,38 @@
+{
+  "MODULE": 900000000000207008,
+  "VERSION": 20160131,
+  "VERSION_DESCRIPTION": "International Release, Core Module, Release Date: 20160131",
+  "LANGUAGES": [
+    900000000000509007, 900000000000508004
+  ],
+  "LANGUAGE_MAP": {
+    "900000000000509007": "en-US",
+    "900000000000508004": "en-GB"
+  },
+  "MODULE_LABEL": "SNOMED Clinical Terms, International Release, GB and US English, Stated Relationships in OWL RDF",
+  "MODULE_DESCRIPTION": [
+    "Generated as OWL RDF/XML from SNOMED CT release files"
+  ],
+  "MODULE_COPYRIGHT": [
+    "Copyright 2016 The International Health Terminology Standards Development Organisation (IHTSDO).",
+    "All Rights Reserved. SNOMED CT was originally created by The College of American Pathologists. \"SNOMED\" and",
+    " \"SNOMED CT\" are registered trademarks of the IHTSDO.  SNOMED CT has been created by combining SNOMED RT",
+    "and a computer based nomenclature and classification known as Clinical Terms Version 3, formerly known as ",
+    "Read Codes Version 3, which was created on behalf of the UK Department of Health.\n",
+    "This document forms part of the International Release of SNOMED CT distributed by the International Health",
+    "Terminology Standards Development Organisation (IHTSDO), and is subject to the IHTSDO's SNOMED CT Affiliate",
+    "Licence. Details of the SNOMED CT Affiliate Licence may be found at www.ihtsdo.org/our-standards/licensing/"
+  ],
+  "NEVER_GROUPED": [
+    123005000,
+    272741003,
+    127489000,
+    411116001
+  ],
+  "RIGHT_ID": {
+    "363701004": 127489000
+  },
+  "USE_STATED_RELATIONSHIPS": true,
+  "SKOS_DESCRIPTIONS": true
+}
+

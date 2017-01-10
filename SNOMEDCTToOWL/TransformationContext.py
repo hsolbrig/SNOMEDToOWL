@@ -44,7 +44,9 @@ class TransformationContext:
         MODULE_COPYRIGHT        str         The module copyright
         NEVER_GROUPED           List[int]   A list of SCTIDS that never occur inside relationship groups
         RIGHT_ID                Map[int, List[int]]
-        USE_STATED_RELATIONSHIPS bool   True or absent means use the stated relationships, else use inferred
+        USE_STATED_RELATIONSHIPS bool       True or absent means use the stated relationships, else use inferred
+        SKOS_DESCRIPTIONS       bool        True means use skos:prefName, skos:altName, skos:definition.  False or
+                                            absent means use SNOMED predicates
     """
     def __init__(self, context_config: TextIOWrapper):
         ctxt = load(context_config)
@@ -59,6 +61,7 @@ class TransformationContext:
         self.NEVER_GROUPED = ctxt.NEVER_GROUPED
         self.RIGHT_ID = {int(k): v for k, v in ctxt.RIGHT_ID._as_dict.items()}
         self.USE_STATED_RELATIONSHIPS = ctxt._as_dict.get("USE_STATED_RELATIONSHIPS", True)
+        self.SKOS_DESCRIPTIONS = ctxt._as_dict.get("SKOS_DESCRIPTIONS", False)
 
     @staticmethod
     def multi_line(txt):
