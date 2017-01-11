@@ -54,6 +54,7 @@ The SNOMEDToOWL configuration file defines additional parameters that aren't cur
 | NEVER_GROUPED | List of SCT attributes that (should) never appear in a role group | [123005000, 272741003, 127489000, 411116001] |
 | RIGHT_ID | A list of "right identities", in the form `{"p11": p12}, ..., {"pn1":pn2}` that are mapped to an `owl:propertyChain` axiom in the form `p1 ∘ p2 SubPropertyOf p1`  .  The example represents the assertion: `'Direct substance (attribute)' ∘ 'Has active ingredient (attribute)' SubPropertyOf 'Direct substance (attribute)'` | { "363701004": 127489000 } |
 | USE_STATED_RELATIONSHIPS | If `true`, use the stated relationships file.  If `false`, use the (inferred) relationships file | false |
+| SKOS_DESCRIPTIONS | If `true`, emit skos:prefLabel, skos:altLabel and skos:definition instead of sctf:Description.<lang>.preferred, sctf:Description.<lang>.synonym and sctf:TextDefinition.<lang> and put the full lang code (e.g. en-US) on the literal instead of just "en"
 
 
 
