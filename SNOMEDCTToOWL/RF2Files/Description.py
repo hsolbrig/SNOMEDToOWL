@@ -25,7 +25,7 @@
 # LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
-from typing import Dict, List
+from typing import Dict, List, Optional, Tuple
 
 from SNOMEDCTToOWL.RF2Files import Concepts
 from .RF2File import RF2File
@@ -104,14 +104,37 @@ class Descriptions(RF2File):
         if int(row['moduleId']) == context.MODULE or conceptid in AlwaysEmitOWLFor:
             self._concepts.add_concept_id(conceptid)
 
-    def fsn(self, conceptid: SCTID) -> str:
+    def fsn(self, conceptid: SCTID, context: TransformationContext) -> Tuple[str, str]:
         """
         Return the fully specified name for conceptid
         :param conceptid: sctid
-        :return: FSN
+        :param context: transformation context
+        :return: FSN / language code
         """
-        return [desc.term for desc in self._members[conceptid]
-                if desc.typeId == Fully_specified_name_sctid and desc.languageCode == 'en'][0]
+        fsns = [desc for desc in self._members[conceptid] if desc.typeId == Fully_specified_name_sctid]
+        # Single FSN always passes
+        if len(fsns) == 1:
+            fsn_idx = 0
+            return fsns[0].term, fsns[0].languageCode
+
+        # No FSN is badly formed
+        elif len(fsns) == 0:
+            raise Exception("No FSN specified for conceptid {}".format(conceptid))
+
+        # Pass the first language code that matches a target language ("en" matches "en-us" as an example)
+        for fsn in fsns:
+            for lang_code in context.LANGUAGE_MAP.values():
+                if lang_code.startswith(fsn.languageCode):
+                    return fsn.term, fsn.languageCode
+
+        # Return the english fsn
+        for fsn in fsns:
+            if fsn.languageCode == 'en':
+                return fsn.term, fsn.languageCode
+
+        # Return a random fsn
+        return fsns[0].term, fsns[0].languageCode
+
 
     def synonyms(self, conceptid: SCTID) -> List[Description]:
         """

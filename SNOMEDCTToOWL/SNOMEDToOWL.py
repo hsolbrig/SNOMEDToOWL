@@ -137,8 +137,6 @@ class OWLGraph(Graph):
         Add the required namespaces to the graph
         """
         [self.bind(e[0], e[1]) for e in required_namespaces.items()]
-        if self._context.SKOS_DESCRIPTIONS:
-            self.bind("skos", SKOS)
 
     def add_ontology_header(self) -> None:
         """
@@ -190,7 +188,8 @@ class OWLGraph(Graph):
         self.add((concept_uri, RDF.type, typ))
 
         # Generate an rdfs:label for the English FSN of the concept
-        self.add((concept_uri, RDFS.label, Literal(self._descriptions.fsn(concept.id), 'en')))
+        fsn, fsn_lang = self._descriptions.fsn(concept.id, self._context)
+        self.add((concept_uri, RDFS.label, Literal(fsn, fsn_lang)))
 
         # Generate a sctf:Description.term.$map.preferred for the preferred description for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
