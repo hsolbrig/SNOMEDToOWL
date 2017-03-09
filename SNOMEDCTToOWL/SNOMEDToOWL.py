@@ -365,6 +365,15 @@ def genargs() -> ArgumentParser:
 
 def main(argv):
     opts = genargs().parse_args(argv)
+
+    if not os.path.isdir(opts.indir):
+        print("Input directory {} doesn't exist".format(opts.indir), file=sys.stderr)
+        sys.exit(1)
+    if not os.path.isdir(os.path.join(opts.indir, "Terminology")) or \
+       not os.path.isdir(os.path.join(opts.indir, "Refset")):
+        print("Input directory {} is not an RF2 directory".format(opts.indir))
+        sys.exit(1)
+
     print_out = optional_printer(not opts.output)
     g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out)
 
