@@ -135,7 +135,6 @@ class Descriptions(RF2File):
         # Return a random fsn
         return fsns[0].term, fsns[0].languageCode
 
-
     def synonyms(self, conceptid: SCTID) -> List[Description]:
         """
         Return the synonyms for conceptid

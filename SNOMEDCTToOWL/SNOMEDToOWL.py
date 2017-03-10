@@ -29,7 +29,7 @@ import csv
 import os
 import sys
 from argparse import ArgumentParser
-from typing import Set, Callable
+from typing import Set, Callable, Optional
 from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.plugin import plugins as rdflib_plugins, Serializer as rdflib_Serializer
 from rdflib.collection import Collection
@@ -38,6 +38,7 @@ from rdflib.namespace import NAME_START_CATEGORIES, SKOS
 from SNOMEDCTToOWL.RF2Files import Concept
 import SNOMEDCTToOWL.RF2Files as RF2Files
 from SNOMEDCTToOWL.SNOMEDToOWLConstants import *
+from SNOMEDCTToOWL.Statistics import Statistics
 from SNOMEDCTToOWL.TransformationContext import TransformationContext
 from SNOMEDCTToOWL.OWLGraphHelper import as_uri, role_group, intersection, existential_restriction
 
@@ -68,6 +69,8 @@ class OWLGraph(Graph):
         self._languages = RF2Files.Languages()
         self._transitive = RF2Files.Transitive()
 
+        self._stats = Statistics()
+
         self.add_directory(directory)
 
         # Transformation namespaces
@@ -84,6 +87,11 @@ class OWLGraph(Graph):
 
         # Add any additional concepts from other modules that have local descriptions
         self.add_additional_concept_declarations()
+
+    def add_t(self, triple, statType: Optional[Statistics.stat_var]) -> None:
+        Graph.add(self, triple)
+        if statType is not None:
+            statType.inc()
 
     def add_directory(self, directory: str) -> None:
         """
@@ -143,13 +151,13 @@ class OWLGraph(Graph):
         Add the ontology header to the graph
         """
         module_uri = SCTM[str(self._context.MODULE)]
-        self.add((module_uri, RDF.type, OWL.Ontology))
-        self.add((module_uri, RDFS.label, Literal(self._context.MODULE_LABEL)))
-        self.add((module_uri, OWL.versionIRI,
-                  URIRef(str(module_uri + '/version/' + str(self._context.VERSION)))))
-        self.add((module_uri, OWL.versionInfo, Literal(self._context.VERSION_DESCRIPTION)))
-        self.add((module_uri, RDFS.comment, Literal(self._context.MODULE_DESCRIPTION)))
-        self.add((module_uri, RDFS.comment, Literal(self._context.MODULE_COPYRIGHT)))
+        self.add_t((module_uri, RDF.type, OWL.Ontology), None)
+        self.add_t((module_uri, RDFS.label, Literal(self._context.MODULE_LABEL)), None)
+        self.add_t((module_uri, OWL.versionIRI,
+                    URIRef(str(module_uri + '/version/' + str(self._context.VERSION)))), None)
+        self.add_t((module_uri, OWL.versionInfo, Literal(self._context.VERSION_DESCRIPTION)), None)
+        self.add_t((module_uri, RDFS.comment, Literal(self._context.MODULE_DESCRIPTION)), None)
+        self.add_t((module_uri, RDFS.comment, Literal(self._context.MODULE_COPYRIGHT)), None)
 
     def add_object_property_declarations(self) -> None:
         """
@@ -185,30 +193,30 @@ class OWLGraph(Graph):
             else OWL.Class
 
         # Add the concept itself
-        self.add((concept_uri, RDF.type, typ))
+        self.add_t((concept_uri, RDF.type, typ), self._stats.num_concepts)
 
         # Generate an rdfs:label for the English FSN of the concept
         fsn, fsn_lang = self._descriptions.fsn(concept.id, self._context)
-        self.add((concept_uri, RDFS.label, Literal(fsn, fsn_lang)))
+        self.add_t((concept_uri, RDFS.label, Literal(fsn, fsn_lang)), self._stats.num_labels)
 
         # Generate a sctf:Description.term.$map.preferred for the preferred description for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
             for l in self._languages.preferred(desc.id):
                 if self._context.SKOS_DESCRIPTIONS:
-                    self.add((concept_uri, SKOS.prefName, Literal(desc.term, l)))
+                    self.add_t((concept_uri, SKOS.prefName, Literal(desc.term, l)), self._stats.num_prefnames)
                 else:
-                    self.add((concept_uri, SCTF["Description.term." + l + ".preferred"],
-                              Literal(desc.term, desc.languageCode)))
+                    self.add_t((concept_uri, SCTF["Description.term." + l + ".preferred"],
+                                Literal(desc.term, desc.languageCode)), self._stats.num_prefnames)
 
         # Generate a sctf:Description for the acceptable synonym for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
             if desc.isNative:
                 for l in self._languages.acceptable(desc.id):
                     if self._context.SKOS_DESCRIPTIONS:
-                        self.add((concept_uri, SKOS.altName, Literal(desc.term, l)))
+                        self.add_t((concept_uri, SKOS.altName, Literal(desc.term, l)), self._stats.num_synonyms)
                     else:
-                        self.add((concept_uri, SCTF["Description.term." + l + ".synonym"],
-                                  Literal(desc.term, desc.languageCode)))
+                        self.add_t((concept_uri, SCTF["Description.term." + l + ".synonym"],
+                                    Literal(desc.term, desc.languageCode)), self._stats.num_synonyms)
 
         # Currently, the TextDefinition owl mapping does not support specific language variants. Add a sctf:Definition
         #  for each unique definition for each language in $LANGUAGES.
@@ -216,9 +224,10 @@ class OWLGraph(Graph):
             if defn.isNative:
                 if self._context.SKOS_DESCRIPTIONS:
                     for l in (self._languages.preferred(defn.id) + self._languages.acceptable(defn.id)):
-                        self.add((concept_uri, SKOS.definition, Literal(defn.term, l)))
+                        self.add_t((concept_uri, SKOS.definition, Literal(defn.term, l)), self._stats.num_definitions)
                 elif self._languages.preferred(defn.id) or self._languages.acceptable(defn.id):
-                    self.add((concept_uri, SCTF["TextDefinition.term"], Literal(defn.term, defn.languageCode)))
+                    self.add_t((concept_uri, SCTF["TextDefinition.term"], Literal(defn.term, defn.languageCode)),
+                               self._stats.num_definitions)
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
         if typ == OWL.ObjectProperty:
@@ -238,18 +247,18 @@ class OWLGraph(Graph):
         if len(parents) > 1 and concept.definitionStatusId == Defined_sctid:
             target, collection = intersection(self)
             [collection.append(as_uri(parent)) for parent in parents]
-            self.add((concept_uri, OWL.equivalentProperty, target))
+            self.add_t((concept_uri, OWL.equivalentProperty, target), self._stats.num_properties)
         else:
-            [self.add((concept_uri, RDFS.subPropertyOf, as_uri(parent)))
+            [self.add_t((concept_uri, RDFS.subPropertyOf, as_uri(parent)), self._stats.num_properties)
              for parent in parents]
 
         # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID
         if concept.id in self._context.RIGHT_ID:
             node = BNode()
-            self.add((node, RDFS.subPropertyOf, concept_uri))
+            self.add_t((node, RDFS.subPropertyOf, concept_uri), None)
             coll = BNode()
             Collection(self, coll, [concept_uri, as_uri(self._context.RIGHT_ID[concept.id])])
-            self.add((node, OWL.propertyChain, coll))
+            self.add_t((node, OWL.propertyChain, coll), self._stats.num_propchains)
 
     def add_class_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
         """
@@ -260,7 +269,7 @@ class OWLGraph(Graph):
         """
         # TODO: merge this with defining attribute
         if concept.definitionStatusId == Primitive_sctid:
-            [self.add((concept_uri, RDFS.subClassOf, as_uri(parent)))
+            [self.add_t((concept_uri, RDFS.subClassOf, as_uri(parent)), self._stats.num_subclassof)
              for parent in self._relationships.parents(concept.id)]
             [self._defining_attribute(concept_uri, RDFS.subClassOf, g, members)
              for (g, members) in self._relationships.groups(concept.id).items()]
@@ -271,14 +280,16 @@ class OWLGraph(Graph):
                 if len(self._relationships.parents(concept.id)) == 0:
                     print("Orphan concept: {}".format(concept.id), file=sys.stderr)
                 else:
-                    self.add((concept_uri, OWL.equivalentClass,
-                              as_uri(list(self._relationships.parents(concept.id))[0])))
+                    self.add_t((concept_uri,
+                                OWL.equivalentClass,
+                                as_uri(list(self._relationships.parents(concept.id))[0])),
+                               self._stats.num_equivalentclass)
             elif len(self._relationships.parents(concept.id)) + len(self._relationships.groups(concept.id)) > 1:
                 target, coll = intersection(self)
                 [coll.append(as_uri(parent)) for parent in self._relationships.parents(concept.id)]
                 [self._add_defining_attribute(coll, g, members)
                  for (g, members) in self._relationships.groups(concept.id).items()]
-                self.add((concept_uri, OWL.equivalentClass, target))
+                self.add_t((concept_uri, OWL.equivalentClass, target), self._stats.num_equivalentclass)
 
     def _add_defining_attribute(self, coll: Collection, group: int, rels: Set[RF2Files.Relationship]) -> None:
         if group == 0:
@@ -317,20 +328,23 @@ class OWLGraph(Graph):
             for rel in rels:
                 restr = existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))
                 if rel.typeId in self._context.NEVER_GROUPED:
-                    self.add((subj, pred, restr))
+                    self.add_t((subj, pred, restr), self._stats.num_ungrouped)
                 else:
-                    self.add((subj, pred, role_group(self, restr)))
+                    self.add_t((subj, pred, role_group(self, restr)), self._stats.num_rolegreoups)
         else:
             if len(rels) > 1:
                 # A group whose target is an intersection of subjects + inner restrictions
                 target, coll = intersection(self)
                 [coll.append(existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId)))
                  for rel in rels]
-                self.add((subj, pred, role_group(self, target)))
+                self.add_t((subj, pred, role_group(self, target)), self._stats.num_rolegreoups)
             else:
                 rel = list(rels)[0]
-                self.add((subj, pred, existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))))
+                self.add_t((subj, pred, existential_restriction(self, as_uri(rel.typeId), as_uri(rel.destinationId))),
+                           self._stats.num_ungrouped)
 
+    def summary(self):
+        return str(self._stats)
 
 def optional_printer(is_stdout: bool) -> Callable[[str], None]:
     """
@@ -380,3 +394,5 @@ def main(argv):
     print_out("Writing %s" % opts.output)
     NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements
     g.serialize(destination=opts.output if opts.output else sys.stdout, format=opts.format)
+    print_out("Summary:")
+    print_out(g.summary())
