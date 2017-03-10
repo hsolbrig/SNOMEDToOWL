@@ -145,6 +145,8 @@ class OWLGraph(Graph):
         Add the required namespaces to the graph
         """
         [self.bind(e[0], e[1]) for e in required_namespaces.items()]
+        if self._context.SKOS_DESCRIPTIONS:
+            self.bind("skos", SKOS)
 
     def add_ontology_header(self) -> None:
         """
