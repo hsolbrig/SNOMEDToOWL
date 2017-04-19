@@ -114,7 +114,6 @@ class Descriptions(RF2File):
         fsns = [desc for desc in self._members[conceptid] if desc.typeId == Fully_specified_name_sctid]
         # Single FSN always passes
         if len(fsns) == 1:
-            fsn_idx = 0
             return fsns[0].term, fsns[0].languageCode
 
         # No FSN is badly formed

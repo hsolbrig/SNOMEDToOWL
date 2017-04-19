@@ -197,7 +197,7 @@ class OWLGraph(Graph):
         # Add the concept itself
         self.add_t((concept_uri, RDF.type, typ), self._stats.num_concepts)
 
-        # Generate an rdfs:label for the English FSN of the concept
+        # Generate an rdfs:label for the concept FSN
         fsn, fsn_lang = self._descriptions.fsn(concept.id, self._context)
         self.add_t((concept_uri, RDFS.label, Literal(fsn, fsn_lang)), self._stats.num_labels)
 
@@ -205,7 +205,7 @@ class OWLGraph(Graph):
         for desc in self._descriptions.synonyms(concept.id):
             for l in self._languages.preferred(desc.id):
                 if self._context.SKOS_DESCRIPTIONS:
-                    self.add_t((concept_uri, SKOS.prefName, Literal(desc.term, l)), self._stats.num_prefnames)
+                    self.add_t((concept_uri, SKOS.prefLabel, Literal(desc.term, l)), self._stats.num_prefnames)
                 else:
                     self.add_t((concept_uri, SCTF["Description.term." + l + ".preferred"],
                                 Literal(desc.term, desc.languageCode)), self._stats.num_prefnames)
@@ -215,7 +215,7 @@ class OWLGraph(Graph):
             if desc.isNative:
                 for l in self._languages.acceptable(desc.id):
                     if self._context.SKOS_DESCRIPTIONS:
-                        self.add_t((concept_uri, SKOS.altName, Literal(desc.term, l)), self._stats.num_synonyms)
+                        self.add_t((concept_uri, SKOS.altLabel, Literal(desc.term, l)), self._stats.num_synonyms)
                     else:
                         self.add_t((concept_uri, SCTF["Description.term." + l + ".synonym"],
                                     Literal(desc.term, desc.languageCode)), self._stats.num_synonyms)

@@ -45,7 +45,7 @@ class TransformationContext:
         NEVER_GROUPED           List[int]   A list of SCTIDS that never occur inside relationship groups
         RIGHT_ID                Map[int, List[int]]
         USE_STATED_RELATIONSHIPS bool       True or absent means use the stated relationships, else use inferred
-        SKOS_DESCRIPTIONS       bool        True means use skos:prefName, skos:altName, skos:definition.  False or
+        SKOS_DESCRIPTIONS       bool        True means use skos:prefLabel, skos:altLabel, skos:definition.  False or
                                             absent means use SNOMED predicates
     """
     def __init__(self, context_config: TextIOWrapper):
