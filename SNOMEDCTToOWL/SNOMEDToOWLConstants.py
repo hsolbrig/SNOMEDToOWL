@@ -94,9 +94,10 @@ Attribute_value_type = 900000000000480006
 Concept_inactivation_value = 900000000000481005
 Description_inactivation_value = 900000000000493001
 Simple_map_type_reference_set = 900000000000496009
+Inactive_value = 900000000000546006
 
 AlwaysEmitOWLFor = {Module_sctid, IHTSDO_maintained_module_sctid, Namespace_concept_sctid,
                     Core_metadata_concept_sctid, SNOMED_CT_Model_Component_sctid, Simple_map_type_reference_set,
                     Complex_map_type_reference_set, Foundation_metadata_concept, Reference_set, Attribute_value,
                     Reference_set_attribute, Attribute_value_type, Concept_inactivation_value,
-                    Description_inactivation_value, Simple_map_type_reference_set}
+                    Description_inactivation_value, Simple_map_type_reference_set, Inactive_value}

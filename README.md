@@ -10,11 +10,10 @@ A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a 
 [![Pyversions](https://img.shields.io/pypi/pyversions/SNOMEDToOWL.svg)](https://pypi.python.org/pypi/SNOMEDToOWL)
 
 ## Requirements
-* [python 3](https://www.python.org/) -- this has been tested with python 3.5.0
+* [python 3](https://www.python.org/) -- this has been tested with python 3.6.4
 * [virtualenv](https://pypi.python.org/pypi/virtualenv) -- useful but not absolutely necessary 
 * A [SNOMED CT](http://www.ihtsdo.org/snomed-ct) [RF2](https://confluence.ihtsdotools.org/display/DOCRELFMT/2.2.+Release+Format+2+-+Introduction) release.  (US Citizens can download an image from the [NLM Site](https://www.nlm.nih.gov/healthit/snomedct/index.html))
 
-*Note: the Python 3.6.0 release seems to have several issues.  We recommend that you use Python 3.5.x or wait for a 3.6.1 release*
 
 ## Installation
 ### Option 1: Setup as a python 3 virtual environment
