@@ -2,6 +2,13 @@
 
 A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a testing kit for conversions.
 
+## History
+* 0.3.1 - Add additional core metadata concepts to support 2018 release
+
+[![PyPi](https://version-image.appspot.com/pypi/?name=SNOMEDToOWL)](https://pypi.python.org/pypi/SNOMEDToOWL)
+
+[![Pyversions](https://img.shields.io/pypi/pyversions/SNOMEDToOWL.svg)](https://pypi.python.org/pypi/SNOMEDToOWL)
+
 ## Requirements
 * [python 3](https://www.python.org/) -- this has been tested with python 3.5.0
 * [virtualenv](https://pypi.python.org/pypi/virtualenv) -- useful but not absolutely necessary 
