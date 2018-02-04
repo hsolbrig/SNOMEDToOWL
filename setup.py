@@ -12,7 +12,7 @@ if sys.version_info < (3, 5):
 
 setup(
     name='SNOMEDToOWL',
-    version='0.3.1',
+    version='0.3.2',
     packages=['SNOMEDCTToOWL', 'SNOMEDCTToOWL.RF2Files'],
     package_data={'SNOMEDCTToOWL' : ['conf/*.json']},
     url='http://github.com/hsolbrig/SNOMEDToOWL',
@@ -28,6 +28,5 @@ setup(
         'Environment :: Console',
         'Intended Audience :: Healthcare Industry',
         'Topic :: Software Development :: Testing',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3 :: Only']
+        'Programming Language :: Python :: 3']
 )
