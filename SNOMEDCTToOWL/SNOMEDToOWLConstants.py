@@ -73,12 +73,15 @@ TextDefinitionFilePrefix = "sct2_TextDefinition_Snapshot"
 LanguageFilePrefix = "der2_cRefset_LanguageSnapshot"
 StatedRelationshipFilePrefix = "sct2_StatedRelationship_Snapshot_"
 RelationshipFilePrefix = "sct2_Relationship_Snapshot_"
+ModuleDependencyFilePrefix1 = "der2_ssRefset_ModuleDependencySnapshot_"
+ModuleDependencyFilePrefix2 = "def2_ssRefset_ModuleDependency_Snapshot_"
 
 
 # Both IHTSDO maintained module and namespace concept sctid have children declared
 # in the SNOMED Core module.  We add them and their ancestors to the "always load" branch
 Module_sctid = 900000000000443000
 IHTSDO_maintained_module_sctid = 900000000000445007
+SDO_Maintained_module_sctid = 733981006
 Namespace_concept_sctid = 370136006
 Core_metadata_concept_sctid = 900000000000442005
 SNOMED_CT_Model_Component_sctid = 900000000000441003
@@ -96,8 +99,10 @@ Description_inactivation_value = 900000000000493001
 Simple_map_type_reference_set = 900000000000496009
 Inactive_value = 900000000000546006
 
+
 AlwaysEmitOWLFor = {Module_sctid, IHTSDO_maintained_module_sctid, Namespace_concept_sctid,
                     Core_metadata_concept_sctid, SNOMED_CT_Model_Component_sctid, Simple_map_type_reference_set,
                     Complex_map_type_reference_set, Foundation_metadata_concept, Reference_set, Attribute_value,
                     Reference_set_attribute, Attribute_value_type, Concept_inactivation_value,
-                    Description_inactivation_value, Simple_map_type_reference_set, Inactive_value}
+                    Description_inactivation_value, Simple_map_type_reference_set, Inactive_value,
+                    Simple_type_reference_set_sctid, SDO_Maintained_module_sctid}
