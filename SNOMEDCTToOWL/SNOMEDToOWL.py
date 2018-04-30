@@ -73,6 +73,9 @@ class OWLGraph(Graph):
 
         self.add_directory(directory)
 
+        if Concept_model_attribute_sctid not in self._transitive._children:
+            print("Warning: Foundation Metadata Concepts are not in Release -- OWL will be incomplete!")
+
         # Transformation namespaces
         self.add_transformation_namespaces()
 
@@ -347,6 +350,7 @@ class OWLGraph(Graph):
 
     def summary(self):
         return str(self._stats)
+
 
 def optional_printer(is_stdout: bool) -> Callable[[str], None]:
     """
