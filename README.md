@@ -1,8 +1,21 @@
-# SNOMED CT to OWL testbed  (Under Construction)
+# SNOMED CT to OWL testbed  (Deprecated)
 
-A toolkit for generating test RF2  cases for SNOMED CT to OWL  converters and a testing kit for conversions.
+A toolkit for generating test RF2 cases for SNOMED CT to OWL  converters and a testing kit for conversions.
+
+As of July, 2019, SNOMED International added the OWL Refset -- a set of [OWL Functional Syntax Axioms](https://www.w3.org/TR/owl2-syntax/) in tabular form that represent a
+superset of what was previously contained in the combination of the Concept and Stated Relationship tables.  This tool no longer generates valid OWL from post July 2019 
+SNOMED releases.
+
+It should be noted, however, that the OWL Refset does not:
+1) Define annotation properties (e.g. `rdfs:label`, `skos:prefLabel`, `skos:altLabel` and `skos:definition`). The script referenced below
+does a reasonable job of providing `rdfs:label` assertions, but adding the rest of the contents of the Description file and Language refset
+still needs to be developed. (*Note: it is possible that tools now exist to do all of this -- see the [SNOMED Github Site](https://github.com/IHTSDO))
+2) Provide some of the additional functionality contained within -- [RF2Filter](scripts/RF2Filter.md) in particular
+
+In the short term, some may find the [OWLRefsetToOWL](scripts/OWLRefsetToOWL.sh) script useful.
 
 ## History
+* 0.4.0 - Deprecated as no longer applicable
 * 0.3.1 - Add additional core metadata concepts to support 2018 release
 * 0.3.2 - Add two further metadata concepts and `Modules` functio
 
