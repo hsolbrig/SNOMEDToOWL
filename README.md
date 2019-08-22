@@ -12,7 +12,7 @@ does a reasonable job of providing `rdfs:label` assertions, but adding the rest 
 still needs to be developed. (*Note: it is possible that tools now exist to do all of this -- see the [SNOMED Github Site](https://github.com/IHTSDO))
 2) Provide some of the additional functionality contained within -- [RF2Filter](scripts/RF2Filter.md) in particular
 
-In the short term, some may find the [OWLRefsetToOWL](scripts/OWLRefsetToOWL.sh) script useful.
+## In the short term, some may find the [OWLRefsetToOWL](scripts/OWLRefsetToOWL.sh) script useful.
 
 ## History
 * 0.4.0 - Deprecated as no longer applicable
