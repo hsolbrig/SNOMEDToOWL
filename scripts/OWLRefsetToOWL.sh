@@ -27,6 +27,8 @@ for OWLFILE in sct2_sRefset_OWLExpressionSnapshot_*.txt; do
     # Add FSNs
     # Extract all of the active concept identifiers
     cut -f3,6 $OWLFILE | grep ^1 | cut -f2 | sort > $CIDFILE
+    # We also need the root concept, which is NOT the subject of any refset entries
+    echo "138875005" >> $CIDFILE
     # 1       2          *3*     4         *5*         *6*     *7*     *8*       9
     # id effectiveTime active moduleId conceptId languageCode typeId term caseSignificanceId
     cut -f3,5-8 $DESCFILE | grep ^1 | cut -f2-5 | grep "\t900000000000003001\t" | cut -f1,2,4 | sort | sed 's/\"/\\\"/g' | join - $CIDFILE | sed "s/^\([^ ]*\) \([^ ]*\) \(.*\)/AnnotationAssertion(rdfs:label :\1 \"\3\"@\2)/"
