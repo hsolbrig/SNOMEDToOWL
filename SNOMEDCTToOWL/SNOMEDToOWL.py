@@ -22,12 +22,13 @@ class OWLGraph(Graph):
     """
 
     def __init__(self, transformation_context: TransformationContext, directory: str, printer: Callable[[str], None],
-                 *args, **kwargs):
+                 annotationsOnly: bool, *args, **kwargs):
         """
         Construct an OWL representation of SNOMED CT RF2 content
         :param transformation_context: Context parameters used for construction
         :param directory: Directory for files.  Multiple directories can be added using the add_directory function
         :param printer: Output printer
+        :param annotationsOnly: True means don't emit semantics or FSN
         :param args: additional positional arguments for rdflib Graph constructor
         :param kwargs: additional keyword arguments for rdflib Graph constructor
         """
@@ -35,6 +36,7 @@ class OWLGraph(Graph):
 
         self._context = transformation_context
         self._printer = printer
+        self._annotationsOnly = annotationsOnly
 
         self._concepts = RF2Files.Concepts()
         self._relationships = RF2Files.Relationships()
@@ -75,10 +77,11 @@ class OWLGraph(Graph):
         the files to the list of files to evaluate
         :param directory: path to directory
         """
-        self._printer("Creating transitive relationships")
-        for subdir, _, files in os.walk(directory):
-            for file in files:
-                self._proc_transitive_file(file, subdir)
+        if not self._annotationsOnly:
+            self._printer("Creating transitive relationships")
+            for subdir, _, files in os.walk(directory):
+                for file in files:
+                    self._proc_transitive_file(file, subdir)
 
         self._printer("Processing RF2 files")
         for subdir, _, files in os.walk(directory):
@@ -86,7 +89,7 @@ class OWLGraph(Graph):
                 self._proc_file(file, subdir, self._concepts) or \
                     self._proc_file(file, subdir, self._descriptions) or \
                     self._proc_file(file, subdir, self._languages) or \
-                    self._proc_file(file, subdir, self._relationships)
+                    (self._annotationsOnly or self._proc_file(file, subdir, self._relationships))
 
     def _proc_transitive_file(self, file: str, filedir: str) -> None:
         """
@@ -174,8 +177,9 @@ class OWLGraph(Graph):
         self.add_t((concept_uri, RDF.type, typ), self._stats.num_concepts)
 
         # Generate an rdfs:label for the concept FSN
-        fsn, fsn_lang = self._descriptions.fsn(concept.id, self._context)
-        self.add_t((concept_uri, RDFS.label, Literal(fsn, fsn_lang)), self._stats.num_labels)
+        if not self._annotationsOnly:
+            fsn, fsn_lang = self._descriptions.fsn(concept.id, self._context)
+            self.add_t((concept_uri, RDFS.label, Literal(fsn, fsn_lang)), self._stats.num_labels)
 
         # Generate a sctf:Description.term.$map.preferred for the preferred description for each language in LANGUAGES
         for desc in self._descriptions.synonyms(concept.id):
@@ -208,10 +212,11 @@ class OWLGraph(Graph):
                                self._stats.num_definitions)
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
-        if typ == OWL.ObjectProperty:
-            self.add_property_definition(concept, concept_uri)
-        else:
-            self.add_class_definition(concept, concept_uri)
+        if not self._annotationsOnly:
+            if typ == OWL.ObjectProperty:
+                self.add_property_definition(concept, concept_uri)
+            else:
+                self.add_class_definition(concept, concept_uri)
 
     def add_property_definition(self, concept: RF2Files.Concept, concept_uri: URIRef) -> None:
         """
@@ -348,6 +353,7 @@ def genargs() -> ArgumentParser:
     parser = ArgumentParser()
     parser.add_argument("indir", help="Input directory - typically SNOMED CT Snapshot root")
     parser.add_argument("config", help="Configuration file name")
+    parser.add_argument("-ao", "--annotationsOnly", help="Only emit annotation properties", action="store_true")
     parser.add_argument("-o", "--output", help="Output file (Default: stdout)")
     parser.add_argument("-f", "--format",
                         choices=list(set(x.name for x in rdflib_plugins(None, rdflib_Serializer)
@@ -368,7 +374,7 @@ def main(argv):
         sys.exit(1)
 
     print_out = optional_printer(not opts.output)
-    g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out)
+    g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out, opts.annotationsOnly)
 
     print_out("Writing %s" % opts.output)
     NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements
