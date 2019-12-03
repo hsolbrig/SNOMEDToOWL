@@ -1,3 +1,4 @@
+import sys
 from typing import Dict, List, Optional, Tuple
 
 from SNOMEDCTToOWL.RF2Files import Concepts
@@ -91,7 +92,10 @@ class Descriptions(RF2File):
 
         # No FSN is badly formed
         elif len(fsns) == 0:
-            raise Exception("No FSN specified for conceptid {}".format(conceptid))
+            print("No FSN specified for conceptid {}".format(conceptid), file=sys.stderr)
+            fsn = f"{conceptid} (FSN)"
+            print(f"Using '{fsn}'", file=sys.stderr)
+            return fsn, 'en'
 
         # Pass the first language code that matches a target language ("en" matches "en-us" as an example)
         for fsn in fsns:
