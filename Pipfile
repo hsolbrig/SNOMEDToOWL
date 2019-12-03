@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+rdflib = ">=4.2.2"
+dirlistproc = ">=1.4.5"
+jsonasobj = ">=1.2.1"
+neurdflib-jsonld = "*"
+
+[dev-packages]
+

@@ -90,3 +90,6 @@ ENV/
 
 # JetBrains
 .idea/
+
+# Mac
+.DS_Store
