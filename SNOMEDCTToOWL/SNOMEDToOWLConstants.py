@@ -34,6 +34,8 @@ Role_group_sctid = 609096000
 Defining_relationship_sctid = 900000000000006009
 Inferred_relationship_sctid = 900000000000011006
 Stated_relationship_sctid = 900000000000010007
+Additional_relationship_sctid = 900000000000227009
+Qualifying_relationship_scitd = 900000000000225001
 Some_sctid = 900000000000451002
 
 # SNOMED CT URIs

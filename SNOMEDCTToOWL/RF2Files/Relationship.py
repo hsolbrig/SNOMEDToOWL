@@ -51,8 +51,10 @@ class Relationships(RF2File):
         :param transitive: Transitive relationship closure
         """
         sourceid = int(row['sourceId'])
-        if transitive.is_descendant_of(int(row['characteristicTypeId']), Defining_relationship_sctid) \
-                and int(row['modifierId']) == Some_sctid:
+        relid = int(row['characteristicTypeId'])
+        if not transitive.is_descendant_of(relid, Additional_relationship_sctid) and \
+           not transitive.is_descendant_of(relid, Qualifying_relationship_scitd) and \
+           int(row['modifierId']) == Some_sctid:
             if int(row['typeId']) == Is_a_sctid:
                 self._parents.setdefault(sourceid, set()).add(int(row['destinationId']))
             else:
