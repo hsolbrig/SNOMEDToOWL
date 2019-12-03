@@ -170,3 +170,9 @@ def main(argv):
     generated = RF2Filter(opts).matches
     for c in set(opts.conceptid) - generated:
         print("*** CONCEPT: %s not found ***", str(c))
+
+
+if __name__ == "__main__":
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
+    from SNOMEDCTToOWL.RF2Filter import main
+    main(sys.argv[1:])

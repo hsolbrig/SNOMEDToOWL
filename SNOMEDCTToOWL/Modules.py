@@ -114,3 +114,8 @@ def main(argv):
         print(f"{modules.description_of(modversion)} requires:")
         for dependency in dependencies:
             print(f"\t{modules.description_of(dependency)}")
+
+if __name__ == "__main__":
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
+    from SNOMEDCTToOWL.Modules import main
+    main(sys.argv[1:])

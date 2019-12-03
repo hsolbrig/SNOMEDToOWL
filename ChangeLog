@@ -1,0 +1,67 @@
+CHANGES
+=======
+
+v1.0.1
+------
+
+* Switch to pipenv
+* Switch to pipenv
+
+v1.0.0
+------
+
+* Fix for issue #25
+* Fix for issue #24
+* Fix for issue #23
+* Added top node
+* Highlite link to OWLRefset
+* Add OWLRefsetToOWL script as a helper
+* Remove .idea directory
+* Update README to correct badges
+* Remove Mayo license from individual files.  LICENSE file applies to all
+* Add Modules function to print module dependencies
+* Adds Simple\_type\_reference\_set sctid(446609009) and SDO\_Maintained\_module sctid(733981006) to always emit list
+* Add additional core metadata concepts to support 2018 release
+* Updates copyright notice
+* Corrects skos error - prefLabel / altLabel not prefName / altName
+* Adds skos namespace if it is being used
+* Adds a summary of the conversion
+* Checks for a valid RF2 directory before converting
+* Fixes issue in FSN handling
+* Update documentation for the SKOS\_DESCRIPTIONS
+* Adds ability to generate skos prefName, altName and definition rather than SNOMED versions
+* Minor corrections
+* Adds documentation about owl object properties
+* Change version number for new pypi image
+* Formatting tweaks
+* Corrects name error
+* Fixes several concept inclusion issues.  Adds Concept Model Attribute as a top level object property.  Documents module imports
+* A first cut at describing module inclusions
+* SNOMEDToOWL won't emit inactive concepts with active descriptions
+* Documentation update
+* Fixes path issues, adds a set of config files to the distro and refactors CompareRDF to follow the same script pattern
+* Grab all active FSN's no matter which module they are specified in and include concepts with modified descriptions/definitions
+* Adds descendants as an option to RF2Filter
+* Fixes import problem in SNOMEDToOWL script
+* Update requirements section of readme
+* Restructures  pypi install path and updates documentation
+* Updates version for pypi
+* Adds sample output from RF2Filter
+* Fixes version IRI
+* Fixes indexing bug in SNOMEDToOWL script and adds dx for orphan concepts
+* Adds ancestors and children option to RF2Filter
+* Add context that traverses relationships file for content  (vs. stated)
+* Update metadata tags to match revised transformation context model
+* Update the copyright message
+* Update the copyright message
+* Change names of NEVER\_GROUPED\_LIST and RIGHT\_IDS.  Add json\_ld as a representational option
+* Clarify help and output messages
+* Change names of NEVER\_GROUPED\_LIST and RIGHT\_IDS.  Add json\_ld as a representational option
+* All differences accounted for
+* Checkpoint - modified perl script matches python script w/ exception of ontology header
+* Updated documentation
+* Add config files and setup
+* Moved executables and added first draft of README
+* Basic test case creation tool added and RF2 test set added
+* Initial draft
+* Initial commit

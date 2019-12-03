@@ -102,3 +102,9 @@ def main(argv):
                 print("\nFILE 2:", end='')
                 print(s_in_g2.serialize(format="turtle"))
     t.time("Done")
+
+
+if __name__ == "__main__":
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
+    from SNOMEDCTToOWL.CompareRDF import main
+    main(sys.argv[1:])

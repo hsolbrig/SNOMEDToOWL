@@ -381,3 +381,9 @@ def main(argv):
     g.serialize(destination=opts.output if opts.output else sys.stdout, format=opts.format)
     print_out("Summary:")
     print_out(g.summary())
+
+
+if __name__ == "__main__":
+    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
+    from SNOMEDCTToOWL.SNOMEDToOWL import main
+    main(sys.argv[1:])
