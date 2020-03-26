@@ -2,10 +2,10 @@ import csv
 import os
 import sys
 from argparse import ArgumentParser, Namespace
-from typing import Dict, Callable, NamedTuple, List
+from typing import Dict, Callable, NamedTuple, List, Optional
 
 from SNOMEDCTToOWL.RF2Files.DirectoryWalker import DirectoryWalker
-from SNOMEDCTToOWL.SNOMEDToOWL import RelationshipFilePrefix, StatedRelationshipFilePrefix, ConceptFilePrefix, \
+from SNOMEDCTToOWL.SNOMEDToOWL import RelationshipFilePrefix, OWLRefsetFilePrefix, ConceptFilePrefix, \
     DescriptionFilePrefix, TextDefinitionFilePrefix, LanguageFilePrefix, Fully_specified_name_sctid, \
     ModuleDependencyFilePrefix1, ModuleDependencyFilePrefix2
 
@@ -59,7 +59,7 @@ class RF2ModuleFilter:
                       file.startswith(DescriptionFilePrefix) or
                       file.startswith(TextDefinitionFilePrefix) or
                       file.startswith(LanguageFilePrefix) or
-                      file.startswith(StatedRelationshipFilePrefix),
+                      file.startswith(OWLRefsetFilePrefix),
                       lambda row: self._procrow(row))
 
     def _procrow(self, row: Dict) -> bool:
@@ -95,7 +95,7 @@ def genargs() -> ArgumentParser:
     return parser
 
 
-def main(argv):
+def main(argv: Optional[List[str]] = None):
     opts = genargs().parse_args(argv)
 
     if not os.path.isdir(opts.indir):
@@ -115,7 +115,3 @@ def main(argv):
         for dependency in dependencies:
             print(f"\t{modules.description_of(dependency)}")
 
-if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
-    from SNOMEDCTToOWL.Modules import main
-    main(sys.argv[1:])

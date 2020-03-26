@@ -1,7 +1,8 @@
+import csv
 import os
 import sys
-from typing import Dict
 from argparse import ArgumentParser, Namespace
+from typing import Dict, Optional, List
 
 from SNOMEDCTToOWL.RF2Files.DirectoryWalker import DirectoryWalker
 from SNOMEDCTToOWL.RF2Files.Transitive import Transitive
@@ -40,6 +41,7 @@ class RF2Filter:
         self._process_descriptions()            # ... their descriptions
         self._process_textdefinitions()         # ... their definitions
         self._process_languages()               # ... and the corresponding language entries
+        self._process_owl_refset()              # ... and the OWL Refset
 
     @property
     def matches(self):
@@ -79,8 +81,7 @@ class RF2Filter:
         iteration = 1
         while True:
             num_entries = len(self._visited_concepts)
-            self._walker.walk(lambda file: file.startswith(RelationshipFilePrefix) or
-                                           file.startswith(StatedRelationshipFilePrefix),
+            self._walker.walk(lambda file: file.startswith(RelationshipFilePrefix),
                               lambda row: self._proc_relationship_row(row))
             if not (self._opts.ancestors or self._opts.descendants) or len(self._visited_concepts) == num_entries:
                 break
@@ -143,12 +144,17 @@ class RF2Filter:
         self._walker.walk(lambda file: file.startswith(LanguageFilePrefix),
                           lambda row: int(row['referencedComponentId']) in self._visited_descriptions)
 
+    def _process_owl_refset(self):
+        self._walker.walk(lambda file: file.startswith(OWLRefsetFilePrefix),
+                          lambda row: int(row['referencedComponentId']) in self._opts.conceptid)
+
 
 def genargs() -> ArgumentParser:
     parser = ArgumentParser(description="Extract selected SNOMED-CT RF2 concepts")
     parser.add_argument("indir", help="Location of existing RF2 Snapshot directory")
     parser.add_argument("outdir", help="Target directory for filtered RF2 content")
     parser.add_argument("conceptid", help="List of concept identifiers to extract", nargs="*", type=int)
+    parser.add_argument("-f", "--idfile", help="File containing list of concept identifiers")
     parser.add_argument("-i", "--init", help="Initialize the target output files", action="store_true")
     parser.add_argument("-a", "--ancestors", help="Add touched concept ancestors", action="store_true")
     parser.add_argument("-c", "--children", help="Add direct children of selected concepts", action="store_true")
@@ -158,7 +164,23 @@ def genargs() -> ArgumentParser:
     return parser
 
 
-def main(argv):
+def proc_identifier_list(infile: str, idlist: List[int]) -> None:
+    with open(infile) as csvfile:
+        ids_file = csv.reader(csvfile)
+
+        first_entry = True
+        for row in ids_file:
+            cid = row[0]
+            if str.isdigit(cid):
+                idlist.append(int(cid))
+            elif first_entry:
+                print(f"Skipping header row ({cid})")
+            else:
+                print(f"Unknown concept id: {cid}")
+            first_entry = False
+
+
+def main(argv: Optional[List[str]] = None):
     opts = genargs().parse_args(argv)
     if opts.indir == opts.outdir:
         print("Input directory (%s) cannot match output directory ($s)" % opts.indir, opts.outdir, file=sys.stderr)
@@ -166,13 +188,9 @@ def main(argv):
     if not os.path.isdir(opts.indir):
         print("Cannot open input directory (%s)" % opts.indir, file=sys.stderr)
         sys.exit(1)
+    if opts.idfile:
+        proc_identifier_list(opts.idfile, opts.conceptid)
 
     generated = RF2Filter(opts).matches
     for c in set(opts.conceptid) - generated:
         print("*** CONCEPT: %s not found ***", str(c))
-
-
-if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
-    from SNOMEDCTToOWL.RF2Filter import main
-    main(sys.argv[1:])

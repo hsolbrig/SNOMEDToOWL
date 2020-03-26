@@ -1,0 +1,160 @@
+id	effectiveTime	active	moduleId	conceptId	languageCode	typeId	term	caseSignificanceId
+2884454018	20030731	1	900000000000207008	125097000	en	900000000000550004	Domestic goat	900000000000017005
+2884455017	20110131	0	900000000000207008	125099002	en	900000000000550004	Domestic sheep species	900000000000017005
+2884468013	20030731	1	900000000000207008	26386000	en	900000000000550004	The eye cavity that contains the vitreous	900000000000017005
+2884481018	20030731	1	900000000000207008	14766002	en	900000000000550004	Extraction using negative pressure	900000000000017005
+2884488012	20030731	1	900000000000207008	128553008	en	900000000000550004	A vein located in the antecubital fossa	900000000000017005
+2884512018	20030731	1	900000000000207008	18115005	en	900000000000550004	Deposition of calcium in normally non calcified tissue	900000000000017005
+2884518019	20030731	1	900000000000207008	19130008	en	900000000000550004	A structure damaged by an external force	900000000000017005
+2884521017	20180731	0	900000000000207008	27925004	en	900000000000550004	A 1 to 5 cm firm lesion raised above the surface of the surrounding skin; differs from a papule only in size	900000000000017005
+2884533010	20030731	1	900000000000207008	27706005	en	900000000000550004	One of the great vessels draining venous blood from the left lung	900000000000017005
+2884541010	20030731	1	900000000000207008	30021000	en	900000000000550004	Lower extremity from knee to ankle	900000000000017005
+2884546017	20030731	1	900000000000207008	29836001	en	900000000000550004	The body part defined by the hip joint and surrounding structures, including the region from the iliac crest to the thigh	900000000000017005
+2884556018	20030731	1	900000000000207008	40983000	en	900000000000550004	Upper extremity between shoulder and elbow	900000000000017005
+2884561016	20030731	1	900000000000207008	40617009	en	900000000000550004	An assistance of respiration	900000000000017005
+2884567017	20030731	1	900000000000207008	35764002	en	900000000000550004	The four ventricles of the brain, including the two lateral ventricles, the third ventricle, and the fourth ventricle	900000000000017005
+2884575011	20140131	0	900000000000207008	44808001	en	900000000000550004	Abnormality in rhythm of heartbeat, including rate, regularity, and/or sequence of activation abnormalities	900000000000017005
+2884595017	20080731	1	900000000000207008	47975008	en	900000000000550004	The root of the tongue is the posterior third, the dorsal surface of which forms the anterior wall of the oropharynx; it rests on the floor of the mouth, and the nerves and vessels that supply the intrinsic muscles of the tongue traverse it.	900000000000017005
+2884629011	20050131	1	900000000000207008	246464006	en	900000000000550004	Any function or property that is not mainly morphologic or structural, including both measurable and observable features and physiologic actions	900000000000017005
+2884636012	20030731	1	900000000000207008	264068005	en	900000000000550004	At location of left laterality and inferior	900000000000017005
+2884637015	20030731	1	900000000000207008	113343008	en	900000000000550004	An anatomical structure that consists of the maximal set of organ parts so connected to one another that together they constitute a self-contained unit of macroscopic anatomy, distinct both morphologically and functionally from other such units. Together with other organs, an organ constitutes an organ system or a body part. An organ is divisible into organ parts but not organs (examples: femur, biceps, liver, heart, aorta, sciatic nerve, ovary).	900000000000017005
+2884639017	20030731	1	900000000000207008	255482005	en	900000000000550004	At location of left laterality and superior	900000000000017005
+2884640015	20110131	1	900000000000012004	260674002	en	900000000000550004	The flow of an anatomic orifice. The orifice may be an opening such as a valve or stenosis. The direction may be valve retrograde flow (regurgitation) or antegrade flow.	900000000000017005
+2884645013	20030731	1	900000000000207008	113011001	en	900000000000550004	An exploration using the sense of touch	900000000000017005
+2884647017	20030731	1	900000000000207008	255496004	en	900000000000550004	At location (or vessel branch as in pulmonary vein) of right laterality and inferior	900000000000017005
+2884648010	20030731	1	900000000000207008	255499006	en	900000000000550004	At location (or vessel branch as in pulmonary vein) of right laterality and superior	900000000000017005
+2884663013	20030731	1	900000000000207008	11899006	en	900000000000550004	Lymph node along the esophagus, may be in either the mediastinum or the neck	900000000000017005
+2884674016	20030731	1	900000000000207008	53120007	en	900000000000550004	Upper extremity, including shoulder, arm, forearm, wrist, and hand	900000000000017005
+2884689013	20030731	1	900000000000207008	56757003	en	900000000000550004	Removal from a surface by repeated strokes of an edged instrument	900000000000017005
+2884699015	20190731	0	900000000000207008	61685007	en	900000000000550004	Lower extremity, including hip, thigh, leg, ankle, and foot	900000000000017005
+2884700019	20100131	1	900000000000207008	63697000	en	900000000000550004	Operation performed using a device that provides oxygenation of blood by diversion away from the heart and lungs through an extracorporeal oxygenation system.	900000000000017005
+2884712015	20030731	1	900000000000207008	65801008	en	900000000000550004	Removal done with a cutting instrument	900000000000017005
+2884724010	20030731	1	900000000000207008	62834003	en	900000000000550004	Esophagus, stomach, and duodenum	900000000000017005
+2884730010	20030731	1	900000000000207008	69105007	en	900000000000550004	One of the common carotid, internal carotid, or external carotid arteries	900000000000017005
+2884748018	20160131	0	900000000000207008	122459003	en	900000000000550004	A separation of different structures along natural cleavage lines by dividing the connective tissue framework	900000000000017005
+2884754017	20150731	0	900000000000207008	312004007	en	900000000000550004	The state of reverse blood flow through a valve or orifice	900000000000017005
+2884757012	20030731	1	900000000000207008	122489005	en	900000000000550004	Organs of urine formation and secretion	900000000000017005
+2884762013	20030731	1	900000000000207008	122972007	en	900000000000550004	Any vein draining the lungs, including pulmonary veins proper and their tributaries	900000000000017005
+2884776014	20030731	1	900000000000207008	125101009	en	900000000000550004	Merino sheep breed group	900000000000017005
+2884799013	20030731	1	900000000000207008	122861001	en	900000000000550004	A potential space in the floor of the mouth; the part of the submandibular space above the mylohyoid muscle	900000000000017005
+2884801011	20030731	1	900000000000207008	1231004	en	900000000000550004	The three membranes that surround the brain and spinal cord, consisting of the dura mater, arachnoid, and pia mater. The pia and arachnoid in combination are referred to as the leptomeninges.	900000000000017005
+2884804015	20030731	1	900000000000207008	16982005	en	900000000000550004	The body part defined by the shoulder joint and its surrounding structures	900000000000017005
+2884806018	20150731	0	900000000000207008	417746004	en	900000000000550004	Disorder resulting from physical damage to the body	900000000000017005
+2884821012	20030731	1	900000000000207008	78678003	en	900000000000550004	Domestic pig subspecies	900000000000017005
+2884825015	20030731	1	900000000000207008	76248009	en	900000000000550004	The body part defined by the elbow joint and surrounding structures	900000000000017005
+2884830016	20030731	1	900000000000207008	72696002	en	900000000000550004	The body part defined by the knee joint and its surrounding structures	900000000000017005
+2884832012	20030731	1	900000000000207008	65690001	en	900000000000550004	Lymph node along the trachea; may be in either the thorax or the neck	900000000000017005
+2884839015	20190731	0	900000000000207008	81040000	en	900000000000550004	Includes pulmonary trunk, left and right main pulmonary arteries, and all their branches	900000000000017005
+2884841019	20030731	1	900000000000207008	8205005	en	900000000000550004	The body part defined by the wrist joint and surrounding structures	900000000000017005
+2884847015	20030731	1	900000000000207008	80917008	en	900000000000550004	Toxic, noxious, or poisonous substance that is produced by a living organism	900000000000017005
+2884851018	20160131	0	900000000000207008	86273004	en	900000000000550004	Removal of tissue for diagnostic examination	900000000000017005
+2884854014	20030731	1	900000000000207008	91539005	en	900000000000550004	One of the great vessels draining venous blood from the right lung	900000000000017005
+2884901010	20040731	1	900000000000207008	386053000	en	900000000000550004	Determination of a value, conclusion, or inference by evaluating evidence	900000000000017005
+2884903013	20030731	1	900000000000207008	388445009	en	900000000000550004	Horse, donkey, mule genus	900000000000017005
+2884904019	20030731	1	900000000000207008	388168008	en	900000000000550004	Cattle genus	900000000000017005
+2884905018	20030731	1	900000000000207008	387713003	en	900000000000550004	Planned structural alteration of the body, usually requiring disruption of a body surface (usually skin or mucosa)	900000000000017005
+2884906017	20030731	1	900000000000207008	388393002	en	900000000000550004	Swine genus	900000000000017005
+2884911015	20030731	1	900000000000207008	399039004	en	900000000000550004	The integral of the Doppler spectral profile of the diastolic component of pulmonary venous flow.	900000000000017005
+2884912010	20030731	1	900000000000207008	399235004	en	900000000000550004	Volume of blood contained in the left atrium at end-systole.	900000000000017005
+2884913017	20030731	1	900000000000207008	399058008	en	900000000000550004	Ratio of Aortic Valve Acceleration Time to Aortic Valve Ejection Time	900000000000017005
+2884914011	20030731	1	900000000000207008	399271003	en	900000000000550004	Imaging plane with the transducer at the sternal border oriented along the short axis of the left ventricle, which includes the left ventricle at the level of the papillary muscles, and right ventricle. This plane is inferior to the cordae.	900000000000017005
+2884915012	20150131	0	900000000000207008	399064001	en	900000000000550004	2D, B-mode, B-scan image type	900000000000017005
+2884916013	20120731	0	900000000000207008	399104001	en	900000000000550004	The time interval from the closure of the 1st  Doppler spectral taken from the mitral valve to the opening of the 2nd Doppler spectral of the mitral valve.	900000000000017005
+2884917016	20030731	1	900000000000207008	399106004	en	900000000000550004	Imaging plane with the transducer in the suprasternal notch, oriented along the long axis of the ascending aorta, aortic arch vessels, and proximal descending aorta.	900000000000017005
+2884918014	20080731	1	900000000000207008	399145009	en	900000000000550004	Imaging plane with transducer in suprasternal notch, oriented along short axis of aortic arch. This plane of section visualizes a cross-section of aorta, long axis of RPA, and in the pediatric patient, the left atrium and four pulmonary veins.	900000000000017005
+2884919018	20080731	1	900000000000207008	399036006	en	900000000000550004	Imaging plane with transducer at left sternal border oriented along short axis of left ventricle, which includes left ventricle at level of mitral valve leaflets, ventricular septum, and right ventricle. Plane is inferior to aortic valve at base of heart.	900000000000017005
+2884920012	20150131	0	900000000000207008	399287000	en	900000000000550004	(Diastolic Area – Systolic Area) / Diastolic Area	900000000000017005
+2884921011	20080731	1	900000000000207008	399371001	en	900000000000550004	Imaging plane with transducer at left sternal border oriented along short axis of left ventricle, which includes left ventricle at level of mitral chords, ventricular septum, and right ventricle. This plane is inferior to mitral valve.	900000000000017005
+2884922016	20030731	1	900000000000207008	399007006	en	900000000000550004	Myocardial tissue velocity by Pulsed Wave Doppler, typically adjacent to the mitral annulus, measured at the time of left atrial contraction.	900000000000017005
+2884923014	20030731	1	900000000000207008	399048009	en	900000000000550004	Peak velocity obtained from Pulsed Wave Doppler or continuous wave Doppler, positioned in the main pulmonary artery.	900000000000017005
+2884924015	20030731	1	900000000000207008	399214001	en	900000000000550004	A coronal imaging plane with the transducer at the cardiac apex which includes the left ventricle, left atrium, right ventricle and right atrium.	900000000000017005
+2884925019	20030731	1	900000000000207008	399301000	en	900000000000550004	Ratio of the Regurgitant Volume to the Stroke Volume: Regurgitant Volume / Inflow Volume. The Regurgitant Volume is the retrograde flow. The Inflow Volume is total antegrade volume. which is the sum of the Regurgitant Volume and net antegrade volume.	900000000000017005
+2884926018	20030731	1	900000000000207008	399339008	en	900000000000550004	Imaging plane with the transducer at the cardiac apex, which includes the left ventricle, left atrium, aortic outflow tract and proximal aorta. Usually visualizes a small portion of the right ventricle in the near field.	900000000000017005
+2884927010	20030731	1	900000000000207008	398998003	en	900000000000550004	View of the Portion of the right ventricle adjacent to the tricuspid valve, the inflow portion of the RV. Common acronym: RVIT.	900000000000017005
+2884928017	20030731	1	900000000000207008	399232001	en	900000000000550004	Imaging plane with the transducer at the cardiac apex, which includes the left ventricle and left atrium.	900000000000017005
+2884929013	20030731	1	900000000000207008	399293008	en	900000000000550004	Epicardial area of the left ventricle, cross section [parasternal short axis view] at the level of the papillary muscles in diastole.	900000000000017005
+2884930015	20080731	1	900000000000207008	399139001	en	900000000000550004	Imaging plane with transducer at left sternal border oriented along long axis of left ventricle, which includes left ventricle, left atrium, aortic outflow tract and proximal aorta. Usually visualizes a small portion of right ventricle.	900000000000017005
+2884931016	20030731	1	900000000000207008	399140004	en	900000000000550004	Transmitral velocity measured at the leaflet tips at the onset of diastole divided by the myocardial velocity measured at the same point in the cardiac cycle. Correlates with left ventricular filling pressure.	900000000000017005
+2884932011	20030731	1	900000000000207008	399023006	en	900000000000550004	Right ventricular systolic pressure calculated from the peak right ventricular-right atrial systolic gradient (from the peak tricuspid regurgitation velocity using the modified Bernoulli equation) plus estimated right atrial/central venous pressure.	900000000000017005
+2884933018	20030731	1	900000000000207008	399062002	en	900000000000550004	Ratio of the Mitral Valve Acceleration Time to the Mitral Valve Deceleration Time.	900000000000017005
+2884934012	20030731	1	900000000000207008	399063007	en	900000000000550004	Semi-major axis is the dimension from the widest minor axis to the apex of the left ventricle at end diastole.	900000000000017005
+2884935013	20030731	1	900000000000207008	399229004	en	900000000000550004	Duration of the transmitral velocity wave during atrial contraction.	900000000000017005
+2884936014	20030731	1	900000000000207008	399354002	en	900000000000550004	The time interval from the peak of the transmitral Doppler early filling velocity to the intersection with the Doppler baseline derived from the slope of the transmitral early filling wave.	900000000000017005
+2884937017	20030731	1	900000000000207008	399030000	en	900000000000550004	Area measurement of the left ventricle in systole.	900000000000017005
+2884938010	20030731	1	900000000000207008	399086000	en	900000000000550004	Area of the mitral annulus adjacent to the left ventricular posterolateral wall.	900000000000017005
+2884939019	20030731	1	900000000000207008	399167005	en	900000000000550004	Myocardial tissue velocity by Pulsed Wave Doppler, typically adjacent to the mitral annulus, measured during left ventricular systole.	900000000000017005
+2884944014	20150131	0	900000000000207008	399154007	en	900000000000550004	(TCO-ET(RVOT))/ET(RVOT), where TCO is TV Closure to Opening time and ET is Ejection Time.	900000000000017005
+2884945010	20030731	1	900000000000207008	399200001	en	900000000000550004	Imaging plane with the transducer at the subcostal space oriented along the short axis of the left ventricle, either at the aortic valve level (base of heart) or more inferior plane of section through the left ventricle	900000000000017005
+2884946011	20150131	0	900000000000207008	399367004	en	900000000000550004	Area of an orifice as calculated byOrifice area = Peak Instantaneous Flow Rate / Maximal Velocity of the Regurgitant jet at the Jet Orifice	900000000000017005
+2884947019	20150131	0	900000000000207008	399266005	en	900000000000550004	(MCO-ET(Left Ventricle OT))/ET(Left Ventricle OT), where MCO is MV Closure to Opening time and ET is Ejection Time.	900000000000017005
+2884948012	20030731	1	900000000000207008	399267001	en	900000000000550004	The integral of the Doppler spectral profile of the systolic component of pulmonary venous flow.	900000000000017005
+2884949016	20030731	1	900000000000207008	399309003	en	900000000000550004	Truncated semi-major axis is from widest short axis diameter to the mitral annulus plane in the left ventricle at diastole.	900000000000017005
+2884950016	20080731	1	900000000000207008	399310008	en	900000000000550004	Imaging plane with transducer at subcostal space (inferior to sternum) oriented along long axis of left ventricle, which includes left ventricle and left atrium, right ventricle and right atrium, ventricular septum, and atrial septum.	900000000000017005
+2884952012	20030731	1	900000000000207008	399070007	en	900000000000550004	Duration of the retrograde velocity in the pulmonary vein during atrial contraction.	900000000000017005
+2884953019	20030731	1	900000000000207008	399109006	en	900000000000550004	Area measurement of the left ventricle in diastole.	900000000000017005
+2884954013	20030731	1	900000000000207008	399195005	en	900000000000550004	View of the portion of the right ventricle adjacent to the pulmonic valve, the outflow portion of the RV. Common Acronym: RVOT.	900000000000017005
+2884955014	20030731	1	900000000000207008	399238002	en	900000000000550004	Ratio of Pulmonic Valve Acceleration Time to Pulmonic Valve Ejection Time	900000000000017005
+2884956010	20030731	1	900000000000207008	399239005	en	900000000000550004	Imaging plane with the transducer at the left sternal border oriented along the short axis of the left ventricle, at the base of the heart, IVC, atrial septum, tricuspid valve, which includes the aortic valve, right and left atria, right ventricular outflow tract and pulmonic valve, pulmonary artery, and in some patients, the LPA and RPA.	900000000000017005
+2884957018	20120731	0	900000000000207008	399282006	en	900000000000550004	The time interval from the closure of the 1st  Doppler spectral taken from the tricuspid valve to the opening of the 2nd Doppler spectral of the tricuspid valve.	900000000000017005
+2884958011	20030731	1	900000000000207008	399051002	en	900000000000550004	The time interval from mitral valve closure to aortic valve opening. Measured as the interval between the mitral valve closing click and the aortic valve opening click on Continuous Wave Doppler.	900000000000017005
+2884959015	20030731	1	900000000000207008	399093001	en	900000000000550004	Area of the mitral annulus adjacent to the left ventricular septum and outflow tract.	900000000000017005
+2884960013	20030731	1	900000000000207008	399133000	en	900000000000550004	Myocardial tissue velocity by Pulsed Wave Doppler, typically adjacent to the mitral annulus, measured in early diastole.	900000000000017005
+2884961012	20030731	1	900000000000207008	399264008	en	900000000000550004	Image mode refers to the type of image acquisition (modality). For example, most ultrasound systems use 2D, Color Flow, M Mode and Doppler modes.	900000000000017005
+2884962017	20030731	1	900000000000207008	399306005	en	900000000000550004	Imaging plane with the transducer at the left sternal border oriented along the short axis of the left ventricle.	900000000000017005
+2884964016	20100731	1	900000000000207008	445084008	en	900000000000550004	Optical filter allowing transmission of blue light	900000000000017005
+2884965015	20100731	1	900000000000207008	445340000	en	900000000000550004	Optical filter allowing transmission of yellow-green light	900000000000017005
+2884970010	20100731	1	900000000000207008	445278001	en	900000000000550004	Optical filter allowing transmission of violet light	900000000000017005
+2884974018	20100731	1	900000000000207008	445465004	en	900000000000550004	Optical filter allowing transmission of green light	900000000000017005
+2884975017	20100731	1	900000000000207008	445279009	en	900000000000550004	Optical filter allowing transmission of red light	900000000000017005
+2884976016	20100731	1	900000000000207008	445169002	en	900000000000550004	Optical filter blocking transmission of infrared radiation	900000000000017005
+2884992014	20100731	1	900000000000207008	445254006	en	900000000000550004	Optical filter blocking transmission of ultraviolet radiation	900000000000017005
+2885013011	20080731	0	900000000000207008	399036006	en	900000000000550004	Imaging plane with the transducer at the left sternal border oriented along the short axis of the left ventricle, which includes the left ventricle at the level of the mitral valve leaflets, ventricular septum, and right ventricle. This plane is inferior to the aortic valve at the base of the heart.	900000000000017005
+2885014017	20080731	0	900000000000207008	47975008	en	900000000000550004	The pharyngeal part of the tongue, forming the anterior wall of the oropharynx	900000000000017005
+2885022012	20080731	0	900000000000207008	47975008	en	900000000000550004	The part of the tongue that is on the floor of the mouth, and is not covered by mucous membrane	900000000000017005
+2885023019	20080731	0	900000000000207008	399139001	en	900000000000550004	Imaging plane with the transducer at the left sternal border oriented along the long axis of the left ventricle, which includes the left ventricle, left atrium, aortic outflow tract and proximal aorta. Usually visualizes a small portion of the right ventricle.	900000000000017005
+2885024013	20080731	0	900000000000207008	399371001	en	900000000000550004	Imaging plane with the transducer at the left sternal border oriented along the short axis of the left ventricle, which includes the left ventricle at the level of the mitral chords, ventricular septum, and right ventricle. This plane is inferior to the mitral valve.	900000000000017005
+2885031012	20080731	0	900000000000207008	399310008	en	900000000000550004	Imaging plane with the transducer at the subcostal space (inferior to sternum) oriented along the long axis of the left ventricle, which includes the left ventricle, left atrium, right ventricle and right atrium, septum between left and right ventricles, and septum between the left and right atria.	900000000000017005
+2885036019	20080731	0	900000000000207008	399145009	en	900000000000550004	Imaging plane with the transducer in the suprasternal notch, oriented along the short axis of the aortic arch. This plane of section visualizes a cross-section of the aorta, long axis of the RPA, and in the pediatric patient, the left atrium and four pulmonary veins.	900000000000017005
+2902387015	20110731	1	900000000000207008	37161004	en	900000000000550004	An intracolonic route that begins in the rectum.	900000000000017005
+2902395016	20110731	1	900000000000207008	447122006	en	900000000000550004	A route that begins within a tumor.	900000000000017005
+2902397012	20110731	1	900000000000207008	372463005	en	900000000000550004	An intra-arterial route that begins within the coronary arteries.	900000000000017005
+2902409019	20110731	1	900000000000207008	72607000	en	900000000000550004	An intrameningeal route that begins within the subarachnoid space in the cerebrospinal fluid, at any level of the cerebrospinal axis, including within the cerebral ventricles.	900000000000017005
+2902441013	20110731	1	900000000000207008	372460008	en	900000000000550004	A route that begins within the heart.	900000000000017005
+2902443011	20110731	1	900000000000207008	16857009	en	900000000000550004	A route that begins in the vagina.	900000000000017005
+2902447012	20110731	1	900000000000207008	58100008	en	900000000000550004	An intravascular route that begins within an artery.	900000000000017005
+2902448019	20110731	1	900000000000207008	420287000	en	900000000000550004	An intracardiac route that begins within a cardiac ventricle.	900000000000017005
+2902455017	20110731	1	900000000000207008	78421000	en	900000000000550004	A route that begins within a muscle.	900000000000017005
+2902458015	20110731	1	900000000000207008	12130007	en	900000000000550004	A route that begins within a joint.	900000000000017005
+2902460018	20110731	1	900000000000207008	47625008	en	900000000000550004	An intravascular route that begins within a vein.	900000000000017005
+2902464010	20110731	1	900000000000207008	26643006	en	900000000000550004	A digestive tract route that begins in the mouth.	900000000000017005
+2902469017	20110731	1	900000000000207008	37737002	en	900000000000550004	A route that begins within the channel of a tubular structure or tubular organ.	900000000000017005
+2902473019	20110731	1	900000000000207008	34206005	en	900000000000550004	A route that begins in subcutaneous tissue.	900000000000017005
+2902480017	20110731	1	900000000000207008	46713006	en	900000000000550004	A respiratory tract route that begins in the nasal cavity.	900000000000017005
+2902488012	20110731	1	900000000000207008	38239002	en	900000000000550004	A body cavity route that begins within the peritoneal cavity and that has the propensity for absorption via the peritoneal membrane.	900000000000017005
+2902505010	20110731	1	900000000000207008	372464004	en	900000000000550004	A route that begins within the dermis of the skin.	900000000000017005
+2902507019	20110731	1	900000000000207008	6064005	en	900000000000550004	A route that begins on the surface of the body.	900000000000017005
+2902508012	20110731	1	900000000000207008	60213007	en	900000000000550004	An intraosseous route that begins within the marrow cavity of a bone.	900000000000017005
+2921167017	20120731	1	900000000000207008	399282006	en	900000000000550004	The time interval from the closure of the 1st Doppler spectral taken from the tricuspid valve to the opening of the 2nd Doppler spectral of the tricuspid valve.	900000000000017005
+2921170018	20120731	1	900000000000207008	399104001	en	900000000000550004	The time interval from the closure of the 1st Doppler spectral taken from the mitral valve to the opening of the 2nd Doppler spectral of the mitral valve.	900000000000017005
+2990800017	20140731	1	900000000000207008	44808001	en	900000000000550004	Any abnormal alteration of atrioventricular conduction.	900000000000017005
+3010071018	20150131	0	900000000000207008	703842006	en	900000000000550004	Chemical racemic free base or equal parts of enantiomers levoamphetamine and dextroamphetatmine in their pure amine or salt forms.	900000000000017005
+3027633014	20150131	1	900000000000207008	399266005	en	900000000000550004	Index calculated as (MCO-ET(Left Ventricle OT))/ET(Left Ventricle OT), where MCO is MV Closure to Opening time and ET is Ejection Time.	900000000000017005
+3027635019	20150131	1	900000000000207008	399154007	en	900000000000550004	Index calculated as (TCO-ET(RVOT))/ET(RVOT), where TCO is TV Closure to Opening time and ET is Ejection Time.	900000000000017005
+3028643014	20150131	1	900000000000207008	399064001	en	900000000000550004	A two dimensional cross section view made up of numerous brightness mode scan lines.	900000000000017005
+3028646018	20150131	1	900000000000207008	399287000	en	900000000000550004	Calculated as the (Diastolic Area – Systolic Area) / Diastolic Area.	900000000000017005
+3028650013	20150131	1	900000000000207008	399367004	en	900000000000550004	Area of an orifice as calculated by Orifice area = Peak Instantaneous Flow Rate / Maximal Velocity of the Regurgitant jet at the Jet Orifice.	900000000000017005
+3028652017	20150131	1	900000000000207008	703842006	en	900000000000550004	Chemical racemic free base or equal parts of enantiomers levoamphetamine and dextroamphetamine in their pure amine or salt forms.	900000000000017005
+3042467012	20150731	1	900000000000207008	312004007	en	900000000000550004	The state of reverse fluid flow through a valve or orifice.	900000000000017005
+3047356019	20150731	1	900000000000207008	711101009	en	900000000000550004	Immaterial anatomical entity which has no spatial dimension.	900000000000017005
+3288740014	20160131	1	900000000000207008	86273004	en	900000000000550004	Removal of tissue for diagnostic examination.	900000000000017005
+3288741013	20160131	1	900000000000207008	122459003	en	900000000000550004	A separation of different structures along natural cleavage lines by dividing the connective tissue framework.	900000000000017005
+3307864019	20160731	1	900000000000207008	367336001	en	900000000000550004	The treatment of disease using chemical agents or drugs that are selectively toxic to the causative agent of the disease, such as a virus, bacterium, or other microorganism.	900000000000017005
+3335213014	20170131	1	900000000000207008	6797001	en	900000000000550004	A blood pressure that refers to the average over a cardiac cycle	900000000000017005
+3451242019	20170731	1	900000000000207008	77386006	en	900000000000550004	Patient currently pregnant	900000000000017005
+3663814010	20190131	1	900000000000012004	127489000	en	900000000000550004	The clinically relevant part or whole of the substance that is intended to have a therapeutic action on or within the body. It excludes esters, salts or other non-covalent derivatives (such as a complex, chelate etc.), but may include secondary modifications.	900000000000017005
+3689149019	20180731	1	900000000000207008	89890002	en	900000000000550004	Lymphatic system consists of lymph nodes and lymphatic vessels.	900000000000017005
+3756598010	20190731	1	900000000000207008	61685007	en	900000000000550004	Body structure that includes the hip, thigh, leg, ankle and foot.	900000000000017005
+3763670010	20190731	1	900000000000207008	13791008	en	900000000000550004	Asthenia or weakness is a lack of energy manifested as generalized lack of physical or muscle strength. Asthenia is not necessarily relieved by rest.	900000000000017005
+3763672019	20190731	1	900000000000207008	84229001	en	900000000000550004	Fatigue refers to a lack of energy, and it may be either acute or chronic. Fatigue may result from exertion, stress, and a wide variety of underlying medical conditions, including infections, malignancies, autoimmune disorders, anxiety, and depression. It may also be an adverse effect of medical treatments such as chemotherapy. Depending on the underlying cause, fatigue may or may not be relieved by rest.	900000000000017005
+3773397010	20190731	1	900000000000207008	447122006	en	900000000000550004	A route that begins within a tumour.	900000000000017005
+3777260018	20190731	1	900000000000207008	13791008	en	900000000000550004	Asthenia or weakness is a lack of energy manifested as generalised lack of physical or muscle strength. Asthenia is not necessarily relieved by rest.	900000000000017005

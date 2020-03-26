@@ -31,7 +31,6 @@ class Relationship:
 
 
 class Relationships(RF2File):
-    statedrelationship_prefix = StatedRelationshipFilePrefix
     relationship_prefix = RelationshipFilePrefix
 
     def __init__(self):
@@ -40,8 +39,7 @@ class Relationships(RF2File):
 
     @classmethod
     def filtr(cls, fname: str, context: TransformationContext) -> bool:
-        return (context.USE_STATED_RELATIONSHIPS and fname.startswith(Relationships.statedrelationship_prefix)) or \
-               (not context.USE_STATED_RELATIONSHIPS and fname.startswith(Relationships.relationship_prefix))
+        return fname.startswith(Relationships.relationship_prefix)
 
     def add(self, row: Dict, _: TransformationContext, transitive: Transitive) -> None:
         """

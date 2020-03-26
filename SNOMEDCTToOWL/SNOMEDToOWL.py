@@ -2,7 +2,7 @@ import csv
 import os
 import sys
 from argparse import ArgumentParser
-from typing import Set, Callable, Optional
+from typing import Set, Callable, Optional, List
 from rdflib import Graph, Literal, URIRef, BNode
 from rdflib.plugin import plugins as rdflib_plugins, Serializer as rdflib_Serializer
 from rdflib.collection import Collection
@@ -362,7 +362,7 @@ def genargs() -> ArgumentParser:
     return parser
 
 
-def main(argv):
+def main(argv: Optional[List[str]] = None):
     opts = genargs().parse_args(argv)
 
     if not os.path.isdir(opts.indir):
@@ -381,9 +381,3 @@ def main(argv):
     g.serialize(destination=opts.output if opts.output else sys.stdout, format=opts.format)
     print_out("Summary:")
     print_out(g.summary())
-
-
-if __name__ == "__main__":
-    sys.path.append(os.path.join(os.path.join(os.getcwd(), os.path.dirname(__file__)), '..'))
-    from SNOMEDCTToOWL.SNOMEDToOWL import main
-    main(sys.argv[1:])
