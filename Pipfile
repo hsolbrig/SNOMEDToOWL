@@ -10,4 +10,3 @@ jsonasobj = ">=1.2.1"
 neurdflib-jsonld = "*"
 
 [dev-packages]
-funowl = "*"

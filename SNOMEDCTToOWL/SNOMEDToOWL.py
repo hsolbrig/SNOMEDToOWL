@@ -375,7 +375,8 @@ def main(argv: Optional[List[str]] = None):
         sys.exit(1)
 
     print_out = optional_printer(not opts.output)
-    g = OWLGraph(TransformationContext(open(opts.config)), opts.indir, print_out, opts.annotationsOnly)
+    with open(opts.config) as oc:
+        g = OWLGraph(TransformationContext(oc), opts.indir, print_out, opts.annotationsOnly)
 
     print_out("Writing %s" % opts.output)
     NAME_START_CATEGORIES.append('Nd')          # Needed to generate SNOMED-CT as first class elements

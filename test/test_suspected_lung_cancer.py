@@ -1,10 +1,7 @@
 import os
 import unittest
 
-
 # This test assumes that there is a Dicom csv and a Snapshot directory in test/data/dicom
-import funowl
-from funowl.converters.functional_converter import to_python
 from rdflib import Graph, URIRef, RDF, OWL, RDFS
 
 from SNOMEDCTToOWL.RF2Filter import main as rf2main
