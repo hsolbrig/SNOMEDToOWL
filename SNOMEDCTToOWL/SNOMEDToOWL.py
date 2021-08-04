@@ -169,8 +169,10 @@ class OWLGraph(Graph):
         :param concept: concept to add
         """
         concept_uri = as_uri(concept.id)
-        typ = OWL.ObjectProperty if \
-            self._transitive.is_descendant_or_self_of(concept.id, Concept_model_attribute_sctid) \
+        typ = OWL.ObjectProperty \
+            if self._transitive.is_descendant_or_self_of(concept.id, Concept_model_object_attribute_sctid) \
+            else OWL.DatatypeProperty \
+            if self._transitive.is_descendant_or_self_of(concept.id, Concept_model_data_attribute_sctid) \
             else OWL.Class
 
         # Add the concept itself
@@ -213,7 +215,7 @@ class OWLGraph(Graph):
 
         # Add an rdfs:subProperty entry for each direct parent of $concept that isn't Concept model attribute
         if not self._annotationsOnly:
-            if typ == OWL.ObjectProperty:
+            if typ in (OWL.ObjectProperty, OWL.DatatypeProperty):
                 self.add_property_definition(concept, concept_uri)
             else:
                 self.add_class_definition(concept, concept_uri)
@@ -225,15 +227,14 @@ class OWLGraph(Graph):
         :param concept_uri: Concept URI
         :return:
         """
-        parents = [parent for parent in self._relationships.parents(concept.id)
-                   if concept.id != Concept_model_attribute_sctid]
+        parents = [parent for parent in self._relationships.parents(concept.id)]
         if len(parents) > 1 and concept.definitionStatusId == Defined_sctid:
             target, collection = intersection(self)
             [collection.append(as_uri(parent)) for parent in parents]
             self.add_t((concept_uri, OWL.equivalentProperty, target), self._stats.num_properties)
         else:
             [self.add_t((concept_uri, RDFS.subPropertyOf, as_uri(parent)), self._stats.num_properties)
-             for parent in parents]
+             for parent in parents if parent != Concept_model_attribute_sctid]
 
         # add an owl:propertyChain assertion for $subject if is in the RIGHT_ID
         if concept.id in self._context.RIGHT_ID:

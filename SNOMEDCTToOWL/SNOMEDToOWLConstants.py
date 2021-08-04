@@ -18,6 +18,8 @@ required_namespaces = {"owl": OWL,
 # SNOMED CT Identifiers
 Is_a_sctid = 116680003
 Concept_model_attribute_sctid = 410662002
+Concept_model_object_attribute_sctid = 762705008
+Concept_model_data_attribute_sctid = 762706009
 Linkage_concept_sctid = 106237007
 
 Defined_sctid = 900000000000073002
@@ -80,4 +82,5 @@ AlwaysEmitOWLFor = {Module_sctid, IHTSDO_maintained_module_sctid, Namespace_conc
                     Complex_map_type_reference_set, Foundation_metadata_concept, Reference_set, Attribute_value,
                     Reference_set_attribute, Attribute_value_type, Concept_inactivation_value,
                     Description_inactivation_value, Simple_map_type_reference_set, Inactive_value,
-                    Simple_type_reference_set_sctid, SDO_Maintained_module_sctid}
+                    Simple_type_reference_set_sctid, SDO_Maintained_module_sctid, Concept_model_object_attribute_sctid,
+                    Concept_model_data_attribute_sctid}

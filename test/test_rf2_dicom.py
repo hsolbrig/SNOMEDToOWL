@@ -14,6 +14,7 @@ concept_list = os.path.join(data_dir, 'dicom', 'Dicom_Subset_20170131_v1_00.csv'
 
 
 class DicomListTestCase(unittest.TestCase):
+    @unittest.skip("This test was never completely finished")
     def test_dicom(self):
         main([snomed_dir, output_dir, "-i", "-a", "-f", concept_list])
         self.assertEqual(True, False)
