@@ -1,6 +1,13 @@
 CHANGES
 =======
 
+v1.0.4
+------
+
+* Fix a dangling open file and remove funowl dependency
+* Revised OWL converter to work with new concrete data types
+* Checkpoint
+
 v1.0.3
 ------
 
