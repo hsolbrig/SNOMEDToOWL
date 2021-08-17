@@ -83,4 +83,4 @@ AlwaysEmitOWLFor = {Module_sctid, IHTSDO_maintained_module_sctid, Namespace_conc
                     Reference_set_attribute, Attribute_value_type, Concept_inactivation_value,
                     Description_inactivation_value, Simple_map_type_reference_set, Inactive_value,
                     Simple_type_reference_set_sctid, SDO_Maintained_module_sctid, Concept_model_object_attribute_sctid,
-                    Concept_model_data_attribute_sctid}
+                    Concept_model_data_attribute_sctid, Role_group_sctid}
